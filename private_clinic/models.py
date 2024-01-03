@@ -14,12 +14,6 @@ class AccountRoleEnum(DbEnum):
     ADMIN = 5
 
 
-class GenderEnum(DbEnum):
-    MALE = 1
-    FEMALE = 2
-    OTHER = 3
-
-
 class BaseModel(db.Model):
     __abstract__ = True
 
@@ -33,7 +27,7 @@ class Account(BaseModel, UserMixin):
 
     username = Column(String(50), nullable=False, unique=True)
     password = Column(String(50), nullable=False)
-    active = Column(Boolean, default=True)
+    active = Column(Boolean, default=True, nullable=False)
     avatar = Column(String(100))
     role = Column(Enum(AccountRoleEnum), default=AccountRoleEnum.PATIENT, nullable=False)
 
@@ -48,11 +42,11 @@ class User(BaseModel):
 
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
-    gender = Column(Enum(GenderEnum), default=GenderEnum.OTHER, nullable=False)
+    gender = Column(String(10), default='OTHER', nullable=False)
     dob = Column(DateTime, nullable=False)
-    address = Column(String(100), nullable=False)
+    address = Column(String(100))
     phone_number = Column(String(11), nullable=False)
-    email = Column(String(50), nullable=False)
+    email = Column(String(50))
     account_id = Column(BigInteger, ForeignKey('accounts.id', ondelete='CASCADE'), nullable=False, unique=True)
 
     patient = relationship('Patient', backref='user', lazy=True, uselist=False)
@@ -81,8 +75,8 @@ class Employee(db.Model):
     __tablename__ = 'employees'
 
     id = Column(BigInteger, ForeignKey('users.id'), primary_key=True)
-    salary = Column(Double, nullable=False, default=0)
-    salary_coefficient = Column(Double, nullable=False, default=1)
+    salary = Column(Double, default=0)
+    salary_coefficient = Column(Double, default=1)
 
     admin = relationship('Administrator', backref='employee', lazy=True, uselist=False)
     cashier = relationship('Cashier', backref='employee', lazy=True, uselist=False)
@@ -103,7 +97,7 @@ class Cashier(Employee):
     __tablename__ = 'cashiers'
 
     id = Column(BigInteger, ForeignKey('employees.id'), primary_key=True)
-    skills = Column(String(100), nullable=False)
+    skills = Column(String(100))
 
     bills = relationship('Bill', backref='cashier', lazy=True)
 
@@ -130,7 +124,7 @@ class Regulation(BaseModel):
     __tablename__ = 'regulations'
 
     regulation_name = Column(String(50), nullable=False, unique=True)
-    description = Column(String(100), nullable=False)
+    description = Column(String(100))
     note = Column(String(100))
     status = Column(Boolean, nullable=False, default=True)
     admin_id = Column(BigInteger, ForeignKey('administrators.id'), nullable=False)
@@ -178,12 +172,12 @@ class Medicine(BaseModel):
     __tablename__ = 'medicines'
 
     medicine_name = Column(String(20), nullable=False, unique=True)
-    description = Column(String(100), nullable=False)
+    description = Column(String(100))
     note = Column(String(100))
     price = Column(Double, nullable=False, default=0)
-    amount = Column(Integer, nullable=False, default=0)
+    amount = Column(Integer, default=0)
     image = Column(String(100))
-    direction_for_use = Column(String(100), nullable=False)
+    direction_for_use = Column(String(100))
     medicine_unit_id = Column(BigInteger, ForeignKey('medicine_unit.id'), nullable=False)
 
     medicine_types = relationship('MedicineType', secondary='medicine_types', lazy='subquery', backref=backref('medicines', lazy=True))
@@ -221,8 +215,8 @@ medicalbill_packages = db.Table('medicalbill_packages',
 class MedicalBill(BaseModel):
     __tablename__ = 'medical_bills'
 
-    diagnostic = Column(String(100), nullable=False)
-    symptoms = Column(String(100), nullable=False)
+    diagnostic = Column(String(100))
+    symptoms = Column(String(100))
     examination_date = Column(DateTime, nullable=False)
     patient_id = Column(BigInteger, ForeignKey('patients.id'), nullable=False)
     doctor_id = Column(BigInteger, ForeignKey('doctors.id'), nullable=False)

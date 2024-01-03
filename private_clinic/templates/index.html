@@ -4,6 +4,7 @@
 
 {% block css %}
     {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 {% endblock %}
 

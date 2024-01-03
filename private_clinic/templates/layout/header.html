@@ -22,10 +22,35 @@
                         </div>
                         <li><a href="{{ url_for('index') }}" class="choose">Home</a></li>
                         <li><a href="">About</a></li>
-                        <li><a href="">Doctor</a></li>
-                        <li><a href="">Appointmen</a></li>
+                        <li><a href="">Healthcare Staff</a></li>
+                        <li><a href="{{ url_for('appointment') }}">Appointmen</a></li>
                         <li><a href="">Medicine</a></li>
                         <li><a href="{{ url_for('auth') }}">Sign in</a></li>
+                        <li>
+                            <div class="avatar">
+                                <div class="avatar__image">
+                                    <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="">
+                                </div>
+                                <h2 class="avatar-name">Maria</h2>
+
+                                <div class="avatar__des">
+                                    <a href="" class="avatar__des--btn">
+                                        <i class="fa-solid fa-user"></i>
+                                        Profile
+                                    </a>
+
+                                    <a href="" class="avatar__des--btn">
+                                        <i class="fa-solid fa-gear"></i>
+                                        Settings
+                                    </a>
+
+                                    <a href="" class="avatar__des--btn">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        Sign out
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/images/icon-web.png" type="image/x-icon">
-    <title>Appointment</title>
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/appointment.css">
-    <link rel="stylesheet" href="./assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+{% block title %}Appointment{% endblock %}
 
-<body>
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/appointment.css') }}">
+{% endblock %}
+
+{% block content %}
     <div class="form-appointment">
         <div class="grid">
             <div class="row" style="align-items: center;">
@@ -25,29 +18,29 @@
                         <form action="#" class="form">
                             <div class="column">
                                 <div class="input-box">
-                                    <label>First name</label>
-                                    <input type="tex" placeholder="Enter first name" required />
+                                    <label for="firstname">First name</label>
+                                    <input type="text" name="firstname" id="firstname" placeholder="First name" required/>
                                 </div>
 
                                 <div class="input-box">
-                                    <label>Last name</label>
-                                    <input type="text" placeholder="Enter last name" required />
+                                    <label for="lastname">Last name</label>
+                                    <input type="text" name="lastname" id="lastname" placeholder="Last name" required/>
                                 </div>
                             </div>
 
                             <div class="input-box">
-                                <label>Email Address</label>
-                                <input type="text" placeholder="Enter email address" required />
+                                <label for="email">Email Address</label>
+                                <input type="email" name="email" id="email" placeholder="Email address" required/>
                             </div>
 
                             <div class="column">
                                 <div class="input-box">
-                                    <label>Phone Number</label>
-                                    <input type="tel" placeholder="Enter phone number" required />
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" name="phone" id="phone" placeholder="Phone number" required/>
                                 </div>
                                 <div class="input-box">
-                                    <label>Birth Date</label>
-                                    <input type="date" placeholder="Enter birth date" required />
+                                    <label for="dob">Birthdate</label>
+                                    <input type="date" name="dob" id="dob" placeholder="Birth date" required/>
                                 </div>
                             </div>
 
@@ -55,29 +48,29 @@
                                 <h3>Gender</h3>
                                 <div class="gender-option">
                                     <div class="gender">
-                                        <input type="radio" id="check-male" name="gender" checked />
+                                        <input type="radio" id="check-male" name="gender"/>
                                         <label for="check-male">Male</label>
                                     </div>
                                     <div class="gender">
-                                        <input type="radio" id="check-female" name="gender" />
+                                        <input type="radio" id="check-female" name="gender"/>
                                         <label for="check-female">Female</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="input-box">
-                                <label>Address</label>
-                                <input type="text" placeholder="Enter Address" required />
+                                <label for="address">Address</label>
+                                <input type="text" name="address" id="address" placeholder="Address" required/>
                             </div>
 
                             <div class="input-box">
-                                <label>Symptom</label>
-                                <input type="text" placeholder=" Enter Symptom" required />
+                                <label for="symptom">Symptom</label>
+                                <input type="text" name="symptom" id="symptom" placeholder=" Enter Symptom" required/>
                             </div>
 
                             <div class="input-box">
-                                <label>Day of the examination</label>
-                                <input type="date" required />
+                                <label for="day_of_exam">Day of the examination</label>
+                                <input type="date" name="day_of_exam" id="day_of_exam" required/>
                             </div>
 
                             <button class="form-appointment__btn">Submit</button>
@@ -89,12 +82,10 @@
 
                 <div class="col-6">
                     <div class="form-appointment__image">
-                        <img src="./assets/images/Appointment.svg" alt="">
+                        <img src="{{ url_for('static', filename='images/Appointment.svg') }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-
-</html>
+{% endblock %}

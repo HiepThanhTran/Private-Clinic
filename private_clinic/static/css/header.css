@@ -87,3 +87,67 @@ header {
 .btn-close {
     display: none;
 }
+
+/* Avatar */
+.avatar{
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    position: relative;
+}
+
+.avatar:hover .avatar__des{
+    display: block;
+}
+
+.avatar__des{
+    position: absolute;
+    top: 60px;
+    left: -12px;
+    padding: 10px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 7px 2px rgba(17, 17, 26, 0.1);
+    display: none;
+}
+
+.avatar__des .avatar__des--btn{
+    color: var(--primary-color);
+    display: block;
+    transition: all 0.1s ease;
+    font-size: 1rem;
+}
+
+.avatar__des .avatar__des--btn i{
+    margin-right: 1.9px;
+}
+
+.avatar__des .avatar__des--btn:hover{
+    color: var(--white);
+    border-radius: 50px;
+    background-color: var(--sub-color);
+}
+
+.avatar__image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    overflow: hidden;
+}
+
+.avatar__image img{
+    object-fit: cover;
+}
+
+.avatar-name{
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-bottom: 0;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.nav.active .nav__menu .avatar .avatar-name{
+    color: var(--primary-color);
+}
