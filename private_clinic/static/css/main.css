@@ -38,7 +38,7 @@ img {
 }
 
 /* Button */
-.btn {
+.my-btn {
     color: var(--primary-color);
     background-color: var(--white);
     min-width: 180px;
@@ -54,13 +54,13 @@ img {
     box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0);
 }
 
-.btn:hover {
+.my-btn:hover {
     background-color: var(--sub-color);
     color: var(--white);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1);
 }
 
-.btn-sub {
+.my-btn-sub {
     font-size: 1.25rem;
     color: var(--primary-color);
     font-weight: 800;
@@ -73,18 +73,18 @@ img {
     transition-property: color;
 }
 
-.btn-sub:focus,
-.btn-sub:hover {
+.my-btn-sub:focus,
+.my-btn-sub:hover {
     color: var(--sub-color);
 }
 
-.btn-sub:focus::after,
-.btn-sub:hover::after {
+.my-btn-sub:focus::after,
+.my-btn-sub:hover::after {
     width: 100%;
     left: 0;
 }
 
-.btn-sub::after {
+.my-btn-sub::after {
     content: "";
     pointer-events: none;
     bottom: -2px;

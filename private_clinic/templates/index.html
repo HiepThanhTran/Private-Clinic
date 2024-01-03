@@ -3,554 +3,621 @@
 {% block title %}Home{% endblock %}
 
 {% block css %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 {% endblock %}
 
 {% block js_body %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
+{{ super() }}
+<script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="banner">
-        <div class="my-grid">
-            <div class="my-row">
-                <div class="my-col-6 my-col-12">
-                    <div class="banner__content">
-                        <h1 class="banner__content--title">Stay Safe, Stay Healthy</h1>
-                        <p class="banner__content--des">
-                            With a professional team, web always bring you trust and satisfaction. We always monitor
-                            your
-                            health no matter the circumstances. Your health is our happiness.
-                        </p>
-                        <div class="banner__content--btn">
-                            <a href="" class="btn">Learn More</a>
-                            <a href="{{ url_for('auth') }}" class="btn">Sign in</a>
+
+<div class="banner">
+    <div class="my-grid">
+        <div class="my-row">
+            <div class="my-col-6">
+                <div class="banner__content">
+                    <h1 class="banner__content--title">Stay Safe, Stay Healthy</h1>
+                    <p class="banner__content--des">
+                        With a professional team, web always bring you trust and satisfaction. We always monitor
+                        your
+                        health no matter the circumstances. Your health is our happiness.
+                    </p>
+                     <div class="banner__content--btn">
+                    <a href="" class="my-btn">Learn More</a>
+                    <a href="{{ url_for('auth') }}" class="my-btn">Sign in</a>
+                </div>
+                </div>
+            </div>
+
+            <div class="my-col-6">
+                <div class=" banner__image">
+                    <img src="{{ url_for('static', filename='images/Banner.svg') }}" alt="Banner_1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="homepage-content">
+    <div class="introduce">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon1 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon2 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon3 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon4 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon5 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon6 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon1 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon2 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+
+        <div class="introduce__content">
+            <div class="my-grid">
+                <div class="my-row">
+                    <div class="my-col-6">
+                        <div class="introduce__left">
+                            <div class="my-row" style="align-items: center;">
+                                <div class="my-col-6">
+                                    <div class="introduce__left-contact">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="27.284"
+                                             height="27.278"
+                                             viewBox="0 0 27.284 27.278" class="svg replaced-svg">
+                                            <g id="phone" transform="translate(0)">
+                                                <g id="Group_123" data-name="Group 123"
+                                                   transform="translate(0)">
+                                                    <path id="Path_76" data-name="Path 76"
+                                                          d="M21.924,27.281a11.725,11.725,0,0,1-4.012-.852A30.117,30.117,0,0,1,7.787,19.495,30.114,30.114,0,0,1,.853,9.368c-1.135-3-1.138-5.471-.009-6.6.163-.163.329-.338.5-.517C2.375,1.169,3.566-.061,5.081.006A4.481,4.481,0,0,1,8.233,2.022c3.116,3.877,1.711,5.258.085,6.86l-.288.284c-.266.266-.77,1.5,3.909,6.175a26.037,26.037,0,0,0,3.869,3.321c.656.426,1.827,1.068,2.307.588l.289-.292c1.6-1.624,2.982-3.024,6.858.091A4.472,4.472,0,0,1,27.278,22.2c.063,1.543-1.166,2.71-2.251,3.74-.178.17-.352.334-.514.5A3.58,3.58,0,0,1,21.924,27.281ZM4.972.92c-1.1,0-2.086,1.042-2.963,1.964-.177.185-.349.366-.517.534-.84.84-.754,3.049.218,5.628a29.2,29.2,0,0,0,6.725,9.8,29.2,29.2,0,0,0,9.8,6.724c2.579.973,4.789,1.058,5.629.217.168-.167.347-.338.53-.512.943-.9,2.012-1.911,1.966-3.038a3.708,3.708,0,0,0-1.675-2.473c-3.23-2.595-4.132-1.677-5.629-.161l-.294.3c-.713.717-1.875.56-3.455-.468A26.9,26.9,0,0,1,11.29,15.99h0C7.408,12.108,6.166,9.733,7.381,8.517l.293-.29c1.521-1.5,2.439-2.4-.157-5.631A3.72,3.72,0,0,0,5.044.921Z"
+                                                          transform="translate(0 -0.003)"
+                                                          fill="#fc5185"></path>
+                                                </g>
+                                                <g id="Group_124" data-name="Group 124"
+                                                   transform="translate(14.028 0.006)">
+                                                    <path id="Path_77" data-name="Path 77"
+                                                          d="M23.51,11.674a.459.459,0,0,1-.425-.63A3.857,3.857,0,0,0,17.922,6.08a.458.458,0,0,1-.378-.835,4.774,4.774,0,0,1,6.391,6.144A.46.46,0,0,1,23.51,11.674Z"
+                                                          transform="translate(-15.453 -0.407)"
+                                                          fill="#fc5185"></path>
+                                                    <path id="Path_78" data-name="Path 78"
+                                                          d="M27.442,12.94a.459.459,0,0,1-.425-.63A8.278,8.278,0,0,0,15.937,1.655a.46.46,0,0,1-.378-.838A9.2,9.2,0,0,1,27.866,12.653.458.458,0,0,1,27.442,12.94Z"
+                                                          transform="translate(-15.289 -0.009)"
+                                                          fill="#fc5185"></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                        <h3 class="introduce__left-contact--title">Call Us</h3>
+                                        <span>
+                                                <a href="tel:84388224064">+84388224064</a>
+                                                <a href="tel:84349568016">+84349568016</a>
+                                                <a href="tel:84812720452">+84812720452</a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="my-col-6">
+                                    <div class=" introduce__left-contact">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="27.167"
+                                             height="27.167"
+                                             viewBox="0 0 27.167 27.167" class="svg replaced-svg">
+                                            <g id="clock" transform="translate(0 0)">
+                                                <path id="Path_66" data-name="Path 66"
+                                                      d="M13.583,0A13.583,13.583,0,1,0,27.167,13.583,13.6,13.6,0,0,0,13.583,0Zm0,26.261A12.678,12.678,0,1,1,26.261,13.583,12.692,12.692,0,0,1,13.583,26.261Z"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_67" data-name="Path 67"
+                                                      d="M23.886,19.924V15.332a.453.453,0,1,0-.906,0v4.592a1.809,1.809,0,0,0-1.294,1.294H18.453a.453.453,0,0,0,0,.906h3.234a1.807,1.807,0,1,0,2.2-2.2Zm-.453,2.652a.906.906,0,1,1,.906-.906A.906.906,0,0,1,23.433,22.576Z"
+                                                      transform="translate(-9.85 -8.142)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_68" data-name="Path 68"
+                                                      d="M29.453,8.237a.453.453,0,0,0,.453-.453V7.332a.453.453,0,0,0-.906,0v.453A.453.453,0,0,0,29.453,8.237Z"
+                                                      transform="translate(-15.869 -3.764)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_69" data-name="Path 69"
+                                                      d="M29.453,49.879a.453.453,0,0,0-.453.453v.453a.453.453,0,0,0,.906,0v-.453A.453.453,0,0,0,29.453,49.879Z"
+                                                      transform="translate(-15.869 -27.295)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_70" data-name="Path 70"
+                                                      d="M50.906,28.879h-.453a.453.453,0,1,0,0,.906h.453a.453.453,0,1,0,0-.906Z"
+                                                      transform="translate(-27.361 -15.803)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_71" data-name="Path 71"
+                                                      d="M7.906,28.879H7.453a.453.453,0,0,0,0,.906h.453a.453.453,0,0,0,0-.906Z"
+                                                      transform="translate(-3.831 -15.803)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_72" data-name="Path 72"
+                                                      d="M44.3,13.455l-.32.32a.453.453,0,1,0,.64.64l.32-.32a.453.453,0,1,0-.64-.64Z"
+                                                      transform="translate(-23.995 -7.29)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_73" data-name="Path 73"
+                                                      d="M13.9,43.861l-.32.32a.453.453,0,1,0,.64.64l.32-.32a.453.453,0,1,0-.64-.64Z"
+                                                      transform="translate(-7.357 -23.929)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_74" data-name="Path 74"
+                                                      d="M44.622,43.861a.453.453,0,0,0-.64.64l.32.32a.453.453,0,0,0,.64-.64Z"
+                                                      transform="translate(-23.995 -23.929)"
+                                                      fill="#fc5185"></path>
+                                                <path id="Path_75" data-name="Path 75"
+                                                      d="M14.217,13.455a.453.453,0,1,0-.64.64l.32.32a.453.453,0,0,0,.64-.64Z"
+                                                      transform="translate(-7.357 -7.29)"
+                                                      fill="#fc5185"></path>
+                                            </g>
+                                        </svg>
+                                        <h3>Opening Hours</h3>
+                                        <span>Mon - Sat: 8 AM - 5 PM. Sunday Closed</span>
+                                    </div>
+
+                                    <div class="introduce__left-contact">
+                                        <svg xmlns="http://www.w3.org/2000/svg" id="phone2" width="28.097"
+                                             height="28.096" viewBox="0 0 28.097 28.096"
+                                             class="svg replaced-svg">
+                                            <path id="Path_62" data-name="Path 62"
+                                                  d="M3.774,20.139A.468.468,0,0,1,3.443,20,11.707,11.707,0,1,1,19.97,3.419a.468.468,0,0,1-.661.663A10.77,10.77,0,0,0,4.1,19.34a.468.468,0,0,1-.331.8Z"
+                                                  transform="translate(0 -0.004)" fill="#fc5185"></path>
+                                            <path id="Path_63" data-name="Path 63"
+                                                  d="M54.854,75.11h-.016a2.682,2.682,0,0,1-2.669-2.688V69.116A2.679,2.679,0,0,1,54.475,66.4a13.76,13.76,0,0,0,3.011-.748,2.693,2.693,0,0,1,2.827.6l1.152,1.15a17.231,17.231,0,0,0,5.977-5.964L66.294,60.3a2.683,2.683,0,0,1-.605-2.827,13.672,13.672,0,0,0,.748-3,2.684,2.684,0,0,1,2.682-2.307h3.315c.08,0,.16,0,.239.011A2.678,2.678,0,0,1,75.1,55.082a22.409,22.409,0,0,1-3.471,9.788,22.168,22.168,0,0,1-6.781,6.766A22.5,22.5,0,0,1,55.1,75.1,2.439,2.439,0,0,1,54.854,75.11Zm3.572-8.687a1.731,1.731,0,0,0-.612.111,14.709,14.709,0,0,1-3.213.8A1.741,1.741,0,0,0,53.1,69.1v3.324a1.745,1.745,0,0,0,1.738,1.749c.055,0,.109,0,.163-.007a21.558,21.558,0,0,0,9.339-3.317,21.226,21.226,0,0,0,6.5-6.485,21.464,21.464,0,0,0,3.327-9.373,1.742,1.742,0,0,0-1.581-1.882c-.051,0-.1-.006-.155-.006H69.114a1.761,1.761,0,0,0-1.749,1.5,14.622,14.622,0,0,1-.8,3.2,1.743,1.743,0,0,0,.392,1.836l1.4,1.4a.469.469,0,0,1,.076.563,18.161,18.161,0,0,1-6.815,6.8.469.469,0,0,1-.562-.076l-1.405-1.4A1.749,1.749,0,0,0,58.426,66.423Z"
+                                                  transform="translate(-47.017 -47.014)"
+                                                  fill="#fc5185"></path>
+                                            <path id="Path_64" data-name="Path 64"
+                                                  d="M54.622,51.989a.738.738,0,0,1-.537-.232c-1.115-1.188-1.026-3.547-1.022-3.647a9.4,9.4,0,0,1,.4-2.35,1.44,1.44,0,0,0-.212-1.217c-.046-.066-.089-.132-.132-.2a6.124,6.124,0,0,1-.948-3.327v-.575c0-1.979,2.064-2.5,3.156-2.5a3.671,3.671,0,0,1,2.464.982,3.67,3.67,0,0,1,2.464-.982c1.091,0,3.156.523,3.156,2.5v.575a6.13,6.13,0,0,1-.946,3.327c-.043.066-.087.132-.133.2a1.439,1.439,0,0,0-.213,1.218,9.451,9.451,0,0,1,.4,2.37c0,.08.093,2.439-1.023,3.627a.735.735,0,0,1-.713.21.744.744,0,0,1-.539-.523c-.581-2.088-1.608-4.2-2.449-4.2s-1.868,2.114-2.449,4.2a.745.745,0,0,1-.539.523A.772.772,0,0,1,54.622,51.989Zm3.164-5.683c1.658,0,2.76,2.906,3.242,4.511a5.573,5.573,0,0,0,.546-2.667,8.567,8.567,0,0,0-.361-2.136,2.373,2.373,0,0,1,.346-2.007c.039-.056.077-.113.114-.17a5.2,5.2,0,0,0,.8-2.819v-.575c0-1.538-2.128-1.566-2.22-1.566a2.784,2.784,0,0,0-2.089,1.007.47.47,0,0,1-.372.184h0a.469.469,0,0,1-.373-.186,2.787,2.787,0,0,0-2.089-1c-.089,0-2.219.028-2.219,1.566v.575a5.192,5.192,0,0,0,.8,2.819c.036.055.074.112.113.169a2.373,2.373,0,0,1,.345,2.007A8.534,8.534,0,0,0,54,48.131a5.609,5.609,0,0,0,.545,2.686c.482-1.605,1.584-4.511,3.242-4.511Z"
+                                                  transform="translate(-47.016 -34.196)"
+                                                  fill="#fc5185"></path>
+                                            <path id="Path_65" data-name="Path 65"
+                                                  d="M85.83,52.105a.468.468,0,1,1,0-.936,2.807,2.807,0,0,0,1.52-.988.468.468,0,0,1,.707.614A3.691,3.691,0,0,1,85.83,52.105Z"
+                                                  transform="translate(-76.933 -45.082)"
+                                                  fill="#fc5185"></path>
+                                        </svg>
+                                        <h3 class="introduce__left-contact--title">Email Us</h3>
+                                        <span>
+                                                <a href="mailto:2151050469hiep@ou.edu.vn">2151050469hiep@ou.edu.vn</a>
+                                                <a href="mailto:2151050123hau@ou.edu.vn">2151050123hau@ou.edu.vn</a>
+                                                <a href="mailto:2151053007cuong@ou.edu.vn">2151053007cuong@ou.edu.vn</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="my-col-6 my-col-12">
-                    <div class="banner__image">
-                        <img src="{{ url_for('static', filename='images/Banner.svg') }}" alt="Banner_1">
+                    <div class="my-col-6">
+                        <div class="introduce__right">
+                            <h2 class="introduce__right--title">Welcome to F & H</h2>
+                            <p class="introduce__right--des">
+                                Now the developer is developing the technology. Not my own business.
+                                Tomormy row
+                                the
+                                price
+                                of the land will be a lot of trucks. Ata Vestibulum is the largest mass of
+                                lacinia,
+                                not
+                                an airline. of Pellentesque vehicula est a lorem gravida bibendum. For the
+                                sake
+                                of
+                                life,
+                                pure ultrice, dignissim tur mattis eros.
+                            </p>
+                            <a href="" class="my-btn-sub">Read More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="homepage-content">
-        <div class="introduce">
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon1 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon2 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon3 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon4 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon5 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon6 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-                 class="circle-icon circle-icon1 svg replaced-svg">
-                <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-                    <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-                    <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-                 class="circle-icon circle-icon2 svg replaced-svg">
-                <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-                    <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-                    <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-                </g>
-            </svg>
-            <div class="introduce__content">
-                <div class="my-grid">
-                    <div class="my-row">
-                        <div class="my-col-6 my-col-12">
-                            <div class="introduce__left">
-                                <div class="my-row" style="align-items: center;">
-                                    <div class="my-col-6 my-col-12">
-                                        <div class="introduce__left-contact">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="27.284" height="27.278"
-                                                 viewBox="0 0 27.284 27.278" class="svg replaced-svg">
-                                                <g id="phone" transform="translate(0)">
-                                                    <g id="Group_123" data-name="Group 123" transform="translate(0)">
-                                                        <path id="Path_76" data-name="Path 76"
-                                                              d="M21.924,27.281a11.725,11.725,0,0,1-4.012-.852A30.117,30.117,0,0,1,7.787,19.495,30.114,30.114,0,0,1,.853,9.368c-1.135-3-1.138-5.471-.009-6.6.163-.163.329-.338.5-.517C2.375,1.169,3.566-.061,5.081.006A4.481,4.481,0,0,1,8.233,2.022c3.116,3.877,1.711,5.258.085,6.86l-.288.284c-.266.266-.77,1.5,3.909,6.175a26.037,26.037,0,0,0,3.869,3.321c.656.426,1.827,1.068,2.307.588l.289-.292c1.6-1.624,2.982-3.024,6.858.091A4.472,4.472,0,0,1,27.278,22.2c.063,1.543-1.166,2.71-2.251,3.74-.178.17-.352.334-.514.5A3.58,3.58,0,0,1,21.924,27.281ZM4.972.92c-1.1,0-2.086,1.042-2.963,1.964-.177.185-.349.366-.517.534-.84.84-.754,3.049.218,5.628a29.2,29.2,0,0,0,6.725,9.8,29.2,29.2,0,0,0,9.8,6.724c2.579.973,4.789,1.058,5.629.217.168-.167.347-.338.53-.512.943-.9,2.012-1.911,1.966-3.038a3.708,3.708,0,0,0-1.675-2.473c-3.23-2.595-4.132-1.677-5.629-.161l-.294.3c-.713.717-1.875.56-3.455-.468A26.9,26.9,0,0,1,11.29,15.99h0C7.408,12.108,6.166,9.733,7.381,8.517l.293-.29c1.521-1.5,2.439-2.4-.157-5.631A3.72,3.72,0,0,0,5.044.921Z"
-                                                              transform="translate(0 -0.003)" fill="#fc5185"></path>
-                                                    </g>
-                                                    <g id="Group_124" data-name="Group 124"
-                                                       transform="translate(14.028 0.006)">
-                                                        <path id="Path_77" data-name="Path 77"
-                                                              d="M23.51,11.674a.459.459,0,0,1-.425-.63A3.857,3.857,0,0,0,17.922,6.08a.458.458,0,0,1-.378-.835,4.774,4.774,0,0,1,6.391,6.144A.46.46,0,0,1,23.51,11.674Z"
-                                                              transform="translate(-15.453 -0.407)" fill="#fc5185"></path>
-                                                        <path id="Path_78" data-name="Path 78"
-                                                              d="M27.442,12.94a.459.459,0,0,1-.425-.63A8.278,8.278,0,0,0,15.937,1.655a.46.46,0,0,1-.378-.838A9.2,9.2,0,0,1,27.866,12.653.458.458,0,0,1,27.442,12.94Z"
-                                                              transform="translate(-15.289 -0.009)" fill="#fc5185"></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                            <h3 class="introduce__left-contact--title">Call Us</h3>
-                                            <span>
-                                                <a href="tel:84388224064">+84388224064</a>
-                                                <br>
-                                                <a href="tel:84349568016">+84349568016</a>
-                                                <br>
-                                                <a href="tel:84812720452">+84812720452</a>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="my-col-6 my-col-12">
-                                        <div class="introduce__left-contact">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="27.167" height="27.167"
-                                                 viewBox="0 0 27.167 27.167" class="svg replaced-svg">
-                                                <g id="clock" transform="translate(0 0)">
-                                                    <path id="Path_66" data-name="Path 66"
-                                                          d="M13.583,0A13.583,13.583,0,1,0,27.167,13.583,13.6,13.6,0,0,0,13.583,0Zm0,26.261A12.678,12.678,0,1,1,26.261,13.583,12.692,12.692,0,0,1,13.583,26.261Z"
-                                                          fill="#fc5185"></path>
-                                                    <path id="Path_67" data-name="Path 67"
-                                                          d="M23.886,19.924V15.332a.453.453,0,1,0-.906,0v4.592a1.809,1.809,0,0,0-1.294,1.294H18.453a.453.453,0,0,0,0,.906h3.234a1.807,1.807,0,1,0,2.2-2.2Zm-.453,2.652a.906.906,0,1,1,.906-.906A.906.906,0,0,1,23.433,22.576Z"
-                                                          transform="translate(-9.85 -8.142)" fill="#fc5185"></path>
-                                                    <path id="Path_68" data-name="Path 68"
-                                                          d="M29.453,8.237a.453.453,0,0,0,.453-.453V7.332a.453.453,0,0,0-.906,0v.453A.453.453,0,0,0,29.453,8.237Z"
-                                                          transform="translate(-15.869 -3.764)" fill="#fc5185"></path>
-                                                    <path id="Path_69" data-name="Path 69"
-                                                          d="M29.453,49.879a.453.453,0,0,0-.453.453v.453a.453.453,0,0,0,.906,0v-.453A.453.453,0,0,0,29.453,49.879Z"
-                                                          transform="translate(-15.869 -27.295)" fill="#fc5185"></path>
-                                                    <path id="Path_70" data-name="Path 70"
-                                                          d="M50.906,28.879h-.453a.453.453,0,1,0,0,.906h.453a.453.453,0,1,0,0-.906Z"
-                                                          transform="translate(-27.361 -15.803)" fill="#fc5185"></path>
-                                                    <path id="Path_71" data-name="Path 71"
-                                                          d="M7.906,28.879H7.453a.453.453,0,0,0,0,.906h.453a.453.453,0,0,0,0-.906Z"
-                                                          transform="translate(-3.831 -15.803)" fill="#fc5185"></path>
-                                                    <path id="Path_72" data-name="Path 72"
-                                                          d="M44.3,13.455l-.32.32a.453.453,0,1,0,.64.64l.32-.32a.453.453,0,1,0-.64-.64Z"
-                                                          transform="translate(-23.995 -7.29)" fill="#fc5185"></path>
-                                                    <path id="Path_73" data-name="Path 73"
-                                                          d="M13.9,43.861l-.32.32a.453.453,0,1,0,.64.64l.32-.32a.453.453,0,1,0-.64-.64Z"
-                                                          transform="translate(-7.357 -23.929)" fill="#fc5185"></path>
-                                                    <path id="Path_74" data-name="Path 74"
-                                                          d="M44.622,43.861a.453.453,0,0,0-.64.64l.32.32a.453.453,0,0,0,.64-.64Z"
-                                                          transform="translate(-23.995 -23.929)" fill="#fc5185"></path>
-                                                    <path id="Path_75" data-name="Path 75"
-                                                          d="M14.217,13.455a.453.453,0,1,0-.64.64l.32.32a.453.453,0,0,0,.64-.64Z"
-                                                          transform="translate(-7.357 -7.29)" fill="#fc5185"></path>
-                                                </g>
-                                            </svg>
-                                            <h3>Opening Hours</h3>
-                                            <span>Mon - Sat: 8 AM - 5 PM. Sunday Closed</span>
-                                        </div>
-
-                                        <div class="introduce__left-contact">
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="phone2" width="28.097"
-                                                 height="28.096" viewBox="0 0 28.097 28.096" class="svg replaced-svg">
-                                                <path id="Path_62" data-name="Path 62"
-                                                      d="M3.774,20.139A.468.468,0,0,1,3.443,20,11.707,11.707,0,1,1,19.97,3.419a.468.468,0,0,1-.661.663A10.77,10.77,0,0,0,4.1,19.34a.468.468,0,0,1-.331.8Z"
-                                                      transform="translate(0 -0.004)" fill="#fc5185"></path>
-                                                <path id="Path_63" data-name="Path 63"
-                                                      d="M54.854,75.11h-.016a2.682,2.682,0,0,1-2.669-2.688V69.116A2.679,2.679,0,0,1,54.475,66.4a13.76,13.76,0,0,0,3.011-.748,2.693,2.693,0,0,1,2.827.6l1.152,1.15a17.231,17.231,0,0,0,5.977-5.964L66.294,60.3a2.683,2.683,0,0,1-.605-2.827,13.672,13.672,0,0,0,.748-3,2.684,2.684,0,0,1,2.682-2.307h3.315c.08,0,.16,0,.239.011A2.678,2.678,0,0,1,75.1,55.082a22.409,22.409,0,0,1-3.471,9.788,22.168,22.168,0,0,1-6.781,6.766A22.5,22.5,0,0,1,55.1,75.1,2.439,2.439,0,0,1,54.854,75.11Zm3.572-8.687a1.731,1.731,0,0,0-.612.111,14.709,14.709,0,0,1-3.213.8A1.741,1.741,0,0,0,53.1,69.1v3.324a1.745,1.745,0,0,0,1.738,1.749c.055,0,.109,0,.163-.007a21.558,21.558,0,0,0,9.339-3.317,21.226,21.226,0,0,0,6.5-6.485,21.464,21.464,0,0,0,3.327-9.373,1.742,1.742,0,0,0-1.581-1.882c-.051,0-.1-.006-.155-.006H69.114a1.761,1.761,0,0,0-1.749,1.5,14.622,14.622,0,0,1-.8,3.2,1.743,1.743,0,0,0,.392,1.836l1.4,1.4a.469.469,0,0,1,.076.563,18.161,18.161,0,0,1-6.815,6.8.469.469,0,0,1-.562-.076l-1.405-1.4A1.749,1.749,0,0,0,58.426,66.423Z"
-                                                      transform="translate(-47.017 -47.014)" fill="#fc5185"></path>
-                                                <path id="Path_64" data-name="Path 64"
-                                                      d="M54.622,51.989a.738.738,0,0,1-.537-.232c-1.115-1.188-1.026-3.547-1.022-3.647a9.4,9.4,0,0,1,.4-2.35,1.44,1.44,0,0,0-.212-1.217c-.046-.066-.089-.132-.132-.2a6.124,6.124,0,0,1-.948-3.327v-.575c0-1.979,2.064-2.5,3.156-2.5a3.671,3.671,0,0,1,2.464.982,3.67,3.67,0,0,1,2.464-.982c1.091,0,3.156.523,3.156,2.5v.575a6.13,6.13,0,0,1-.946,3.327c-.043.066-.087.132-.133.2a1.439,1.439,0,0,0-.213,1.218,9.451,9.451,0,0,1,.4,2.37c0,.08.093,2.439-1.023,3.627a.735.735,0,0,1-.713.21.744.744,0,0,1-.539-.523c-.581-2.088-1.608-4.2-2.449-4.2s-1.868,2.114-2.449,4.2a.745.745,0,0,1-.539.523A.772.772,0,0,1,54.622,51.989Zm3.164-5.683c1.658,0,2.76,2.906,3.242,4.511a5.573,5.573,0,0,0,.546-2.667,8.567,8.567,0,0,0-.361-2.136,2.373,2.373,0,0,1,.346-2.007c.039-.056.077-.113.114-.17a5.2,5.2,0,0,0,.8-2.819v-.575c0-1.538-2.128-1.566-2.22-1.566a2.784,2.784,0,0,0-2.089,1.007.47.47,0,0,1-.372.184h0a.469.469,0,0,1-.373-.186,2.787,2.787,0,0,0-2.089-1c-.089,0-2.219.028-2.219,1.566v.575a5.192,5.192,0,0,0,.8,2.819c.036.055.074.112.113.169a2.373,2.373,0,0,1,.345,2.007A8.534,8.534,0,0,0,54,48.131a5.609,5.609,0,0,0,.545,2.686c.482-1.605,1.584-4.511,3.242-4.511Z"
-                                                      transform="translate(-47.016 -34.196)" fill="#fc5185"></path>
-                                                <path id="Path_65" data-name="Path 65"
-                                                      d="M85.83,52.105a.468.468,0,1,1,0-.936,2.807,2.807,0,0,0,1.52-.988.468.468,0,0,1,.707.614A3.691,3.691,0,0,1,85.83,52.105Z"
-                                                      transform="translate(-76.933 -45.082)" fill="#fc5185"></path>
-                                            </svg>
-                                            <h3 class="introduce__left-contact--title">Email Us</h3>
-                                            <span>
-                                                <a href="mailto:2151050469hiep@ou.edu.vn">2151050469hiep@ou.edu.vn</a>
-                                                <br>
-                                                <a href="mailto:2151050123hau@ou.edu.vn">2151050123hau@ou.edu.vn</a>
-                                                <br>
-                                                <a href="mailto:2151053007cuong@ou.edu.vn">2151053007cuong@ou.edu.vn</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="my-col-6 my-col-12">
-                            <div class="introduce__right">
-                                <h2 class="introduce__right--title">Welcome to F & H</h2>
-                                <p class="introduce__right--des">
-                                    Now the developer is developing the technology. Not my own business. Tomormy-row the
-                                    price
-                                    of the land will be a lot of trucks. Ata Vestibulum is the largest mass of lacinia,
-                                    not
-                                    an airline. of Pellentesque vehicula est a lorem gravida bibendum. For the sake of
-                                    life,
-                                    pure ultrice, dignissim tur mattis eros.
-                                </p>
-                                <a href="" class="btn-introduce">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="service">
+        <div class="service__shape">
+            <img src="{{ url_for('static', filename='images/curve-shape-1.png' ) }}" alt="Shape">
         </div>
 
-        <div class="service">
-            <div class="service__shape">
-                <img src="{{ url_for('static', filename='images/curve-shape-1.png"') }}" alt="Shape">
-            </div>
+        <div class="service__content">
+            <div class="my-grid">
+                <div class="my-row">
+                    <div class="service__content--top">
+                        <h3 class="service__content--top__title">Our services</h3>
+                        <div></div>
+                        <p class="service__content--top__des">We provide you the best choices for you.
+                            Adjust it to your health needs and make sure you
+                            undergo treatment with our highly qualified doctors you can consult with us
+                            which type of service is suitable for your health
+                        </p>
+                    </div>
 
-            <div class="service__content">
-                <div class="my-grid">
-                    <div class="my-row">
-                        <div class="service__content--top">
-                            <h3 class="service__content--top__title">Our services</h3>
-                            <div></div>
-                            <p class="service__content--top__des">We provide you the best choices for you.
-                                Adjust it to your health needs and make sure you
-                                undergo treatment with our highly qualified doctors you can consult with us
-                                which type of service is suitable for your health
+                    <div class="service__content--items">
+                        <div class="service__content--item">
+                            <div class="service__content--item__icon">
+                                <img src="{{ url_for('static', filename='images/service-icon-1.png') }}"
+                                     alt="Service_1">
+                            </div>
+                            <h3 class="service__content--item__title">Search doctor</h3>
+                            <p class="service__content--item__des">Choose your doctor form thousands of
+                                specialist, general and trusted hospitals.
                             </p>
                         </div>
 
-                        <div class="service__content--items">
-                            <div class="service__content--item">
-                                <div class="service__content--item__icon">
-                                    <img src="{{ url_for('static', filename='images/service-icon-1.png') }}" alt="Service_1">
-                                </div>
-                                <h3 class="service__content--item__title">Search doctor</h3>
-                                <p class="service__content--item__des">Choose your doctor form thousands of
-                                    specialist, general and trusted hospitals.
-                                </p>
+                        <div class="service__content--item">
+                            <div class="service__content--item__icon">
+                                <img src="{{ url_for('static', filename='images/service-icon-2.png') }}"
+                                     alt="Service_2">
                             </div>
-
-                            <div class="service__content--item">
-                                <div class="service__content--item__icon">
-                                    <img src="{{ url_for('static', filename='images/service-icon-2.png') }}" alt="Service_2">
-                                </div>
-                                <h3 class="service__content--item__title">Online pharmacy</h3>
-                                <p class="service__content--item__des">Buy your medicines with website with a
-                                    simple delivery system.
-                                </p>
-                            </div>
-
-                            <div class="service__content--item">
-                                <div class="service__content--item__icon">
-                                    <img src="{{ url_for('static', filename='images/service-icon-3.png') }}" alt="Service_3">
-                                </div>
-                                <h3 class="service__content--item__title">Consultation</h3>
-                                <p class="service__content--item__des">Free consultation with our trusted
-                                    doctors and get the best recommendations.
-                                </p>
-                            </div>
-
-                            <div class="service__content--item">
-                                <div class="service__content--item__icon">
-                                    <img src="{{ url_for('static', filename='images/service-icon-4.png') }}" alt="Service_4">
-                                </div>
-                                <h3 class="service__content--item__title">Details info</h3>
-                                <p class="service__content--item__des"> Detailed information is displayed clearly on the
-                                    website and is
-                                    completely accurate.
-                                </p>
-                            </div>
-
-                            <div class="service__content--item">
-                                <div class="service__content--item__icon">
-                                    <img src="{{ url_for('static', filename='images/service-icon-5.png') }}" alt="Service_5">
-                                </div>
-                                <h3 class="service__content--item__title">Emergency care</h3>
-                                <p class="service__content--item__des">You can get 24/7 urgent care for
-                                    yourself or your children and your lovely family.
-                                </p>
-                            </div>
-
-                            <div class="service__content--item">
-                                <div class="service__content--item__icon">
-                                    <img src="{{ url_for('static', filename='images/service-icon-6.png') }}" alt="Service_6">
-                                </div>
-                                <h3 class="service__content--item__title">Tracking</h3>
-                                <p class="service__content--item__des">Track and save your mental history and
-                                    health data.
-                                </p>
-                            </div>
+                            <h3 class="service__content--item__title">Online pharmacy</h3>
+                            <p class="service__content--item__des">Buy your medicines with website with a
+                                simple delivery system.
+                            </p>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="service__btn">
-                <a href="" class="btn btn-sub">Read More</a>
-            </div>
-        </div>
+                        <div class="service__content--item">
+                            <div class="service__content--item__icon">
+                                <img src="{{ url_for('static', filename='images/service-icon-3.png') }}"
+                                     alt="Service_3">
+                            </div>
+                            <h3 class="service__content--item__title">Consultation</h3>
+                            <p class="service__content--item__des">Free consultation with our trusted
+                                doctors and get the best recommendations.
+                            </p>
+                        </div>
 
-        <div class="feedback">
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon1 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon2 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon3 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon4 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
+                        <div class="service__content--item">
+                            <div class="service__content--item__icon">
+                                <img src="{{ url_for('static', filename='images/service-icon-4.png') }}"
+                                     alt="Service_4">
+                            </div>
+                            <h3 class="service__content--item__title">Details info</h3>
+                            <p class="service__content--item__des"> Detailed information is displayed
+                                clearly on
+                                the
+                                website and is
+                                completely accurate.
+                            </p>
+                        </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon5 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon6 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-                 class="circle-icon circle-icon1 svg replaced-svg">
-                <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-                    <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-                    <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-                 class="circle-icon circle-icon2 svg replaced-svg">
-                <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-                    <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-                    <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-                </g>
-            </svg>
-            <div class="feedback__title">
-                <h1>What Our Customers Say</h1>
-                <div></div>
-            </div>
-            <div class="my-grid">
-                <div class="my-row" style="justify-content: center;">
-                    <div class="feedback__content">
-                        <i id="left" class="fa-solid fa-angle-left"></i>
-                        <ul class="carousel">
-                            <li class="card">
-                                <div class="img"><img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="feedback-1"
-                                                      draggable="false"></div>
-                                <h2>Blanche Pearson</h2>
-                                <span>Good Service</span>
-                            </li>
-                            <li class="card">
-                                <div class="img"><img src="{{ url_for('static', filename='images/feedback-2.jpg') }}" alt="feedback-2"
-                                                      draggable="false"></div>
-                                <h2>Joenas Brauers</h2>
-                                <span>Good Service</span>
-                            </li>
-                            <li class="card">
-                                <div class="img"><img src="{{ url_for('static', filename='images/feedback-3.jpg') }}" alt="feedback-3"
-                                                      draggable="false"></div>
-                                <h2>Lariach French</h2>
-                                <span>Good Service</span>
-                            </li>
-                            <li class="card">
-                                <div class="img"><img src="{{ url_for('static', filename='images/feedback-4.jpg') }}" alt="feedback-4"
-                                                      draggable="false"></div>
-                                <h2>James Khosravi</h2>
-                                <span>Good Service</span>
-                            </li>
-                            <li class="card">
-                                <div class="img"><img src="{{ url_for('static', filename='images/feedback-5.jpg') }}" alt="feedback-5"
-                                                      draggable="false"></div>
-                                <h2>Kristina Zasiadko</h2>
-                                <span>No Bad</span>
-                            </li>
-                            <li class="card">
-                                <div class="img"><img src="{{ url_for('static', filename='images/feedback-6.jpg') }}" alt="feedback-6"
-                                                      draggable="false"></div>
-                                <h2>Donald Horton</h2>
-                                <span>10 points</span>
-                            </li>
-                        </ul>
-                        <i id="right" class="fa-solid fa-angle-right"></i>
+                        <div class="service__content--item">
+                            <div class="service__content--item__icon">
+                                <img src="{{ url_for('static', filename='images/service-icon-5.png') }}"
+                                     alt="Service_5">
+                            </div>
+                            <h3 class="service__content--item__title">Emergency care</h3>
+                            <p class="service__content--item__des">You can get 24/7 urgent care for
+                                yourself or your children and your lovely family.
+                            </p>
+                        </div>
+
+                        <div class="service__content--item">
+                            <div class="service__content--item__icon">
+                                <img src="{{ url_for('static', filename='images/service-icon-6.png') }}"
+                                     alt="Service_6">
+                            </div>
+                            <h3 class="service__content--item__title">Tracking</h3>
+                            <p class="service__content--item__des">Track and save your mental history and
+                                health data.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="consultant">
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon1 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon2 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon3 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon4 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
+        <div class="service__btn">
+            <a href="" class="my-btn btn-service-more">Read More</a>
+        </div>
+    </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon5 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-                 class="plus-icon plus-icon6 svg replaced-svg">
-                <g id="plus2" opacity="0.18">
-                    <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                    <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)" fill="none"
-                          stroke="#fc5185" stroke-width="2"></line>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-                 class="circle-icon circle-icon1 svg replaced-svg">
-                <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-                    <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-                    <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-                </g>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-                 class="circle-icon circle-icon2 svg replaced-svg">
-                <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-                    <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-                    <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-                </g>
-            </svg>
-            <div class="my-grid">
-                <div class="my-row my-row-consultant-mobile" style=" align-items: center;">
-                    <div class="my-col-6 my-col-12">
-                        <div class="consultant__content">
-                            <div class="consultant__content--title">
-                                <h2>Consultant</h2>
-                                <div></div>
+    <div class="feedback">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon1 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon2 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon3 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon4 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon5 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon6 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon1 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon2 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+        <div class="feedback__title">
+            <h1>What Our Customers Say</h1>
+            <div></div>
+        </div>
+        <div class="my-grid">
+            <div class="my-row" style="justify-content: center;">
+                <div class="feedback__content">
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                    <ul class="carousel">
+                        <li class="card">
+                            <div class="img"><img
+                                    src="{{ url_for('static', filename='images/feedback-1.jpg') }}"
+                                    alt="feedback-1"
+                                    draggable="false"></div>
+                            <h2>Blanche Pearson</h2>
+                            <span>Good Service</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img
+                                    src="{{ url_for('static', filename='images/feedback-2.jpg') }}"
+                                    alt="feedback-2"
+                                    draggable="false"></div>
+                            <h2>Joenas Brauers</h2>
+                            <span>Good Service</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img
+                                    src="{{ url_for('static', filename='images/feedback-3.jpg') }}"
+                                    alt="feedback-3"
+                                    draggable="false"></div>
+                            <h2>Lariach French</h2>
+                            <span>Good Service</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img
+                                    src="{{ url_for('static', filename='images/feedback-4.jpg') }}"
+                                    alt="feedback-4"
+                                    draggable="false"></div>
+                            <h2>James Khosravi</h2>
+                            <span>Good Service</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img
+                                    src="{{ url_for('static', filename='images/feedback-5.jpg') }}"
+                                    alt="feedback-5"
+                                    draggable="false"></div>
+                            <h2>Kristina Zasiadko</h2>
+                            <span>No Bad</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img
+                                    src="{{ url_for('static', filename='images/feedback-6.jpg') }}"
+                                    alt="feedback-6"
+                                    draggable="false"></div>
+                            <h2>Donald Horton</h2>
+                            <span>10 points</span>
+                        </li>
+                    </ul>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="consultant">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon1 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon2 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon3 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon4 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon5 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon6 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon1 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon2 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+        <div class="my-grid">
+            <div class="my-row my-row-consultant-mobile" style=" align-items: center;">
+                <div class="my-col-6">
+                    <div class="consultant__content">
+                        <div class="consultant__content--title">
+                            <h2>Consultant</h2>
+                            <div></div>
+                        </div>
+                        <form action="" class="consultant__content--form">
+                            <input type="text" placeholder="Your Name" class="input-style">
+                            <input type="text" placeholder="Your Email" class="input-style">
+                            <input type="text" placeholder="Phone" class="input-style">
+                            <textarea name="message" placeholder="Message" required=""
+                                      class="texa-style"></textarea>
+
+                            <div class="btn-form">
+                                <button class="my-btn btn-conslutant">Send Now</button>
                             </div>
-                            <form action="" class="consultant__content--form">
-                                <input type="text" placeholder="Your Name" class="input-style">
-                                <input type="text" placeholder="Your Email" class="input-style">
-                                <input type="text" placeholder="Phone" class="input-style">
-                                <textarea name="message" placeholder="Message" required=""
-                                          class="texa-style"></textarea>
-
-                                <div class="btn-form">
-                                    <button class="btn btn-conslutant">Send Now</button>
-                                </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
+                </div>
 
-                    <div class="my-col-6 my-col-12">
-                        <div class="consultant__content--image">
-                            <img src="{{ url_for('static', filename='images/consultant.svg') }}" alt="">
-                        </div>
+                <div class="my-col-6">
+                    <div class="consultant__content--image">
+                        <img src="{{ url_for('static', filename='images/consultant.svg') }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
+</div>
