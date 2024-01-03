@@ -7,7 +7,7 @@ header {
     z-index: 999;
 }
 
-.nav {
+.my-nav {
     background-color: var(--primary-color);
     padding: 20px 0;
 }
@@ -24,26 +24,26 @@ header {
     }
 }
 
-.nav.active {
+.my-nav.active {
     background-color: var(--white);
     animation: fadeInDown 0.5s ease-in-out;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.nav.active .nav__logo .default-logo {
+.my-nav.active .nav__logo .default-logo {
     display: none;
 }
 
-.nav.active .nav__logo .sub-logo {
+.my-nav.active .nav__logo .sub-logo {
     display: block;
 }
 
-.nav.active .nav__menu li a {
+.my-nav.active .nav__menu li a {
     color: var(--primary-color);
 }
 
-.nav.active .nav__menu li a.choose,
-.nav.active .nav__menu li a:hover {
+.my-nav.active .nav__menu li a.choose,
+.my-nav.active .nav__menu li a:hover {
     background-color: var(--sub-color);
     color: var(--white);
     border-radius: 50px;
@@ -148,6 +148,6 @@ header {
     font-weight: 600;
 }
 
-.nav.active .nav__menu .avatar .avatar-name{
+.my-nav.active .nav__menu .avatar .avatar-name{
     color: var(--primary-color);
 }
