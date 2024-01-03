@@ -1,0 +1,175 @@
+.form-appointment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: var(--primary-color);
+}
+
+.form-appointment__title{
+   position: relative;
+   font-size: 2rem;
+   color: var(--white);
+   text-transform: uppercase;
+   text-align: center;
+   margin-bottom: 5px;
+}
+
+.form-appointment__line{
+    height: 2px;
+    background-color: var(--white);
+    width: 56px;
+    margin: 0 0 20px 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-appointment__container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-appointment__container .form {
+    margin-top: 30px;
+}
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.form .gender-box {
+    margin-top: 20px;
+}
+
+.gender-box h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.form :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form .gender {
+    column-gap: 5px;
+    margin: 0 20px;
+}
+
+.gender input {
+    accent-color: rgb(130, 106, 251);
+}
+
+.form :where(.gender input, .gender label) {
+    cursor: pointer;
+}
+
+.gender label {
+    color: #707070;
+}
+
+.address :where(input, .select-box) {
+    margin-top: 15px;
+}
+
+.select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+}
+
+.form-appointment__btn {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.form-appointment__btn:hover {
+    background-color: var(--sub-color);
+}
+
+.back-to-home {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
+.back-to-home:focus,
+.back-to-home:hover {
+    color: var(--sub-color);
+}
+
+.back-to-home:focus::after,
+.back-to-home:hover::after {
+    width: 100%;
+    left: 0%;
+}
+
+.back-to-home::after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: var(--sub-color);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}

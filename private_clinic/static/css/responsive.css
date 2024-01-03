@@ -1,0 +1,448 @@
+/* Talet And Mobile */
+@media (max-width:64rem) {
+    .grid {
+        overflow: hidden;
+    }
+
+    /* Footer */
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Talet */
+@media (min-width: 48rem) and (max-width: 64rem) {
+
+    /* Header */
+    .nav {
+        padding: 20px;
+    }
+
+    /* Homepage*/
+    .banner .banner__content {
+        margin-left: 40px;
+    }
+
+    .banner .banner__content .banner__content--title {
+        font-size: 2.3rem;
+    }
+
+    .banner .banner__image {
+        margin-right: 10px;
+    }
+
+    /* Introduce */
+    .introduce__left-contact h3 {
+        font-size: 1.3rem;
+    }
+
+    .introduce__content {
+        padding: 0 10px;
+    }
+
+    /* Feedback */
+    .feedback__content {
+        max-width: 900px;
+    }
+
+    .feedback__content .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+
+    /* Consutant */
+    .consultant {
+        padding-left: 40px;
+    }
+
+    .consultant__content--image {
+        width: 500px;
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 46.25rem) {
+    .col-12 {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Header */
+    .nav {
+        padding: 8px;
+    }
+
+    .nav__logo {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .btn-open {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 20px;
+        ;
+        color: var(--white);
+        cursor: pointer;
+    }
+
+    .nav.active .btn-open i {
+        color: var(--primary-color);
+    }
+
+    .btn-close {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 20px;
+        cursor: pointer;
+    }
+
+    .btn-close i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+
+    .nav__menu {
+        background-color: var(--white);
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        align-items: center;
+        display: block;
+        padding: 80px 50px;
+        z-index: 1000;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .nav__menu.hidden {
+        right: 0%;
+    }
+
+    .nav__menu li {
+        margin: 20px 0;
+    }
+
+    .nav__menu li a {
+        color: var(--primary-color);
+    }
+
+    .nav__menu li a:hover {
+        background-color: var(--sub-color);
+        color: var(--white);
+    }
+
+    /* Banner */
+    .banner .banner__content {
+        margin-top: 15px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    .banner__content--btn {
+        margin: 0 auto;
+    }
+
+    .banner .banner__content .banner__content--title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .banner .banner__content .banner__content--des {
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        min-width: 150px;
+    }
+
+    /* Introduce */
+    .introduce {
+        padding: 120px 0;
+    }
+
+    .introduce__right .introduce__right--title {
+        font-size: 2.4rem;
+        width: 100%;
+    }
+
+    /* Service */
+    .service {
+        padding-top: 80px;
+    }
+
+    .service__content--top .service__content--top__title {
+        font-size: 2.8rem;
+    }
+
+    .service__content--top .service__content--top__des {
+        margin: 0 10px;
+    }
+
+    .service__content--items {
+        margin-top: 90px;
+    }
+
+    .service__content--item {
+        width: 100%;
+    }
+
+    /* Feedback */
+    .feedback {
+        padding-top: 100px;
+    }
+
+    .feedback__title h1 {
+        font-size: 1.8rem;
+    }
+
+    .feedback__content {
+        width: 80%;
+    }
+
+
+    .feedback__content .carousel {
+        grid-auto-columns: 100%;
+    }
+
+    .carousel .card {
+        border: none;
+    }
+
+    .carousel .card:hover {
+        border: none;
+    }
+
+    /* Conslutant */
+    .consultant {
+        padding-top: 100px;
+    }
+
+    .consultant__content--title h2 {
+        width: 100%;
+        font-size: 1.8rem;
+    }
+
+    .row-consultant-mobile {
+        flex-direction: column-reverse;
+    }
+
+    .consultant__content--image {
+        margin-top: 50px;
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 70px 0 0 0;
+    }
+
+    .footer__content .footer__content--title::after {
+        left: calc(50% - 25px);
+    }
+
+    .footer__content {
+        margin-bottom: 60px;
+    }
+
+    .footer__content .footer__content--menu li {
+        margin: 15px;
+    }
+
+    /* Appointment */
+    .form-appointment__image{
+        display: none;
+    }
+}
+
+/* Sign In And Sign Up*/
+@media (max-width: 870px) {
+    .container {
+        min-height: 800px;
+        height: 100vh;
+    }
+
+    .signin-signup {
+        width: 100%;
+        top: 95%;
+        transform: translate(-50%, -100%);
+        transition: 1s 0.8s ease-in-out;
+    }
+
+    .signin-signup,
+    .container.sign-up-mode .signin-signup {
+        left: 50%;
+    }
+
+    .panels-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr 1fr;
+    }
+
+    .input-field-double{
+        max-width: 412px;
+    }
+
+    .panel {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2.5rem 8%;
+        grid-column: 1 / 2;
+    }
+
+    .right-panel {
+        grid-row: 3 / 4;
+    }
+
+    .left-panel {
+        grid-row: 1 / 2;
+    }
+
+    .image {
+        width: 200px;
+        transition: transform 0.9s ease-in-out;
+        transition-delay: 0.6s;
+    }
+
+    .panel .content {
+        padding-right: 15%;
+        transition: transform 0.9s ease-in-out;
+        transition-delay: 0.8s;
+    }
+
+    .panel h3 {
+        font-size: 1.4rem;
+    }
+
+    .panel p {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .btn.transparent {
+        width: 110px;
+        height: 35px;
+        font-size: 1.5rem;
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+    .container:before {
+        width: 1500px;
+        height: 1500px;
+        transform: translateX(-50%);
+        left: 30%;
+        bottom: 68%;
+        right: initial;
+        top: initial;
+        transition: 2s ease-in-out;
+    }
+
+    .container.sign-up-mode:before {
+        transform: translate(-50%, 100%);
+        bottom: 25%;
+        right: initial;
+    }
+
+    .container.sign-up-mode .left-panel .image,
+    .container.sign-up-mode .left-panel .content {
+        transform: translateY(-300px);
+    }
+
+    .container.sign-up-mode .right-panel .image,
+    .container.sign-up-mode .right-panel .content {
+        transform: translateY(0px);
+    }
+
+    .right-panel .image,
+    .right-panel .content {
+        transform: translateY(300px);
+    }
+
+    .container.sign-up-mode .signin-signup {
+        top: 3%;
+        transform: translate(-50%, 0);
+    }
+
+    .forgot-password-btn {
+        font-size: 1.25rem;
+    }
+
+}
+
+@media (max-width: 570px) {
+    form {
+        padding: 0 1.5rem;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .panel .content {
+        padding: 0.5rem 1rem;
+    }
+
+    .container {
+        padding: 1.3rem;
+    }
+
+    .container:before {
+        bottom: 75%;
+        left: 50%;
+    }
+
+    .container.sign-up-mode:before {
+        bottom: 7%;
+        left: 50%;
+    }
+
+    .container.sign-up-mode .right-panel {
+        grid-row: 4/4;
+    }
+
+    .sign-in-form {
+        margin-top: 200px;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .container.sign-up-mode .right-panel .image,
+    .container.sign-up-mode .right-panel .content {
+        margin-top: 460px;
+    }
+
+    .input-field-double .row .col-6{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .input-field-double .input-fl-name{
+        margin: 10px 8px 10px 0;
+    }
+}
+
+/* Appointment*/
+@media screen and (max-width: 500px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+
+    .form :where(.gender-option, .gender) {
+        row-gap: 15px;
+        justify-content: flex-start;
+    }
+}

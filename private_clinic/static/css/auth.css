@@ -1,0 +1,472 @@
+.my-container {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.my-container:before {
+    content: "";
+    position: absolute;
+    height: 2000px;
+    width: 2000px;
+    top: -10%;
+    right: 48%;
+    transform: translateY(-50%);
+    background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+    transition: 1.8s ease-in-out;
+    border-radius: 50%;
+    z-index: 6;
+}
+
+.forms-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.forgot-password-btn {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.forgot-password-btn:hover {
+    color: var(--sub-color);
+}
+
+.signin-signup {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 75%;
+    width: 50%;
+    transition: 1s 0.7s ease-in-out;
+    display: grid;
+    grid-template-columns: 1fr;
+    z-index: 5;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 80px;
+    transition: all 0.2s 0.7s;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+form.sign-up-form {
+    opacity: 0;
+    z-index: 1;
+}
+
+form.sign-in-form {
+    z-index: 2;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.input-field {
+    max-width: 380px;
+    width: 100%;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 6px;
+    position: relative;
+}
+
+.input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: var(--gray);
+    transition: 0.5s;
+    font-size: 1.1rem;
+}
+
+.input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--black);
+}
+
+.input-field input::placeholder {
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.input-field-double{
+    max-width: 380px;
+    width: 100%;
+}
+
+.input-field-double .input-fl-name{
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 6px;
+    position: relative;
+}
+
+.input-field-double .input-fl-name input{
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--black);
+    margin: 0 22px;
+}
+
+.input-field-double .input-fl-name i{
+    text-align: center;
+    line-height: 55px;
+    color: var(--gray);
+    transition: 0.5s;
+    font-size: 1.1rem;
+    margin-left: 15px;
+}
+
+input[type="date"] {
+    color: var(--gray);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.radio-container {
+    margin: 0 auto;
+    max-width: 300px;
+    display: flex;
+}
+
+.radio-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.radio-button:hover {
+    transform: translateY(-2px);
+}
+
+.radio-button input[type="radio"] {
+    display: none;
+}
+
+.radio-wrapper {
+    margin: 10px 20px;
+}
+
+.radio-checkmark {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border: 2px solid var(--gray);
+    border-radius: 50%;
+}
+
+.radio-checkmark:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--gray);
+    transition: all 0.2s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked~.radio-checkmark:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+.social-text {
+    font-size: 1.2rem;
+    color: var(--black);
+    margin: 5px 0;
+}
+
+.btn-signin-and-signup {
+    width: 150px;
+    background-color: var(--primary-color);
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 1.2rem;
+}
+
+.btn-signin-and-signup:hover {
+    background-color: var(--sub-color);
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    height: 46px;
+    width: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    border-radius: 50%;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    cursor: pointer;
+    margin: 0 15px;
+}
+
+.social-icon:hover {
+    color: var(--sub-color);
+    border-color: var(--sub-color);
+}
+
+.panels-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.image {
+    width: 100%;
+    transition: transform 1.1s ease-in-out;
+    transition-delay: 0.4s;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    z-index: 6;
+}
+
+.left-panel {
+    pointer-events: all;
+    padding: 3rem 17% 2rem 12%;
+}
+
+.right-panel {
+    pointer-events: none;
+    padding: 3rem 12% 2rem 17%;
+}
+
+.panel .content {
+    color: #fff;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.6s;
+}
+
+.panel h3 {
+    font-weight: 600;
+    line-height: 1;
+    font-size: 1.5rem;
+}
+
+.panel p {
+    font-size: 0.95rem;
+    padding: 0.7rem 0;
+}
+
+.btn.transparent {
+    background: none;
+    border: 2px solid var(--white);
+    width: 130px;
+    height: 41px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--white);
+    cursor: pointer;
+    margin: 10px 0 0;
+}
+
+.right-panel .image,
+.right-panel .content {
+    transform: translateX(800px);
+}
+
+/* Animation */
+.my-container.sign-up-mode:before {
+    transform: translate(100%, -50%);
+    right: 52%;
+}
+
+.my-container.sign-up-mode .left-panel .image,
+.my-container.sign-up-mode .left-panel .content {
+    transform: translateX(-800px);
+}
+
+.my-container.sign-up-mode .signin-signup {
+    left: 25%;
+}
+
+.my-container.sign-up-mode form.sign-up-form {
+    opacity: 1;
+    z-index: 2;
+}
+
+.my-container.sign-up-mode form.sign-in-form {
+    opacity: 0;
+    z-index: 1;
+}
+
+.my-container.sign-up-mode .right-panel .image,
+.my-container.sign-up-mode .right-panel .content {
+    transform: translateX(0%);
+}
+
+.my-container.sign-up-mode .left-panel {
+    pointer-events: none;
+}
+
+.my-container.sign-up-mode .right-panel {
+    pointer-events: all;
+}
+
+/* Forget Form */
+.modal-forgot-password {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+}
+
+.modal-forgot-password.hidden{
+    display: block;
+}
+
+.wrapper {
+    overflow: hidden;
+    width: 390px;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.forgot-password-form {
+    padding: 20px 0;
+}
+
+.forgot-password-form--title {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.forgot-password-form--des {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.input-style {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+    width: 100%;
+}
+
+.input-style:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    background: var(--primary-color);
+    background-size: 400%;
+    color: var(--white);
+    border: none;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.button:hover::before {
+    transform: scaleX(1);
+}
+
+.button-content {
+    position: relative;
+    z-index: 1;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background-color: var(--sub-color);
+    transition: all 0.475s;
+}

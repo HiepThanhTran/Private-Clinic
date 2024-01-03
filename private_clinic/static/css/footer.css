@@ -1,0 +1,44 @@
+ul {
+    padding: 0;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    padding: 70px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.footer__content .footer__content--title {
+    font-size: 1.125rem;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.footer__content .footer__content--title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: var(--white);
+    height: 2px;
+    width: 40px;
+}
+
+.footer__content .footer__content--menu li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer__content .footer__content--menu li a {
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.footer__content .footer__content--menu li a:hover {
+    padding-left: 10px;
+}

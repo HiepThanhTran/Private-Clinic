@@ -1,0 +1,14 @@
+{% extends 'layout/non_base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+{% endblock %}
+
+{% block js_body %}
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+{% endblock %}
+
+{% block header %}{% include 'layout/header.html' %}{% endblock %}
+
+{% block footer %}{% include 'layout/footer.html' %}{% endblock %}
