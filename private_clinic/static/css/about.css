@@ -1,26 +1,34 @@
-.nav__menu li .home.choose,
-.nav__menu li .home.choose:hover {
+.nav__menu li .home.choose{
     background-color: unset;
     color: var(--white);
     border-radius: 0;
 }
 
-.my-nav.active .nav__menu li .home.choose,
-.my-nav.active .nav__menu li .home.choose:hover {
-    background-color: unset;
-    color: var(--primary-color);
-    border-radius: 0px;
-}
-
-.nav__menu li .about.choose,
-.nav__menu li .about.choose:hover {
+.nav__menu li .home.choose:hover{
     background-color: var(--white);
     color: var(--sub-color);
     border-radius: 50px;
 }
 
-.my-nav.active .nav__menu li .about.choose,
-.my-nav.active .nav__menu li .about.choose:hover {
+.my-nav.active .nav__menu li .home.choose{
+    background-color: unset;
+    color: var(--primary-color);
+    border-radius: 0px;
+}
+
+.my-nav.active .nav__menu li .home.choose:hover{
+    background-color: var(--sub-color);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.nav__menu li .about.choose{
+    background-color: var(--white);
+    color: var(--sub-color);
+    border-radius: 50px;
+}
+
+.my-nav.active .nav__menu li .about.choose{
     background-color: var(--sub-color);
     color: var(--white);
     border-radius: 50px;

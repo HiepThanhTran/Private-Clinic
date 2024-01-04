@@ -225,6 +225,12 @@ img {
     padding-right: 15px;
 }
 
+.my-col-12{
+    width:100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* Back To Top */
 #back-to-top {
     position: fixed;
