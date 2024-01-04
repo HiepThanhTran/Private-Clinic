@@ -1,7 +1,14 @@
-.home.choose,
-.home::hover{
+.nav__menu li .home.choose,
+.nav__menu li .home.choose:hover {
     background-color: var(--white);
     color: var(--sub-color);
+    border-radius: 50px;
+}
+
+.my-nav.active .nav__menu li .home.choose,
+.my-nav.active .nav__menu li .home.choose:hover {
+    background-color: var(--sub-color);
+    color: var(--white);
     border-radius: 50px;
 }
 

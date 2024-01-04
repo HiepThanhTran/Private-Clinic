@@ -42,13 +42,6 @@ header {
     color: var(--primary-color);
 }
 
-.my-nav.active .nav__menu li a.choose,
-.my-nav.active .nav__menu li a:hover {
-    background-color: var(--sub-color);
-    color: var(--white);
-    border-radius: 50px;
-}
-
 .nav__logo {
     width: 180px;
     display: flex;
@@ -74,13 +67,6 @@ header {
     padding: 8px 10px;
     font-weight: 600;
     transition: all 0.1s ease;
-}
-
-.nav__menu li a.choose,
-.nav__menu li a:hover {
-    background-color: var(--white);
-    color: var(--sub-color);
-    border-radius: 50px;
 }
 
 .btn-open,
@@ -124,9 +110,9 @@ header {
 }
 
 .avatar__des .avatar__des--btn:hover{
-    color: var(--white);
+    color: var(--white) !important;
     border-radius: 50px;
-    background-color: var(--sub-color);
+    background-color: var(--sub-color)!important;
 }
 
 .avatar__image{
