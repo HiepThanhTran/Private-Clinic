@@ -1,5 +1,7 @@
 from app import db, app
+from sqlalchemy import event
 from datetime import datetime
+from slugify import slugify
 from flask_login import UserMixin
 from enum import Enum as DbEnum
 from sqlalchemy.orm import relationship, backref
@@ -27,14 +29,25 @@ class Account(BaseModel, UserMixin):
 
     username = Column(String(50), nullable=False, unique=True)
     password = Column(String(50), nullable=False)
+    slug = Column(String(50), nullable=False)
     active = Column(Boolean, default=True, nullable=False)
-    avatar = Column(String(100))
+    avatar = Column(String(100),
+                    default='https://res.cloudinary.com/dtthwldgs/image/upload/v1704344793/robot-head-avatar-design-cartoon-robot-head'
+                            '-icon-vector-removebg-preview_lb3smh.png')
     role = Column(Enum(AccountRoleEnum), default=AccountRoleEnum.PATIENT, nullable=False)
 
     user = relationship('User', backref='account', lazy=True, uselist=False)
 
     def __str__(self):
         return self.userame
+
+    @staticmethod
+    def slugify(target, value, oldvalue, initiator):
+        if value and (not target.slug or value != oldvalue):
+            target.slug = slugify(value)
+
+
+event.listen(Account.username, 'set', Account.slugify, retval=False)
 
 
 class User(BaseModel):
@@ -186,6 +199,14 @@ class Medicine(BaseModel):
     def __str__(self):
         return self.medicine_name
 
+    @staticmethod
+    def slugify(target, value, oldvalue, initiator):
+        if value and (not target.slug or value != oldvalue):
+            target.slug = slugify(value)
+
+
+event.listen(Medicine.medicine_name, 'set', Medicine.slugify, retval=False)
+
 
 class MedicineType(BaseModel):
     __tablename__ = 'medicine_type'
@@ -243,6 +264,14 @@ class Packages(BaseModel):
 
     def __str__(self):
         return self.packages_name
+
+    @staticmethod
+    def slugify(target, value, oldvalue, initiator):
+        if value and (not target.slug or value != oldvalue):
+            target.slug = slugify(value)
+
+
+event.listen(Packages.packages_name, 'set', Packages.slugify, retval=False)
 
 
 if __name__ == '__main__':
