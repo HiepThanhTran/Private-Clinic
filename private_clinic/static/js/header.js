@@ -8,16 +8,3 @@ window.addEventListener("scroll", function () {
         nav.classList.remove("active");
     }
 })
-
-/* Header Mobile */
-const btnOpenMain = document.querySelector(".btn-open");
-const btnClose = document.querySelector(".nav__menu .btn-close");
-const menu = document.querySelector(".nav__menu");
-
-btnOpenMain.addEventListener("click", function () {
-    menu.classList.add("hidden");
-})
-
-btnClose.addEventListener("click", function () {
-    menu.classList.remove("hidden");
-})

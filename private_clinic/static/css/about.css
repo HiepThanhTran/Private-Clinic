@@ -1,0 +1,135 @@
+.about-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: 800px;
+    background-color: #fff;
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 2s ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Informaition */
+.about-content__information {
+    padding: 120px 0;
+    position: relative;
+}
+
+.informaiton__content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.information__content--right div {
+    height: 2px;
+    background-color: var(--sub-color);
+    width: 56px;
+    margin-top: -20px;
+    margin-bottom: 33px;
+}
+
+.information__content--right__title {
+    font-size: 3rem;
+    color: var(--sub-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.information__content--right__des {
+    font-size: 1.2rem;
+    color: var(--sub-color);
+    font-weight: 500;
+}
+
+/* Service */
+.about-content__service{
+    padding: 100px 0 120px 0;
+    position: relative;
+}
+
+.about-content__service--title {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--sub-color);
+    font-weight: 700;
+}
+
+.about-content__service .about-content__service--line {
+    height: 2px;
+    background-color: var(--sub-color);
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about-content__service--card{
+    display: flex;
+    align-items: center;
+    box-shadow: 10px 40px 50px 0px #e5e9f666;
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    transition: all 300ms ease-in-out;
+    border: 1px solid transparent;
+    margin-bottom: 15px;
+}
+
+.about-content__service--card:hover{
+    border: 1px solid var(--sub-color);
+}
+
+.about-content__service--card__image{
+    width: 80px;
+    height: 80px;
+    margin-right: 40px;
+}
+
+.about-content__service--card__des{
+    font-size: 1.25rem;
+}
+
+/* People */
+.about-content__people{
+    padding: 120px 0;
+    position: relative;
+}
+
+.about-content__people--content__des{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content:center;
+}
+
+.about-content__people--content__des h1{
+    font-size: 3rem;
+    color: var(--sub-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-content__people--content__des div{
+    height: 2px;
+    background-color: var(--sub-color);
+    width: 80px;
+    margin-top: -10px;
+    margin-bottom: 33px;
+}
+
+.about-content__people--content__des p{
+    font-size: 1.2rem;
+    color: var(--sub-color);
+    font-weight: 500;
+}

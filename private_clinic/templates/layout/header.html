@@ -17,11 +17,8 @@
 
                 <div class="my-col-10">
                     <ul class="nav__menu">
-                        <div class="btn-close">
-                            <i class="fa-solid fa-xmark btn-close"></i>
-                        </div>
                         <li><a href="{{ url_for('index') }}" class="choose">Home</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
                         <li><a href="">Healthcare Staff</a></li>
                         <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
                         <li><a href="">Medicine</a></li>

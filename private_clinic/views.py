@@ -5,6 +5,10 @@ def index():
     return render_template(template_name_or_list='index.html')
 
 
+def about():
+    return render_template(template_name_or_list='about.html')
+
+
 def auth():
     return render_template(template_name_or_list='auth.html')
 
@@ -25,3 +29,4 @@ def signup():
 
 def appointment():
     return render_template(template_name_or_list='appointment.html')
+
