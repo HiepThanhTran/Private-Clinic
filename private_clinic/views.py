@@ -20,6 +20,11 @@ def auth():
 def appointment():
     return render_template(template_name_or_list='appointment.html')
 
+def profile_settings():
+    return render_template(template_name_or_list='profile_settings.html')
+
+def recovery_password():
+    return render_template(template_name_or_list='recovery_password.html')
 
 def signup():
     if request.method.__eq__('POST'):
