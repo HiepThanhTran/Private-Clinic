@@ -21,10 +21,10 @@ const toastID = document.createElement('div');
 toastID.id = 'toastId';
 document.body.prepend(toastID);
 
-function toast({title, message, type, duration = 1000, durationDelay = 3000}) {
+function toast({title, message, type, duration = 2000, durationDelay = 3000}) {
     const toast = document.createElement('div');
 
-    const autoRemove = setTimeout(function () {
+    let autoRemove = setTimeout(function () {
         toastID.removeChild(toast);
     }, duration + durationDelay);
 
@@ -34,6 +34,19 @@ function toast({title, message, type, duration = 1000, durationDelay = 3000}) {
             clearTimeout(autoRemove);
         }
     };
+
+    toast.addEventListener('mouseenter', () => {
+        console.log('enter')
+        clearTimeout(autoRemove);
+    });
+
+    toast.addEventListener('mouseleave', () => {
+        console.log('leave')
+        autoRemove = setTimeout(() => {
+            toastID.removeChild(toast);
+        }, duration + durationDelay);
+    });
+
     toast.classList.add('my_toast', `my_toast--${type}`);
     const animationDuration = (duration / 1000).toFixed(2);
     const animationDelay = (durationDelay / 1000).toFixed(2);

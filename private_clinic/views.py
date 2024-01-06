@@ -1,9 +1,9 @@
-from flask import render_template, request, redirect, url_for, flash, get_flashed_messages
+from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, jsonify
 from flask_login import login_required, current_user, login_user, logout_user
 from private_clinic.decorators import logout_required, check_is_confirmed
 from private_clinic.token import confirm_token, generate_token
 from private_clinic.services import send_email
-from private_clinic.app import db, login
+from private_clinic.app import db, login, app
 from private_clinic import services
 from datetime import datetime
 
@@ -23,18 +23,67 @@ def nurse():
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
-def medicine():
-    return render_template(template_name_or_list='medicine.html')
-
 
 @logout_required
-def auth():
+def authentication():
     return render_template(template_name_or_list='auth.html')
+
+
+def medicine():
+    return render_template(template_name_or_list='medicine.html')
 
 
 @login_required
 @check_is_confirmed
 def appointment():
+    if request.method.__eq__('POST'):
+        status_code = 200
+        message = ('Successfully registered for examination appointment, please wait for confirmation information to be sent via phone '
+                   'number')
+
+        data = request.json
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        dob = data.get('dob')
+        gender = data.get('gender')
+        email = data.get('email')
+        phone_number = data.get('phone_number')
+        address = data.get('address')
+        day_of_exam = data.get('day_of_exam')
+        time_of_exam = data.get('time_of_exam')
+
+        date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
+        time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
+        combined_datetime = datetime.combine(date_obj, time_obj)
+
+        amount_patients_of_day = services.count_examination_schedule_by_date(date=date_obj)
+
+        if amount_patients_of_day < app.config['MAX_PATIENTS_PER_DAY']:
+            has_examination_schedule_at_time = services.check_examination_schedule_by_time(time=time_obj)
+
+            if has_examination_schedule_at_time is False:
+                examination_schedule = services.create_examination_schedule(
+                    patient_id=current_user.user.id,
+                    examination_date=combined_datetime,
+                    first_name=first_name,
+                    last_name=last_name,
+                    dob=dob,
+                    gender=gender,
+                    email=email,
+                    phone_number=phone_number,
+                    address=address)
+            else:
+                status_code = 402
+                message = 'The time has been pre-registered by someone else'
+        else:
+            status_code = 401
+            message = 'The number of registrations for the day has reached the maximum'
+
+        return jsonify({
+            'status_code': status_code,
+            'message': message,
+        })
+
     return render_template(template_name_or_list='appointment.html')
 
 
@@ -62,13 +111,15 @@ def signout():
 @logout_required
 def signin():
     if request.method.__eq__('POST'):
+        next_url = request.form.get('next')
+        print(next_url)
         username_signin = request.form.get('username_signin')
         password_signin = request.form.get('password_signin')
 
         account = services.authenticate(username=username_signin, password=password_signin)
 
         login_user(account)
-        return redirect(url_for('index'))
+        return redirect('/' if next_url is None else next_url)
 
 
 @logout_required
@@ -155,7 +206,7 @@ def confirm_email(token):
 
 
 def inactive():
-    if (current_user.is_authenticated and current_user.is_confirmed) or not get_flashed_messages():
+    if not get_flashed_messages():
         return redirect(url_for('index'))
 
     return render_template(template_name_or_list='mail/inactive.html')

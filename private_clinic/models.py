@@ -1,12 +1,11 @@
 from sqlalchemy import Column, String, Boolean, Enum, DateTime, ForeignKey, BigInteger, Double, Integer
 from sqlalchemy.orm import relationship, backref
+from private_clinic.app import db, app
 from flask_login import UserMixin
 from enum import Enum as DbEnum
 from datetime import datetime
 from sqlalchemy import event
 from slugify import slugify
-
-from private_clinic.app import db, app
 
 
 class AccountRoleEnum(DbEnum):
@@ -58,7 +57,7 @@ class User(BaseModel):
 
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
-    gender = Column(String(10), default='OTHER')
+    gender = Column(String(10))
     dob = Column(DateTime)
     address = Column(String(100))
     phone_number = Column(String(11), unique=True)
@@ -164,7 +163,7 @@ class Bill(BaseModel):
 class ExaminationList(BaseModel):
     __tablename__ = 'examination_list'
 
-    examination_date = Column(DateTime, nullable=False, default=datetime.now())
+    examination_date = Column(DateTime, nullable=False)
     nurse_id = Column(BigInteger, ForeignKey('nurses.id'), nullable=False)
 
     examination_schedule_list = relationship('ExaminationSchedule', backref='examination_list', lazy=True)
@@ -173,10 +172,17 @@ class ExaminationList(BaseModel):
 class ExaminationSchedule(BaseModel):
     __tablename__ = 'examination_schedule'
 
-    note = Column(String(100))
+    dob = Column(DateTime, nullable=False)
+    email = Column(String(50), nullable=False)
+    gender = Column(String(10), nullable=False)
+    address = Column(String(100), nullable=False)
+    last_name = Column(String(50), nullable=False)
+    first_name = Column(String(50), nullable=False)
+    phone_number = Column(String(11), nullable=False)
+    examination_date = Column(DateTime, nullable=False)
+    doctor_id = Column(BigInteger, ForeignKey('doctors.id'))
+    examination_list_id = Column(BigInteger, ForeignKey('examination_list.id'))
     patient_id = Column(BigInteger, ForeignKey('patients.id', ondelete='CASCADE'), nullable=False)
-    doctor_id = Column(BigInteger, ForeignKey('doctors.id'), nullable=False)
-    examination_list_id = Column(BigInteger, ForeignKey('examination_list.id'), nullable=False)
 
 
 medicine_types = db.Table('medicine_types',

@@ -5,6 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="authentication: sign in, sign up, forgot password, send email for verify and reset password">
+      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/alembic.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/script.py.mako" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/versions/5bdaf184e058_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private_clinic/static/js/appointment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/private_clinic/templates/layout/modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BlueFH.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BlueFH.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlueFH_PrivateClinic.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/dao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/static/css/appointment.css" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/css/appointment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/static/css/layout/preloading.css" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/css/layout/preloading.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/static/js/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/js/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/static/js/layout/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/js/layout/toast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/layout/mail_btn.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/layout/mail_btn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/layout/non_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/layout/non_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/layout/preloading.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/layout/preloading.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/mail/inactive.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/mail/inactive.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/templates/medicine.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/medicine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_clinic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/Private-Clinic-Website.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/private_clinic/static/css/nurse.css" afterDir="false" />
@@ -33,8 +63,8 @@
         <option value="Flask Main" />
         <option value="Python Script" />
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -93,6 +123,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/hiept/Downloads/Compressed/Private-Clinic-Website",
     "last_opened_file_path": "D:/Private-Clinic-Website",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -102,6 +133,11 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -183,6 +219,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="BlueFH" type="Python.FlaskServer">
+      <module name="BlueFH" />
+      <option name="target" value="$PROJECT_DIR$/private_clinic/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Flask server.BlueFH" />
+      <item itemvalue="Python.index" />
+      <item itemvalue="Python.models" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.index" />
@@ -219,7 +276,9 @@
       <workItem from="1704451021881" duration="31303000" />
       <workItem from="1704518365334" duration="6463000" />
       <workItem from="1704525687654" duration="2885000" />
-      <workItem from="1704528790561" duration="3388000" />
+      <workItem from="1704528790561" duration="8497000" />
+      <workItem from="1704538445498" duration="7069000" />
+      <workItem from="1704546328785" duration="21656000" />
       <workItem from="1704555605557" duration="15617000" />
     </task>
     <task id="LOCAL-00001" summary="Init project">
@@ -304,13 +363,15 @@
     <MESSAGE value="commit" />
     <MESSAGE value="add urls file" />
     <MESSAGE value="authentication: sign in, sign up, forgot password, send email for verify and reset password" />
-    <option name="LAST_COMMIT_MESSAGE" value="authentication: sign in, sign up, forgot password, send email for verify and reset password" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BlueFH$index.coverage" NAME="index Coverage Results" MODIFIED="1704567286732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
+    <SUITE FILE_PATH="coverage/BlueFH$BlueFH.coverage" NAME="BlueFH Coverage Results" MODIFIED="1704539095936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/BlueFH$BlueFH.coverage" NAME="BlueFH Coverage Results" MODIFIED="1704529016060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Private_Clinic_Website$index.coverage" NAME="index Coverage Results" MODIFIED="1704557221310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
     <SUITE FILE_PATH="coverage/BlueFH$models.coverage" NAME="models Coverage Results" MODIFIED="1704463928354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
     <SUITE FILE_PATH="coverage/BlueFH$Flask__private_clinic_app_py_.coverage" NAME="Flask (private_clinic/app.py) Coverage Results" MODIFIED="1704302223528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/BlueFH$models.coverage" NAME="models Coverage Results" MODIFIED="1704555335524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
     <SUITE FILE_PATH="coverage/BlueFH$index.coverage" NAME="index Coverage Results" MODIFIED="1704532188419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
   </component>
 </project>

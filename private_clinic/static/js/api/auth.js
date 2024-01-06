@@ -25,6 +25,9 @@ for (const btn of btnSignInAndSignUp) {
                 const data = await response.json();
 
                 if (data.status_code === 200) {
+                    const query = new URLSearchParams(window.location.search)
+                    document.getElementById('next').value = query.has('next') ? query.get('next') : '/'
+
                     signInForm.submit()
                 } else {
                     setTimeout(() => {

@@ -14,15 +14,19 @@
     </style>
 {% endblock %}
 
+{% block footer %}{% endblock %}
+
 {% block content %}
-    <div class="text-center" style="margin-top: 140px;">
+    <div class="text-center" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <h1 style="text-transform: capitalize;">{{ category }}!</h1>
-                    <div class="alert alert-{{ category }} text-center mt-3 text-center" style="width: 50%; margin: 16px auto;">
-                        <strong style="text-transform: capitalize;">{{ category }}!</strong> {{ message }}
-                    </div>
+                    {% if category != 'message' %}
+                        <h1 style="text-transform: capitalize;">{{ category }}!</h1>
+                        <div class="alert alert-{{ category }} text-center mt-3 text-center" style="width: 50%; margin: 16px auto;">
+                            <strong style="text-transform: capitalize;">{{ category }}!</strong> {{ message }}
+                        </div>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
         {% endwith %}
