@@ -1,8 +1,36 @@
+.nav__menu li .appointment.choose{
+    background-color: var(--white);
+    color: var(--sub-color);
+    border-radius: 50px;
+}
+
+.my-nav.active .nav__menu li .appointment.choose{
+    background-color: var(--sub-color);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.form-appointment-content{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: 800px;
+    background-color:var(--white);
+}
+
 .form-appointment {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 200px 0 100px 0;
+    padding: 200px 0;
+}
+
+.form-top{
+    max-width: 670px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .form-appointment__title{
@@ -10,7 +38,6 @@
    font-size: 2.5rem;
    color: var(--sub-color);
    font-weight:600;
-   text-transform: uppercase;
    text-align: center;
    margin-bottom: 5px;
 }
@@ -19,7 +46,17 @@
     height: 2px;
     background-color: var(--sub-color);
     width: 56px;
-    margin: 0 auto 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-appointment__des{
+    color: var(--gray);
+    mix-blend-mode: normal;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 28px;
+    margin-top: 20px;
 }
 
 .form-appointment__container {
@@ -65,42 +102,6 @@
 .form .column {
     display: flex;
     column-gap: 15px;
-}
-
-.form .gender-box {
-    margin-top: 20px;
-}
-
-.gender-box h3 {
-    color: #333;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 8px;
-}
-
-.form :where(.gender-option, .gender) {
-    display: flex;
-    align-items: center;
-    column-gap: 50px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.form .gender {
-    column-gap: 5px;
-    margin: 0 20px;
-}
-
-.gender input {
-    accent-color: rgb(130, 106, 251);
-}
-
-.form :where(.gender input, .gender label) {
-    cursor: pointer;
-}
-
-.gender label {
-    color: #707070;
 }
 
 .address :where(input, .select-box) {
@@ -170,4 +171,8 @@
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
     transition-duration: 400ms;
     transition-property: width, left;
+}
+
+.select-box{
+    width: 50%;
 }
