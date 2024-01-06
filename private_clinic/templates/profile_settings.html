@@ -1,0 +1,85 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Profile Settings{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_settings.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mb-3 mt-5">
+        <h1 class="container__title fw-bold mb-4 col-6">Profile settings</h1>
+        <div class="row">
+            <div class="col-6 align-items-center d-flex">
+                <section class="form__container">
+                    <form method="post" action="">
+                        <div class="d-flex">
+                            <div class="avatar__profile__image">
+                                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+                            <div class="d-block ms-3">
+                                <p class="profile__name fw-bold mb-0" style="color:#43494f">Maria Ozawa</p>
+                                <p class="profile__role text-black-50 fw-bold">Patient</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="fname">First Name</label>
+                                <input class="form-control" type="text" placeholder="Your firstname" id="fname" name="fname" value="Maria">
+                            </div>
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="lname">Last Name</label>
+                                <input class="form-control" type="text" placeholder="Your lastname" id="lname" name="lname" value="Ozawa">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="birthday">Birthday</label>
+                                <input class="form-control" type="date" id="birthday" name="birthday" value="2000-06-23">
+                            </div>
+                            <div class="col-6 mb-3 mt-3">
+                                <span class=" text-secondary fw-bold" for="birthday">Gender</span>
+                                <select class="form-select">
+                                    <option>Men</option>
+                                    <option>Women</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="email">Email</label>
+                                <input class="form-control" type="text" placeholder="example123@mail.com" id="email" name="email"
+                                       value="mariaozawa123@email.com">
+                            </div>
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="phone">Phone Number</label>
+                                <input class="form-control" type="text" placeholder="Enter your phone number" id="phone" name="phone"
+                                       value="0123456789">
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="control-label text-secondary fw-bold" for="address">Address</label>
+                            <input class="form-control" type="text" placeholder="Enter your address" id="address" name="address">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="control-label text-secondary fw-bold" for="address">Insurance</label>
+                            <input class="form-control" type="text" placeholder="Your insurance ID" id="insurance" name="insurance">
+                        </div>
+                        <div class="mt-3">
+                            <button class="form-settings__btn" type="submit" id="confirm">Save</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="col-6">
+                <div class="form-appointment__image">
+                    <img src="{{ url_for('static', filename='images/profile-settings.svg') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Inactive{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <style>
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="text-center" style="margin-top: 140px;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <h1 style="text-transform: capitalize;">{{ category }}!</h1>
+                    <div class="alert alert-{{ category }} text-center mt-3 text-center" style="width: 50%; margin: 16px auto;">
+                        <strong style="text-transform: capitalize;">{{ category }}!</strong> {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <p>Please check your inbox (and spam folder) if you do not receive the email - you should have received an email with the link.</p>
+        <p>Didn't get the email? <a href="{{ url_for('resend_confirmation') }}">Resend</a>.</p>
+    </div>
+{% endblock %}

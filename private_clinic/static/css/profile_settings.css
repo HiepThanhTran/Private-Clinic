@@ -1,0 +1,25 @@
+.avatar__profile__image{
+    width: 150px;
+    height: 150px;
+}
+.avatar__profile__image img{
+    object-fit: cover;
+    border-radius: 100px;
+    border: solid 3px var(--sub-color);
+}
+.avatar__profile__image i{
+    position: absolute;
+    background: var(--primary-color);
+    color:#ffffff;
+    padding:5px;
+    border-radius: 70px;
+    z-index: 1;
+    left:140px;
+    top:140px;
+}
+.profile__name{
+    font-size:30px;
+}
+.profile__text{
+
+}

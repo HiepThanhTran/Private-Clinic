@@ -4,7 +4,7 @@
 
 {% block css %}
 {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/banner.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/healthcare_staff.css') }}">
 {% endblock %}
 
@@ -20,7 +20,7 @@
                     </p>
                     <div class="banner__content--btn">
                         <a href="#healthcare-staff-content" class="my-btn">Learn More</a>
-                        <a href="{{ url_for('auth') }}" class="my-btn">Sign in</a>
+                        <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
                     </div>
                 </div>
             </div>
