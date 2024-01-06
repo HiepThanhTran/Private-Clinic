@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block js_body %}
+    <script src="{{ url_for('static', filename='js/api/auth.js') }}"></script>
     <script>
         const signInBtn = document.querySelector("#sign-in-btn");
         const signUpBtn = document.querySelector("#sign-up-btn");
@@ -40,19 +41,19 @@
     <div class="my-container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form method="post" action="" class="sign-in-form">
+                <form method="post" action="{{ url_for('signin') }}" class="sign-in-form">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username_signin" placeholder="Username">
+                        <input type="text" name="username_signin" placeholder="Username" id="username_signin" required>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password_signin" placeholder="Password">
+                        <input type="password" name="password_signin" placeholder="Password" id="password_signin" required>
                     </div>
-                    <button class="btn-signin-and-signup">Sign in</button>
-                    <a href="#" class="forgot-password-btn">Forgot password</a>
+                    <button class="btn-signin-and-signup" my-type="signin">Sign in</button>
+                    <a href="javascript: void(0)" class="forgot-password-btn">Forgot password</a>
                     <p class="social-text">Or sign in with social platforms</p>
                     <div class="social-media">
                         <button class="social-icon"><i class="fab fa-facebook-f"></i></button>
@@ -60,7 +61,7 @@
                     </div>
                 </form>
 
-                <form method="post" action="" class="sign-up-form">
+                <form method="post" action="{{ url_for('signup') }}" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
 
                     <div class="input-field-double">
@@ -68,14 +69,14 @@
                             <div class="my-col-6">
                                 <div class="input-fl-name">
                                     <i class="fa-solid fa-signature"></i>
-                                    <input type="text" name="firstname_signup" placeholder="First name">
+                                    <input type="text" name="firstname_signup" placeholder="First name" id="firstname_signup" required>
                                 </div>
                             </div>
 
                             <div class="my-col-6">
                                 <div class="input-fl-name">
                                     <i class="fa-solid fa-signature"></i>
-                                    <input type="text" name="lastname_signup" placeholder="Last name">
+                                    <input type="text" name="lastname_signup" placeholder="Last name" id="lastname_signup" required>
                                 </div>
                             </div>
                         </div>
@@ -83,30 +84,26 @@
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="username_signup" placeholder="Username">
+                        <input type="text" name="username_signup" placeholder="Username" id="username_signup" required>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password_signup" placeholder="Password">
+                        <input type="password" name="password_signup" placeholder="Password" id="password_signup" required>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="confirm_password_signup" placeholder="Confirm password">
+                        <input type="password" name="confirm_password_signup" placeholder="Confirm password" id="confirm_password_signup"
+                               required>
                     </div>
 
                     <div class="input-field">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" name="email_signup" placeholder="Email">
+                        <input type="email" name="email_signup" placeholder="Email" id="email_signup" required>
                     </div>
 
-                    <div class="input-field">
-                        <i class="fa-solid fa-phone"></i>
-                        <input type="tel" name="phone_signup" placeholder="Phone">
-                    </div>
-
-                    <button class="btn-signin-and-signup">Sign up</button>
+                    <button class="btn-signin-and-signup" my-type="signup">Sign up</button>
                     <p class="social-text">Or sign up with social platforms</p>
                     <div class="social-media">
                         <button class="social-icon"><i class="fab fa-facebook-f"></i></button>
@@ -138,11 +135,11 @@
 
     <div class="modal-forgot-password">
         <div class="wrapper">
-            <form method="post" action="" class="forgot-password-form">
+            <form method="post" action="{{ url_for('forgot_password') }}" class="forgot-password-form">
                 <h2 class="forgot-password-form--title">Forgot password</h2>
-                <p class="forgot-password-form--des">Enter your email address</p>
-                <input type="text" name="forgotpssw_info" placeholder="Email" class="input-style">
-                <button class="button"><span class="button-content">Send</span></button>
+                <input type="email" id="infor_forgotpassword" name="infor_forgotpassword" placeholder="Enter your email"
+                       class="input-style" required>
+                <button class="button btn-forgot-password"><span class="button-content">Send</span></button>
             </form>
         </div>
     </div>

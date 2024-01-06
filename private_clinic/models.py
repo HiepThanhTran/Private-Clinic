@@ -1,11 +1,13 @@
-from app import db, app
-from sqlalchemy import event
 from datetime import datetime
-from slugify import slugify
-from flask_login import UserMixin
 from enum import Enum as DbEnum
-from sqlalchemy.orm import relationship, backref
+
+from flask_login import UserMixin
+from slugify import slugify
 from sqlalchemy import Column, String, Boolean, Enum, DateTime, ForeignKey, BigInteger, Double, Integer
+from sqlalchemy import event
+from sqlalchemy.orm import relationship, backref
+
+from private_clinic.app import db, app
 
 
 class AccountRoleEnum(DbEnum):
@@ -31,7 +33,9 @@ class Account(BaseModel, UserMixin):
     password = Column(String(50), nullable=False)
     slug = Column(String(50), nullable=False)
     active = Column(Boolean, default=True, nullable=False)
-    avatar = Column(String(100),
+    is_confirmed = Column(Boolean, nullable=False, default=False)
+    confirmed_on = Column(DateTime, nullable=True)
+    avatar = Column(String(255),
                     default='https://res.cloudinary.com/dtthwldgs/image/upload/v1704344793/robot-head-avatar-design-cartoon-robot-head'
                             '-icon-vector-removebg-preview_lb3smh.png')
     role = Column(Enum(AccountRoleEnum), default=AccountRoleEnum.PATIENT, nullable=False)
@@ -55,29 +59,29 @@ class User(BaseModel):
 
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
-    gender = Column(String(10), default='OTHER', nullable=False)
-    dob = Column(DateTime, nullable=False)
+    gender = Column(String(10), default='OTHER')
+    dob = Column(DateTime)
     address = Column(String(100))
-    phone_number = Column(String(11), nullable=False)
-    email = Column(String(50))
+    phone_number = Column(String(11), unique=True)
+    email = Column(String(50), nullable=False, unique=True)
     account_id = Column(BigInteger, ForeignKey('accounts.id', ondelete='CASCADE'), nullable=False, unique=True)
 
     patient = relationship('Patient', backref='user', lazy=True, uselist=False)
     employee = relationship('Employee', backref='user', lazy=True, uselist=False)
 
     @property
-    def get_full_name(self):
-        return self.last_name + self.first_name
+    def full_name(self):
+        return self.last_name + ' ' + self.first_name
 
     def __str__(self):
-        return self.get_full_name
+        return self.full_name
 
 
 class Patient(db.Model):
     __tablename__ = 'patients'
 
     id = Column(BigInteger, ForeignKey('users.id'), primary_key=True)
-    insurance_id = Column(String(20), nullable=False, unique=True)
+    insurance_id = Column(String(20), unique=True)
 
     bills = relationship('Bill', backref='patient', lazy=True)
     medical_bills = relationship('MedicalBill', backref='patient', lazy=True)
@@ -189,12 +193,12 @@ class Medicine(BaseModel):
     note = Column(String(100))
     price = Column(Double, nullable=False, default=0)
     amount = Column(Integer, default=0)
-    image = Column(String(100))
+    image = Column(String(255))
     direction_for_use = Column(String(100))
     medicine_unit_id = Column(BigInteger, ForeignKey('medicine_unit.id'), nullable=False)
 
     medicine_types = relationship('MedicineType', secondary='medicine_types', lazy='subquery', backref=backref('medicines', lazy=True))
-    medical_bills = relationship('MedicalBill', backref='medicines', lazy=True)
+    medical_bills = relationship('Prescription', backref='medicines', lazy=True)
 
     def __str__(self):
         return self.medicine_name

@@ -18,32 +18,25 @@
                         <li><a href="{{ url_for('healthcare_staff') }}" class="healthcare_staff choose">Healthcare Staff</a></li>
                         <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
                         <li><a href="">Medicine</a></li>
-                        <li><a href="{{ url_for('auth') }}">Sign in</a></li>
-                        <li>
-                            <div class="avatar">
-                                <div class="avatar__image">
-                                    <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="">
+                        {% if not current_user.is_authenticated %}
+                            <li><a href="{{ url_for('authentication') }}">Sign in</a></li>
+                        {% else %}
+                            <li>
+                                <div class="avatar">
+                                    <div class="avatar__image">
+                                        <img src="{{ current_user.avatar }}" alt="avatar">
+                                    </div>
+                                    <h2 class="avatar-name">{{ current_user.user.full_name }}</h2>
+                                    <div class="avatar__des">
+                                        <a href="{{ url_for('profile_settings') }}" class="avatar__des--btn"><i
+                                                class="fa-solid fa-user"></i>Profile</a>
+                                        <a href="" class="avatar__des--btn"><i class="fa-solid fa-gear"></i>Settings</a>
+                                        <a href="{{ url_for('signout') }}" class="avatar__des--btn"><i
+                                                class="fa-solid fa-right-from-bracket"></i>Sign out</a>
+                                    </div>
                                 </div>
-                                <h2 class="avatar-name">Maria</h2>
-
-                                <div class="avatar__des">
-                                    <a href="{{ url_for('profile_settings') }}" class="avatar__des--btn">
-                                        <i class="fa-solid fa-user"></i>
-                                        Profile
-                                    </a>
-
-                                    <a href="" class="avatar__des--btn">
-                                        <i class="fa-solid fa-gear"></i>
-                                        Settings
-                                    </a>
-
-                                    <a href="" class="avatar__des--btn">
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-                                        Sign out
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

@@ -1,3 +1,13 @@
+const showPreLoading = () => {
+    const loadingModal = document.getElementById('loadingModal');
+    loadingModal.style.display = 'flex';
+};
+
+const hidePreLoading = () => {
+    const loadingModal = document.getElementById('loadingModal');
+    loadingModal.style.display = 'none';
+};
+
 /* Back To Top */
 const backToTopButton = document.querySelector("#back-to-top");
 if (backToTopButton != null) {

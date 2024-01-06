@@ -1,20 +1,24 @@
-a{
-    text-decoration: none!important;
+a {
+    text-decoration: none !important;
 }
-.container{
-    padding-top: 10%;
+
+.container {
+    padding-top: 76px;
 }
-.container__title{
+
+.container__title {
     text-align: center;
     color: var(--sub-color);
 }
-.form__container{
-    position:relative;
-    padding:25px;
+
+.form__container {
+    position: relative;
+    padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width:100%;
+    width: 100%;
 }
+
 .form-settings__btn {
     height: 55px;
     width: 100%;
