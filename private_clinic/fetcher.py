@@ -1,7 +1,6 @@
-from flask import request, jsonify
-
-from private_clinic import services
 from private_clinic.decorators import logout_required
+from private_clinic import services
+from flask import request, jsonify
 
 
 @logout_required

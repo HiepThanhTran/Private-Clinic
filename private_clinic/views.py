@@ -1,13 +1,11 @@
-from datetime import datetime
-
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages
 from flask_login import login_required, current_user, login_user, logout_user
-
-from private_clinic import services
-from private_clinic.app import db, login
 from private_clinic.decorators import logout_required, check_is_confirmed
-from private_clinic.services import send_email
 from private_clinic.token import confirm_token, generate_token
+from private_clinic.services import send_email
+from private_clinic.app import db, login
+from private_clinic import services
+from datetime import datetime
 
 
 def index():

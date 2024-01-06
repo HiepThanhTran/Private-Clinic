@@ -1,11 +1,10 @@
-from datetime import datetime
-from enum import Enum as DbEnum
-
-from flask_login import UserMixin
-from slugify import slugify
 from sqlalchemy import Column, String, Boolean, Enum, DateTime, ForeignKey, BigInteger, Double, Integer
-from sqlalchemy import event
 from sqlalchemy.orm import relationship, backref
+from flask_login import UserMixin
+from enum import Enum as DbEnum
+from datetime import datetime
+from sqlalchemy import event
+from slugify import slugify
 
 from private_clinic.app import db, app
 

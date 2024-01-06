@@ -1,9 +1,9 @@
-import cloudinary
-from flask import Flask
-from flask_admin import Admin
-from flask_login import LoginManager
-from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_admin import Admin
+from flask_mail import Mail
+from flask import Flask
+import cloudinary
 
 app = Flask(__name__)
 

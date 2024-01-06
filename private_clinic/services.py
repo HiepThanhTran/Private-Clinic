@@ -1,7 +1,6 @@
-from flask_mail import Message
-
-from private_clinic import dao
 from private_clinic.app import app, mail
+from private_clinic import dao
+from flask_mail import Message
 
 
 def authenticate(username, password):

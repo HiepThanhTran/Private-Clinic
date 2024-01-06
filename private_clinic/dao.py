@@ -1,7 +1,6 @@
-import hashlib
-
-from private_clinic.app import db
 from private_clinic.models import Account, User, Patient
+from private_clinic.app import db
+import hashlib
 
 
 def authenticate(username, password):
