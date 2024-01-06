@@ -17,7 +17,7 @@
                         <li><a href="{{ url_for('about') }}" class="about choose">About</a></li>
                         <li><a href="{{ url_for('healthcare_staff') }}" class="healthcare_staff choose">Healthcare Staff</a></li>
                         <li><a href="{{ url_for('appointment') }}" class="appointment choose">Appointment</a></li>
-                        <li><a href="{{ url_for('medicine') }}">Medicine</a></li>
+                        <li><a href="{{ url_for('nurse') }}">Medicine</a></li>
                         {% if not current_user.is_authenticated %}
                             <li><a href="{{ url_for('authentication') }}">Sign in</a></li>
                         {% else %}

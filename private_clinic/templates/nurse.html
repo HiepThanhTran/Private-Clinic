@@ -1,0 +1,361 @@
+{% extends 'layout/non_base.html' %}
+
+{% block title %}Nurse{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nurse.css') }}">
+{% endblock %}
+
+{% block js_body %}
+        <script src="{{ url_for('static', filename='js/nurse.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <div class="logo-name">F & H</div>
+        </a>
+        <ul class="side-menu">
+            <li id="manage-btn" class="active">
+                <a href="#">
+                    <i class="bx fa-solid fa-bars-progress"></i>
+                    Manage
+                </a>
+            </li>
+            <li id="examination-btn">
+                <a href="#">
+                    <i class="bx fa-solid fa-list"></i>
+                    Examination
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout" style="margin-top: 350px">
+                    <i class="bx fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+
+            <a href="#" class="notif">
+                <i class="bx fa-solid fa-bell"></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar">
+            </a>
+        </nav>
+
+        <!-- End of Navbar -->
+        <h1 class="manage-title">Manage patient registration</h1>
+        <div class="table-manage">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Registration Date</th>
+                    <th>Day examination</th>
+                    <th>Examination time</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                    <td>
+                        <div class="table-btn">
+                            <button>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button>
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h1 class="examination-title">Patient examination schedule</h1>
+        <div class="table-examination">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Registration Date</th>
+                    <th>Day examination</th>
+                    <th>Examination time</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>0349568896</td>
+                    <td>Binh Chanh</td>
+                    <td>07/01/2024</td>
+                    <td>08/01/2024</td>
+                    <td>1:00 PM</td>
+                </tr>
+            </table>
+        </div>
+        <div class="ex-btn">
+            <button class="btn-ex">Create an examination schedule</button>
+        </div>
+    </div>
+{% endblock %}
