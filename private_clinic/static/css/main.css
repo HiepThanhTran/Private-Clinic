@@ -219,6 +219,12 @@ img {
     padding-right: 15px;
 }
 
+.my-col-9 {
+    width: 75%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .my-col-10 {
     width: 83.3333%;
     padding-left: 15px;

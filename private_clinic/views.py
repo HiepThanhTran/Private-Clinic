@@ -21,6 +21,9 @@ def about():
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
+def medicine():
+    return render_template(template_name_or_list='medicine.html')
+
 
 @logout_required
 def auth():
