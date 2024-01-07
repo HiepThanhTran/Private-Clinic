@@ -216,10 +216,10 @@ def empoyee_login():
 
 # @employee_login_required
 def employee_nurse():
-    examination_schedule_list = services.get_examination_schedule_list()
+    # examination_schedule_list = services.get_examination_schedule_list()
 
-    return render_template(template_name_or_list='employee/nurse.html',
-                           examination_schedule_list=examination_schedule_list)
+    return render_template(template_name_or_list='employee/nurse.html')
+                           # examination_schedule_list=examination_schedule_list)
 
 
 # --------------------VERIFY EMAIL-------------------- #

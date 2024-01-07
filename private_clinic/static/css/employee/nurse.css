@@ -72,7 +72,7 @@ body {
     position: relative;
 }
 
-.sidebar .side-menu li.active a{
+.sidebar .side-menu li.active a {
     color: var(--sub-color);
 }
 
@@ -217,7 +217,7 @@ body {
     position: relative;
 }
 
-.content nav .notif i{
+.content nav .notif i {
     color: var(--sub-color);
 }
 
@@ -238,7 +238,7 @@ body {
     justify-content: center;
 }
 
-.content nav .profile{
+.content nav .profile {
     font-weight: 500;
 }
 
@@ -277,7 +277,7 @@ body {
 
 /* Table */
 .manage-title,
-.examination-title{
+.examination-title {
     font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
@@ -323,57 +323,57 @@ tr:nth-child(even) {
     background-color: #eeeeee;
 }
 
-.table-btn{
+.table-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.table-btn button{
+.table-btn button {
     padding: 1px 4px;
     margin: 0 5px;
 }
 
-.table-btn button:nth-child(1){
+.table-btn button:nth-child(1) {
     border: 2px solid green;
     color: green;
 }
 
-.table-btn button:nth-child(1):hover{
+.table-btn button:nth-child(1):hover {
     background-color: green;
     color: var(--white);
 }
 
-.table-btn button:nth-child(2){
+.table-btn button:nth-child(2) {
     border: 2px solid red;
     color: red;
 }
 
-.table-btn button:nth-child(2):hover{
+.table-btn button:nth-child(2):hover {
     background-color: red;
     color: var(--white);
 }
 
-.table-examination{
+.table-examination {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .examination-title,
-.table-examination{
+.table-examination {
     display: none;
 }
 
-.ex-btn{
+.ex-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-     display: none;
+    display: none;
 }
 
-.btn-ex{
+.btn-ex {
     padding: 10px;
     border: 2px solid var(--sub-color);
     color: var(--sub-color);
@@ -381,7 +381,35 @@ tr:nth-child(even) {
     transition: all 0.2s ease;
 }
 
-.btn-ex:hover{
+.btn-ex:hover {
     background-color: var(--sub-color);
     color: var(--white);
+}
+
+.day-examination-title {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.day-examination-title span {
+    margin-right: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Input Date */
+input[type="date"]{
+    background-color: #0080ff;
+    padding: 8px;
+    color: #ffffff;
+    font-size: 1.125rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
 }

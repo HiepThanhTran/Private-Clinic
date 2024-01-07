@@ -19,12 +19,14 @@
             <div class="logo-name">F & H</div>
         </a>
         <ul class="side-menu">
-            <li id="manage-btn" class="active"><a href="#"><i class="bx fa-solid fa-bars-progress"></i>Examination list</a></li>
+            <li id="manage-btn" class="active"><a href="#"><i class="bx fa-solid fa-bars-progress"></i>Examination list</a>
+            </li>
             <li id="examination-btn"><a href="#"><i class="bx fa-solid fa-list"></i>Create</a></li>
             <li style="margin-top: 300px"><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i
                     class="bx fa-solid fa-user"></i>Profile</a></li>
             <li><a href="#"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
-            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a>
+            </li>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -40,7 +42,8 @@
                 </div>
             </form>
             <a href="#" class="profile" style="display: flex; align-items: center">
-                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar" style="margin-right: 8px">
+                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar"
+                     style="margin-right: 8px">
                 Maryokuu
             </a>
         </nav>
@@ -88,6 +91,12 @@
         <h1 style="text-transform: uppercase" class="examination-title">medical examination list</h1>
         <div class="table-examination">
             <table>
+                <tr>
+                    <th colspan="9" style="background-color: transparent;">
+                        <span style="color: var(--black); margin-right: 20px; font-weight: 500;">Day of examination</span>
+                        <input type="date">
+                    </th>
+                </tr>
                 <tr>
                     <th>ID</th>
                     <th>First name</th>
