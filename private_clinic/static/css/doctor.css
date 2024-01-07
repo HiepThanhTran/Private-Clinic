@@ -72,6 +72,10 @@ body {
     position: relative;
 }
 
+.sidebar .side-menu li.active a{
+    color: var(--sub-color);
+}
+
 .sidebar .side-menu li.active::before {
     content: "";
     position: absolute;
@@ -104,7 +108,7 @@ body {
     align-items: center;
     border-radius: 48px;
     font-size: 16px;
-    color: var(--dark);
+    color: var(--black);
     white-space: nowrap;
     overflow-x: hidden;
     transition: all 0.3s ease;
@@ -160,12 +164,16 @@ body {
 }
 
 .content nav a {
-    color: var(--dark);
+    color: var(--black);
+}
+
+.content nav a:hover {
+    color: var(--sub-color);
 }
 
 .content nav .bx.bx-menu {
     cursor: pointer;
-    color: var(--dark);
+    color: var(--sub-color);
 }
 
 .content nav form {
@@ -190,7 +198,7 @@ body {
     border-radius: 36px 0 0 36px;
     outline: none;
     width: 100%;
-    color: var(--dark);
+    color: #363949;
 }
 
 .content nav form .form-input button {
@@ -211,6 +219,10 @@ body {
 .content nav .notif {
     font-size: 20px;
     position: relative;
+}
+
+.content nav .notif i{
+    color: var(--sub-color);
 }
 
 .content nav .notif .count {
@@ -235,6 +247,14 @@ body {
     height: 36px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.content nav .profile{
+    color: var(--black);
+}
+
+.content nav .profile:hover{
+    color: var(--black);
 }
 
 .content nav .theme-toggle {
@@ -377,7 +397,7 @@ tr:nth-child(even) {
     display: none;
 }
 
-.modal-add-examination-course.open{
+.modal-add-examination-course.open {
     display: block;
 }
 
