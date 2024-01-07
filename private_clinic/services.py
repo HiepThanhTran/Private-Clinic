@@ -1,13 +1,12 @@
 from private_clinic.app import app, mail
-from private_clinic import dao
+from urllib.parse import urlparse
 from flask_mail import Message
+from private_clinic import dao
 
 
-@app.context_processor
-def common_response():
-    return {
-
-    }
+def is_safe_url(url, allowed_hosts):
+    url_info = urlparse(url)
+    return url_info.netloc in allowed_hosts
 
 
 def send_email(to, subject, template):
@@ -18,12 +17,24 @@ def authenticate(username, password):
     return dao.authenticate(username=username, password=password)
 
 
-def count_examination_schedule_by_date(date):
-    return dao.count_examination_schedule_by_date(date=date)
-
-
 def check_examination_schedule_by_time(time):
     return dao.check_examination_schedule_by_time(time=time)
+
+
+def check_duplicate_email(email, current_user_id):
+    return dao.check_duplicate_email(email=email, current_user_id=current_user_id)
+
+
+def check_duplicate_phone_number(phone_number, current_user_id):
+    return dao.check_duplicate_phone_number(phone_number=phone_number, current_user_id=current_user_id)
+
+
+def check_duplicate_insurance_id(insurance_id, current_user_id):
+    return dao.check_duplicate_insurance_id(insurance_id=insurance_id, current_user_id=current_user_id)
+
+
+def count_examination_schedule_by_date(date):
+    return dao.count_examination_schedule_by_date(date=date)
 
 
 def create_account(username, password):
@@ -66,6 +77,10 @@ def update_account_password(account_id, new_password):
     return dao.update_account_password(account_id=account_id, new_password=new_password)
 
 
+def update_profile_user(user, **kwargs):
+    return dao.update_profile_user(user=user, **kwargs)
+
+
 def get_account_by_id(account_id):
     return dao.get_account_by_id(account_id=account_id)
 
@@ -80,6 +95,10 @@ def get_account_by_email(email):
 
 def get_account_by_phone_number(phone_number):
     return dao.get_account_by_phone_number(phone_number=phone_number)
+
+
+def get_user_by_id(user_id):
+    return dao.get_user_by_id(user_id=user_id)
 
 
 def get_user_by_email(email):

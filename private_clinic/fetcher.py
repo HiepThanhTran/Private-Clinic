@@ -1,6 +1,9 @@
 from private_clinic.decorators import logout_required
+from flask_login import login_required, current_user
 from private_clinic import services
 from flask import request, jsonify
+from private_clinic.app import app
+from datetime import datetime
 
 
 @logout_required
@@ -40,16 +43,66 @@ def check_signup_infor():
 
 @logout_required
 def check_account_exists():
-    message = None
     data = request.json
-    infor = data.get('infor')
+    email = data.get('email')
 
-    user = services.get_user_by_email(email=infor)
-
-    if not user:
-        message = 'Account does not exist.'
+    user = services.get_user_by_email(email=email)
 
     return jsonify({
-        'status_code': 200 if not message else 400,
+        'status_code': 200 if not user else 400,
+        'message': 'Account does not exist.' if not user else '',
+    })
+
+
+@login_required
+def check_appointment_availability():
+    data = request.json
+    day_of_exam = data.get('day_of_exam')
+    time_of_exam = data.get('time_of_exam')
+
+    date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
+    time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
+
+    amount_patients_of_day = services.count_examination_schedule_by_date(date=date_obj)
+    has_examination_schedule_at_time = services.check_examination_schedule_by_time(time=time_obj)
+
+    if amount_patients_of_day < app.config['MAX_PATIENTS_PER_DAY']:
+        if has_examination_schedule_at_time:
+            status_code, message = 402, 'The time has been pre-registered by someone else'
+        else:
+            status_code, message = 200, 'Successfully registered'
+    else:
+        status_code, message = 401, 'The number of registrations for the day has reached the maximum'
+
+    return jsonify({
+        'status_code': status_code,
         'message': message,
     })
+
+
+@login_required
+def check_profile_infor():
+    data = request.json
+    email = data.get('email')
+    phone_number = data.get('phone_number')
+    insurance_id = data.get('insurance_id')
+
+    checks = [
+        ('Email', 401, email, services.check_duplicate_email),
+        ('Phone number', 402, phone_number, services.check_duplicate_phone_number),
+        ('Insurance ID', 403, insurance_id, services.check_duplicate_insurance_id),
+    ]
+
+    for label, status_code, value, checker in checks:
+        exists = checker(value, current_user_id=current_user.user.id)
+        if exists:
+            return jsonify({
+                'status_code': status_code,
+                'message': f'{label} is already linked to another account.',
+            })
+
+    return jsonify({
+        'status_code': 200,
+        'message': 'Saved successfully',
+    })
+

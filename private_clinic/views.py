@@ -1,11 +1,19 @@
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, jsonify
 from flask_login import login_required, current_user, login_user, logout_user
-from private_clinic.decorators import logout_required, check_is_confirmed
+from private_clinic.decorators import logout_required, check_is_confirmed, employee_login_required, employee_logout_required
 from private_clinic.token import confirm_token, generate_token
 from private_clinic.services import send_email
 from private_clinic.app import db, login, app
 from private_clinic import services
 from datetime import datetime
+
+
+# --------------------RENDER FUNCTIONS-------------------- #
+@app.context_processor
+def common_response():
+    return {
+
+    }
 
 
 def index():
@@ -32,95 +40,37 @@ def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
 
+def medicine():
+    return render_template(template_name_or_list='customer/medicine.html')
+
+
 @logout_required
 def authentication():
-    return render_template(template_name_or_list='auth.html')
-
-
-def medicine():
-    return render_template(template_name_or_list='medicine.html')
-
-
-@login_required
-@check_is_confirmed
-def appointment():
-    if request.method.__eq__('POST'):
-        status_code = 200
-        message = ('Successfully registered for examination appointment, please wait for confirmation information to be sent via phone '
-                   'number')
-
-        data = request.json
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        dob = data.get('dob')
-        gender = data.get('gender')
-        email = data.get('email')
-        phone_number = data.get('phone_number')
-        address = data.get('address')
-        day_of_exam = data.get('day_of_exam')
-        time_of_exam = data.get('time_of_exam')
-
-        date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
-        time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
-        combined_datetime = datetime.combine(date_obj, time_obj)
-
-        amount_patients_of_day = services.count_examination_schedule_by_date(date=date_obj)
-
-        if amount_patients_of_day < app.config['MAX_PATIENTS_PER_DAY']:
-            has_examination_schedule_at_time = services.check_examination_schedule_by_time(time=time_obj)
-
-            if has_examination_schedule_at_time is False:
-                examination_schedule = services.create_examination_schedule(
-                    patient_id=current_user.user.id,
-                    examination_date=combined_datetime,
-                    first_name=first_name,
-                    last_name=last_name,
-                    dob=dob,
-                    gender=gender,
-                    email=email,
-                    phone_number=phone_number,
-                    address=address)
-            else:
-                status_code = 402
-                message = 'The time has been pre-registered by someone else'
-        else:
-            status_code = 401
-            message = 'The number of registrations for the day has reached the maximum'
-
-        return jsonify({
-            'status_code': status_code,
-            'message': message,
-        })
-
-    return render_template(template_name_or_list='appointment.html')
-
-
-@login_required
-def profile_settings():
-    return render_template(template_name_or_list='profile_settings.html')
+    return render_template(template_name_or_list='authentication.html')
 
 
 @logout_required
 def password_reset(token):
-    return render_template(template_name_or_list='password_reset.html', token=token)
+    return render_template(template_name_or_list='customer/password_reset.html', token=token)
 
 
+def notification():
+    if not get_flashed_messages():
+        return redirect(url_for('index'))
+
+    return render_template(template_name_or_list='notification.html')
+
+
+# --------------------AUTHENTICATION-------------------- #
 @login.user_loader
 def account_load(account_id):
     return services.get_account_by_id(account_id)
-
-
-@login_required
-def signout():
-    logout_user()
-    return redirect(url_for('index'))
 
 
 @logout_required
 def signin():
     if request.method.__eq__('POST'):
         next_url = request.form.get('next')
-        print(next_url)
         username_signin = request.form.get('username_signin')
         password_signin = request.form.get('password_signin')
 
@@ -128,38 +78,6 @@ def signin():
 
         login_user(account)
         return redirect('/' if next_url is None else next_url)
-
-
-@logout_required
-def forgot_password():
-    if request.method.__eq__('POST'):
-        infor_forgotpassword = request.form.get('infor_forgotpassword')
-
-        subject = "Password reset requested"
-        token = generate_token(infor_forgotpassword)
-        recovery_url = url_for('password_reset', token=token, _external=True)
-        html = render_template('mail/password_reset_email.html', recovery_url=recovery_url)
-        send_email(to=infor_forgotpassword, subject=subject, template=html)
-
-        flash('The reset request has been sent to via email.', 'success')
-        return redirect(url_for('inactive'))
-
-
-@logout_required
-def reset_with_token(token):
-    if request.method.__eq__('POST'):
-        email = confirm_token(token)
-        user = services.get_user_by_email(email=email)
-
-        if user.email != email:
-            flash('The request link is invalid or has expired.', 'danger')
-        else:
-            new_password = request.form.get('new_password')
-
-            services.update_account_password(account_id=user.account_id, new_password=new_password)
-            flash('Password updated', 'success')
-
-        return redirect(url_for('inactive'))
 
 
 @logout_required
@@ -184,9 +102,125 @@ def signup():
         login_user(account)
 
         flash('A confirmation email has been sent via email.', 'success')
-        return redirect(url_for('inactive'))
+        return redirect(url_for('notification'))
 
 
+@logout_required
+def forgot_password():
+    if request.method.__eq__('POST'):
+        email = request.form.get('email')
+
+        subject = "Password reset requested"
+        token = generate_token(email)
+        recovery_url = url_for('password_reset', token=token, _external=True)
+        html = render_template('mail/password_reset_email.html', recovery_url=recovery_url)
+        send_email(to=email, subject=subject, template=html)
+
+        flash('The reset request has been sent to via email.', 'success')
+        return redirect(url_for('notification'))
+
+
+@logout_required
+def reset_with_token(token):
+    if request.method.__eq__('POST'):
+        email = confirm_token(token)
+        user = services.get_user_by_email(email=email)
+
+        if user.email != email:
+            flash('The request link is invalid or has expired.', 'danger')
+        else:
+            new_password = request.form.get('new_password')
+
+            services.update_account_password(account_id=user.account_id, new_password=new_password)
+            flash('Password updated', 'success')
+
+        return redirect(url_for('notification'))
+
+
+@login_required
+def signout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+# --------------------CUSTOMER FUNCTIONS-------------------- #
+@login_required
+@check_is_confirmed
+def appointment():
+    if request.method.__eq__('POST'):
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        dob = request.form.get('dob')
+        gender = request.form.get('gender')
+        email = request.form.get('email')
+        phone_number = request.form.get('phone_number')
+        address = request.form.get('address')
+        day_of_exam = request.form.get('day_of_exam')
+        time_of_exam = request.form.get('time_of_exam')
+
+        date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
+        time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
+        combined_datetime = datetime.combine(date_obj, time_obj)
+
+        examination_schedule = services.create_examination_schedule(
+            patient_id=current_user.user.id,
+            examination_date=combined_datetime,
+            first_name=first_name,
+            last_name=last_name,
+            dob=dob,
+            gender=gender,
+            email=email,
+            phone_number=phone_number,
+            address=address)
+
+        flash('Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
+              'success')
+        return redirect(url_for('notification'))
+
+    return render_template(template_name_or_list='customer/appointment.html')
+
+
+@login_required
+def profile_settings(slug):
+    if request.method.__eq__('POST'):
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        dob = request.form.get('dob')
+        gender = request.form.get('gender')
+        email = request.form.get('email')
+        phone_number = request.form.get('phone_number')
+        address = request.form.get('address')
+        insurance_id = request.form.get('insurance_id')
+        avatar = request.files.get('avatar')
+
+        user = services.update_profile_user(
+            user=current_user.user,
+            first_name=first_name,
+            last_name=last_name,
+            dob=dob,
+            gender=gender,
+            email=email,
+            phone_number=phone_number,
+            address=address,
+            insurance_id=insurance_id,
+            avatar=avatar)
+        flash('Saved successfully.', 'success')
+
+    return render_template(template_name_or_list='customer/profile_settings.html')
+
+
+# --------------------EMPLOYEE-------------------- #
+@employee_logout_required
+def empoyee_login():
+    return render_template(template_name_or_list='employee/login.html')
+
+
+@employee_login_required
+def employee_nurse():
+    return render_template(template_name_or_list='employee/nurse.html')
+
+
+# --------------------VERIFY EMAIL-------------------- #
 @login_required
 def confirm_email(token):
     if current_user.is_confirmed:
@@ -198,7 +232,7 @@ def confirm_email(token):
 
     if user.email != email:
         flash('The confirmation link is invalid or has expired.', 'danger')
-        return redirect(url_for('inactive'))
+        return redirect(url_for('notification'))
 
     account = services.get_account_by_id(account_id=user.account_id)
 
@@ -210,14 +244,7 @@ def confirm_email(token):
 
     flash('You have confirmed your account. Thanks!', 'success')
 
-    return redirect(url_for('inactive'))
-
-
-def inactive():
-    if not get_flashed_messages():
-        return redirect(url_for('index'))
-
-    return render_template(template_name_or_list='mail/inactive.html')
+    return redirect(url_for('notification'))
 
 
 @login_required
@@ -233,4 +260,4 @@ def resend_confirmation():
     send_email(current_user.user.email, subject, html)
 
     flash('A new confirmation email has been sent.', 'success')
-    return redirect(url_for('inactive'))
+    return redirect(url_for('notification'))

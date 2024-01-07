@@ -3,296 +3,298 @@
 {% block title %}Healthcare Staff{% endblock %}
 
 {% block css %}
-{{ super() }}
+    {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/healthcare_staff.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/healthcare_staff.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="banner">
-    <div class="my-grid">
-        <div class="my-row">
-            <div class="my-col-6">
-                <div class="banner__content">
-                    <h1 class="banner__content--title">Healthcare Staff</h1>
-                    <p class="banner__content--des">
-                        You can search for information about F&H's healthcare staff to know more about them.
-                    </p>
-                    <div class="banner__content--btn">
-                        <a href="#healthcare-staff-content" class="my-btn">Learn More</a>
-                        <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+    <div class="banner">
+        <div class="my-grid">
+            <div class="my-row">
+                <div class="my-col-6">
+                    <div class="banner__content">
+                        <h1 class="banner__content--title">Healthcare Staff</h1>
+                        <p class="banner__content--des">
+                            You can search for information about F&H's healthcare staff to know more about them.
+                        </p>
+                        <div class="banner__content--btn">
+                            <a href="#healthcare-staff-content" class="my-btn">Learn More</a>
+                            {% if not current_user.is_authenticated %}
+                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-col-6">
+                    <div class=" banner__image">
+                        <img src="{{ url_for('static', filename='images/healthcare-staff.svg') }}" alt="About">
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="my-col-6">
-                <div class=" banner__image">
-                    <img src="{{ url_for('static', filename='images/healthcare-staff.svg') }}" alt="About">
+    <div class="healthcare-staff-content" id="healthcare-staff-content">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon1 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon2 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon3 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon4 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon5 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
+             class="plus-icon plus-icon6 svg replaced-svg">
+            <g id="plus2" opacity="0.18">
+                <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+                <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
+                      fill="none"
+                      stroke="#fc5185" stroke-width="2"></line>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon1 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
+             class="circle-icon circle-icon2 svg replaced-svg">
+            <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
+                <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
+                <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
+            </g>
+        </svg>
+
+        <h1 class="healthcare-staff-title">Healthcare Staff</h1>
+        <div class="my-grid">
+            <div class="healthcare-staff__search">
+                <div class="search">
+                    <input placeholder="Search..." type="text">
+                    <button type="submit">Go</button>
                 </div>
+            </div>
+
+            <div class="my-row">
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-1.jpg') }}" class="card__img"
+                         alt="doctor-1">
+
+                    <div class="card__data">
+                        <span class="card__description">Almira Lina</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-2.jpg') }}" class="card__img"
+                         alt="doctor-2">
+
+                    <div class="card__data">
+                        <span class="card__description">Night Kall</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-3.jpg') }}" class="card__img"
+                         alt="doctor-3">
+
+                    <div class="card__data">
+                        <span class="card__description">Andrea Amora</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-4.jpg') }}" class="card__img"
+                         alt="doctor-4">
+
+                    <div class="card__data">
+                        <span class="card__description">Aidan Egan</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-5.jpg') }}" class="card__img"
+                         alt="doctor-5">
+
+                    <div class="card__data">
+                        <span class="card__description">Alidan Egan</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-6.jpg') }}" class="card__img"
+                         alt="doctor-6">
+
+                    <div class="card__data">
+                        <span class="card__description">Malis Agent</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-7.jpg') }}" class="card__img"
+                         alt="doctor-7">
+
+                    <div class="card__data">
+                        <span class="card__description">Yoshida Moll</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-8.jpg') }}" class="card__img"
+                         alt="doctor-8">
+
+                    <div class="card__data">
+                        <span class="card__description">Mike Sera</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-9.jpg') }}" class="card__img"
+                         alt="doctor-9">
+
+                    <div class="card__data">
+                        <span class="card__description">Mike Lala</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/doctor-10.jpg') }}" class="card__img"
+                         alt="doctor-10">
+
+                    <div class="card__data">
+                        <span class="card__description">Pricess Alania</span>
+                        <h2 class="card__title">Doctor</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/nurse-1.jpg') }}" class="card__img"
+                         alt="nurse-1">
+
+                    <div class="card__data">
+                        <span class="card__description">Mai Hanh</span>
+                        <h2 class="card__title">Nurse</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/nurse-2.jpg') }}" class="card__img"
+                         alt="nurse-2">
+
+                    <div class="card__data">
+                        <span class="card__description">Aurora Bella</span>
+                        <h2 class="card__title">Nurse</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/nurse-3.jpg') }}" class="card__img"
+                         alt="nurse-3">
+
+                    <div class="card__data">
+                        <span class="card__description">Aurora Milen</span>
+                        <h2 class="card__title">Nurse</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/nurse-4.jpg') }}" class="card__img"
+                         alt="nurse-4">
+
+                    <div class="card__data">
+                        <span class="card__description">Micon Bellix</span>
+                        <h2 class="card__title">Nurse</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card__article">
+                    <img src="{{ url_for('static', filename='images/nurse-5.jpg') }}" class="card__img"
+                         alt="nurse-5">
+
+                    <div class="card__data">
+                        <span class="card__description">Casper Cilline</span>
+                        <h2 class="card__title">Nurse</h2>
+                        <a href="#" class="my-btn-sub">Read More</a>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
-</div>
-
-<div class="healthcare-staff-content" id="healthcare-staff-content">
-    <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-         class="plus-icon plus-icon1 svg replaced-svg">
-        <g id="plus2" opacity="0.18">
-            <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-            <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
-                  fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-         class="plus-icon plus-icon2 svg replaced-svg">
-        <g id="plus2" opacity="0.18">
-            <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-            <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
-                  fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-         class="plus-icon plus-icon3 svg replaced-svg">
-        <g id="plus2" opacity="0.18">
-            <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-            <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
-                  fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-         class="plus-icon plus-icon4 svg replaced-svg">
-        <g id="plus2" opacity="0.18">
-            <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-            <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
-                  fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-         class="plus-icon plus-icon5 svg replaced-svg">
-        <g id="plus2" opacity="0.18">
-            <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-            <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
-                  fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="19.459" height="19.46" viewBox="0 0 19.459 19.46"
-         class="plus-icon plus-icon6 svg replaced-svg">
-        <g id="plus2" opacity="0.18">
-            <line id="Line_26" data-name="Line 26" y2="19.46" transform="translate(10.379)" fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-            <line id="Line_27" data-name="Line 27" x2="19.46" transform="translate(0 10.379)"
-                  fill="none"
-                  stroke="#fc5185" stroke-width="2"></line>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-         class="circle-icon circle-icon1 svg replaced-svg">
-        <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-            <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-            <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-        </g>
-    </svg>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="21.955" height="21.955" viewBox="0 0 21.955 21.955"
-         class="circle-icon circle-icon2 svg replaced-svg">
-        <g id="circle2" fill="none" stroke="#fc5185" stroke-width="2" opacity="0.23">
-            <circle cx="10.977" cy="10.977" r="10.977" stroke="none"></circle>
-            <circle cx="10.977" cy="10.977" r="9.977" fill="none"></circle>
-        </g>
-    </svg>
-
-    <h1 class="healthcare-staff-title">Healthcare Staff</h1>
-    <div class="my-grid">
-        <div class="healthcare-staff__search">
-            <div class="search">
-                <input placeholder="Search..." type="text">
-                <button type="submit">Go</button>
-            </div>
-        </div>
-
-        <div class="my-row">
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-1.jpg') }}" class="card__img"
-                     alt="doctor-1">
-
-                <div class="card__data">
-                    <span class="card__description">Almira Lina</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-2.jpg') }}" class="card__img"
-                     alt="doctor-2">
-
-                <div class="card__data">
-                    <span class="card__description">Night Kall</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-3.jpg') }}" class="card__img"
-                     alt="doctor-3">
-
-                <div class="card__data">
-                    <span class="card__description">Andrea Amora</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-4.jpg') }}" class="card__img"
-                     alt="doctor-4">
-
-                <div class="card__data">
-                    <span class="card__description">Aidan Egan</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-5.jpg') }}" class="card__img"
-                     alt="doctor-5">
-
-                <div class="card__data">
-                    <span class="card__description">Alidan Egan</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-6.jpg') }}" class="card__img"
-                     alt="doctor-6">
-
-                <div class="card__data">
-                    <span class="card__description">Malis Agent</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-7.jpg') }}" class="card__img"
-                     alt="doctor-7">
-
-                <div class="card__data">
-                    <span class="card__description">Yoshida Moll</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-8.jpg') }}" class="card__img"
-                     alt="doctor-8">
-
-                <div class="card__data">
-                    <span class="card__description">Mike Sera</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-9.jpg') }}" class="card__img"
-                     alt="doctor-9">
-
-                <div class="card__data">
-                    <span class="card__description">Mike Lala</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/doctor-10.jpg') }}" class="card__img"
-                     alt="doctor-10">
-
-                <div class="card__data">
-                    <span class="card__description">Pricess Alania</span>
-                    <h2 class="card__title">Doctor</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/nurse-1.jpg') }}" class="card__img"
-                     alt="nurse-1">
-
-                <div class="card__data">
-                    <span class="card__description">Mai Hanh</span>
-                    <h2 class="card__title">Nurse</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/nurse-2.jpg') }}" class="card__img"
-                     alt="nurse-2">
-
-                <div class="card__data">
-                    <span class="card__description">Aurora Bella</span>
-                    <h2 class="card__title">Nurse</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/nurse-3.jpg') }}" class="card__img"
-                     alt="nurse-3">
-
-                <div class="card__data">
-                    <span class="card__description">Aurora Milen</span>
-                    <h2 class="card__title">Nurse</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/nurse-4.jpg') }}" class="card__img"
-                     alt="nurse-4">
-
-                <div class="card__data">
-                    <span class="card__description">Micon Bellix</span>
-                    <h2 class="card__title">Nurse</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-
-            <article class="card__article">
-                <img src="{{ url_for('static', filename='images/nurse-5.jpg') }}" class="card__img"
-                     alt="nurse-5">
-
-                <div class="card__data">
-                    <span class="card__description">Casper Cilline</span>
-                    <h2 class="card__title">Nurse</h2>
-                    <a href="#" class="my-btn-sub">Read More</a>
-                </div>
-            </article>
-        </div>
-    </div>
-</div>
 {% endblock %}

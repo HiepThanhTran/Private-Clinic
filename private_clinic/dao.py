@@ -1,6 +1,7 @@
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule
 from private_clinic.app import db
 from sqlalchemy import func
+import cloudinary.uploader
 import hashlib
 
 
@@ -11,13 +12,24 @@ def authenticate(username, password):
         return Account.query.filter(Account.username.__eq__(username.strip()), Account.password.__eq__(password)).first()
 
 
+def check_examination_schedule_by_time(time):
+    return db.session.query(ExaminationSchedule.query.filter(func.TIME(ExaminationSchedule.examination_date) == time).exists()).scalar()
+
+
+def check_duplicate_email(email, current_user_id):
+    return db.session.query(User.query.filter(User.id != current_user_id, User.email == email).exists()).scalar()
+
+
+def check_duplicate_phone_number(phone_number, current_user_id):
+    return db.session.query(User.query.filter(User.id != current_user_id, User.phone_number == phone_number).exists()).scalar()
+
+
+def check_duplicate_insurance_id(insurance_id, current_user_id):
+    return db.session.query(Patient.query.filter(Patient.id != current_user_id, Patient.insurance_id == insurance_id).exists()).scalar()
+
+
 def count_examination_schedule_by_date(date):
     return ExaminationSchedule.query.filter(func.DATE(ExaminationSchedule.examination_date) == date).count()
-
-
-def check_examination_schedule_by_time(time):
-    return db.session.query(
-        db.session.query(ExaminationSchedule).filter(func.TIME(ExaminationSchedule.examination_date) == time).exists()).scalar()
 
 
 def create_account(username, password):
@@ -121,13 +133,26 @@ def update_account_password(account_id, new_password):
     return account
 
 
+def update_profile_user(user, **kwargs):
+    for field_name, field_value in kwargs.items():
+        if field_value:
+            if field_name == 'insurance_id':
+                user.patient.insurance_id = field_value
+            elif field_name == 'avatar':
+                user.account.avatar = cloudinary.uploader.upload(field_value)['secure_url']
+            else:
+                setattr(user, field_name, field_value)
+
+    db.session.commit()
+    return user
+
+
 def get_account_by_id(account_id):
     return Account.query.get(account_id)
 
 
 def get_account_by_username(username):
     return Account.query.filter_by(username=username).first()
-    # return db.session.query(db.session.query(Account).filter_by(username=username).exists()).scalar()
 
 
 def get_account_by_email(email):
@@ -138,6 +163,9 @@ def get_account_by_phone_number(phone_number):
     return Account.query.join(User).filter_by(phone_number=phone_number).first()
 
 
+def get_user_by_id(user_id):
+    return User.query.get(user_id)
+
+
 def get_user_by_email(email):
     return User.query.filter_by(email=email).first()
-    # return db.session.query(db.session.query(User).filter_by(email=email).exists()).scalar()

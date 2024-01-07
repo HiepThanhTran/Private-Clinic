@@ -8,7 +8,16 @@ const hidePreLoading = () => {
     loadingModal.style.display = 'none';
 };
 
-/* Back To Top */
+const inputTelType = document.querySelector('input[type=tel]')
+const regexDigits = /\d/;
+
+if (inputTelType) {
+    inputTelType.addEventListener('keypress', (e) => {
+        if (!regexDigits.test(String.fromCharCode(e.keyCode))) e.preventDefault()
+    })
+}
+
+/* Back To the Top */
 const backToTopButton = document.querySelector("#back-to-top");
 if (backToTopButton != null) {
     window.addEventListener("scroll", function scrollFunction() {

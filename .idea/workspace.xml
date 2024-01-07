@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="change requirements.txt and delete migration folder" />
     <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="Add Nurse Manage Page">
     <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/Private-Clinic-Website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Private-Clinic-Website.iml" afterDir="false" />
@@ -218,7 +219,7 @@
       <workItem from="1704538445498" duration="7069000" />
       <workItem from="1704546328785" duration="21656000" />
       <workItem from="1704555605557" duration="15617000" />
-      <workItem from="1704619199485" duration="1108000" />
+      <workItem from="1704619199485" duration="1414000" />
       <workItem from="1704528790561" duration="3388000" />
       <workItem from="1704555605557" duration="16520000" />
     </task>
@@ -286,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704572237522</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="change requirements.txt and delete migration folder">
+      <option name="closed" value="true" />
+      <created>1704620611639</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704620611639</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <task id="LOCAL-00008" summary="Add Nurse Manage Page">
       <option name="closed" value="true" />
       <created>1704571677339</created>
@@ -322,7 +331,8 @@
     <MESSAGE value="add urls file" />
     <MESSAGE value="authentication: sign in, sign up, forgot password, send email for verify and reset password" />
     <MESSAGE value="appointment request" />
-    <option name="LAST_COMMIT_MESSAGE" value="appointment request" />
+    <MESSAGE value="change requirements.txt and delete migration folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="change requirements.txt and delete migration folder" />
     <MESSAGE value="Add Nurse Manage Page" />
     <option name="LAST_COMMIT_MESSAGE" value="Add Nurse Manage Page" />
   </component>

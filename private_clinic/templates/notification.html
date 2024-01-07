@@ -1,6 +1,6 @@
 {% extends 'layout/base.html' %}
 
-{% block title %}Inactive{% endblock %}
+{% block title %}Notification{% endblock %}
 
 {% block css %}
     {{ super() }}
@@ -30,7 +30,9 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <p>Please check your inbox (and spam folder) if you do not receive the email - you should have received an email with the link.</p>
-        <p>Didn't get the email? <a href="{{ url_for('resend_confirmation') }}">Resend</a>.</p>
+        <p>Please check your inbox (and spam folder) if you do not receive the email — you should have received an email with the link.</p>
+        {% if not current_user.is_confirmed %}
+            <p>Didn't get the email? <a href="{{ url_for('resend_confirmation') }}">Resend</a>.</p>
+        {% endif %}
     </div>
 {% endblock %}
