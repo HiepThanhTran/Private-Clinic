@@ -1,0 +1,349 @@
+{% extends 'layout/non_base.html' %}
+
+{% block title %}Doctor{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor.css') }}">
+{% endblock %}
+
+{% block js_body %}
+    <script src="{{ url_for('static', filename='js/doctor.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <div class="logo-name">F & H</div>
+        </a>
+        <ul class="side-menu">
+            <li id="manage-btn" class="active">
+                <a href="#">
+                    <i class="bx fa-solid fa-bars-progress"></i>
+                    Manage
+                </a>
+            </li>
+            <li id="medical-bill-btn">
+                <a href="#">
+                    <i class="bx fa-solid fa-newspaper"></i>
+                    Medical bill
+                </a>
+            </li>
+
+            <li style="margin-top: 300px">
+                <a href="#">
+                    <i class="bx fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bx fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logout">
+                    <i class="bx fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+
+            <a href="#" class="notif">
+                <i class="bx fa-solid fa-bell"></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile" style="display: flex; align-items: center">
+                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar"
+                     style="margin-right: 8px">
+                Maria
+            </a>
+        </nav>
+
+        <!-- End of Navbar -->
+        <h1 class="manage-title">Manage medical examination bill</h1>
+        <div class="table-manage">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Day examination</th>
+                    <th>The date of the vote</th>
+                    <th>Diagnostic</th>
+                </tr>
+
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>Male</td>
+                    <td>Binh Chanh</td>
+                    <td>08/01/2024</td>
+                    <td>09/01/2024</td>
+                    <td>Stomachache</td>
+                </tr>
+            </table>
+        </div>
+
+        <h1 class="examination-bill-title">Create Medical Bill</h1>
+        <div class="table-examination-bill">
+            <table>
+                <tr>
+                    <th colspan="6" style="background: var(--primary-color)">MEDICAL BILL</th>
+                </tr>
+
+                <tr style="background-color: var(--white);">
+                    <td colspan="3">Patient Name: Alexander Michael</td>
+                    <td colspan="3">Examination: 01/03/2024</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">Systoms: Sneezing, coughing</td>
+                    <td colspan="3">Diagnostic: Allergies</td>
+                </tr>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Medicine</th>
+                    <th>Unit</th>
+                    <th>Amount</th>
+                    <th>Directions</th>
+                    <th>Edit</th>
+                </tr>
+
+                <tr>
+                    <td colspan="6">
+                        <a href="" class="add-examination-course">Add examination course</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                    <td>
+                        <button class="btn-edit-medical-bill">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                         <button class="btn-remove-medical-bill">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td>2</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                    <td>
+                        <button class="btn-edit-medical-bill">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                         <button class="btn-remove-medical-bill">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td>3</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                    <td>
+                        <button class="btn-edit-medical-bill">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                         <button class="btn-remove-medical-bill">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td>4</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                    <td>
+                        <button class="btn-edit-medical-bill">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                         <button class="btn-remove-medical-bill">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td>...</td>
+                    <td>
+                        <a href="#" class="add-medical">Add medical</a>
+                    </td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>
+                        <button class="btn-edit-medical-bill">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                         <button class="btn-remove-medical-bill">
+                            <i class="fa-solid fa-x"></i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modal-add-medicine">
+            <div class="wrapper">
+                <div class="modal-content">
+                        <div class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input spellcheck="false" type="text" placeholder="Search">
+                        </div>
+                        <ul class="options">
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                            <li>Paracetamol</li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+
+        <div class="modal-add-examination-course">
+            <div class="wrapper-examincation">
+                 <div class="modal-content">
+                        <div class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input spellcheck="false" type="text" placeholder="Search">
+                        </div>
+                        <ul class="options">
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                            <li>Course 1</li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+{% endblock %}
