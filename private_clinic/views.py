@@ -91,6 +91,8 @@ def appointment():
 def profile_settings():
     return render_template(template_name_or_list='profile_settings.html')
 
+def account_settings():
+    return render_template(template_name_or_list='account_settings.html')
 
 @logout_required
 def password_reset(token):
