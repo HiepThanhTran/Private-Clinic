@@ -17,6 +17,7 @@ app.add_url_rule('/authentication/reset-with-token/<token>', 'reset_with_token',
 
 app.add_url_rule('/user/appointment', 'appointment', views.appointment, methods=['GET', 'POST'])
 app.add_url_rule('/user/profile-settings/<slug>', 'profile_settings', views.profile_settings, methods=['GET', 'POST'])
+app.add_url_rule('/user/account-settings', 'account-settings', views.account_settings)
 
 app.add_url_rule('/employee/login', 'employee_login', views.empoyee_login)
 app.add_url_rule('/employee/nurse', 'employee_nurse', views.employee_nurse)

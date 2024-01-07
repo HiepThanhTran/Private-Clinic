@@ -175,6 +175,9 @@ def appointment():
     return render_template(template_name_or_list='customer/appointment.html')
 
 
+def account_settings():
+    return render_template(template_name_or_list='customer/account_settings.html')
+
 @login_required
 def profile_settings(slug):
     if request.method.__eq__('POST'):
