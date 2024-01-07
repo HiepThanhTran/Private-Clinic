@@ -23,6 +23,11 @@ def nurse():
 def doctor():
     return render_template(template_name_or_list='doctor.html')
 
+
+def cashier():
+    return render_template(template_name_or_list='cashier.html')
+
+
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
