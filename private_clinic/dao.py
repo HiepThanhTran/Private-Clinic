@@ -1,6 +1,6 @@
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule
 from private_clinic.app import db
-from sqlalchemy import func
+from sqlalchemy import func, asc, desc
 import cloudinary.uploader
 import hashlib
 
@@ -145,6 +145,10 @@ def update_profile_user(user, **kwargs):
 
     db.session.commit()
     return user
+
+
+def get_examination_schedule_list():
+    return ExaminationSchedule.query.order_by(ExaminationSchedule.id.asc()).all()
 
 
 def get_account_by_id(account_id):

@@ -81,6 +81,10 @@ def update_profile_user(user, **kwargs):
     return dao.update_profile_user(user=user, **kwargs)
 
 
+def get_examination_schedule_list():
+    return dao.get_examination_schedule_list()
+
+
 def get_account_by_id(account_id):
     return dao.get_account_by_id(account_id=account_id)
 

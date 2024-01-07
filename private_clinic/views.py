@@ -31,6 +31,7 @@ def nurse():
 def doctor():
     return render_template(template_name_or_list='doctor.html')
 
+
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
@@ -210,9 +211,12 @@ def empoyee_login():
     return render_template(template_name_or_list='employee/login.html')
 
 
-@employee_login_required
+# @employee_login_required
 def employee_nurse():
-    return render_template(template_name_or_list='employee/nurse.html')
+    examination_schedule_list = services.get_examination_schedule_list()
+
+    return render_template(template_name_or_list='employee/nurse.html',
+                           examination_schedule_list=examination_schedule_list)
 
 
 # --------------------VERIFY EMAIL-------------------- #
