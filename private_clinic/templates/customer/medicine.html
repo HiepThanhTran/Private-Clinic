@@ -5,12 +5,12 @@
 {% block css %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/medicine.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customer/medicine.css') }}">
 {% endblock %}
 
 {% block js_body %}
     {{ super() }}
-    <script src="{{ url_for('static', filename='js/medicine.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/customer/medicine.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,9 @@
                         </p>
                         <div class="banner__content--btn">
                             <a href="" class="my-btn">Learn More</a>
-                            <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% if not current_user.is_authenticated %}
+                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

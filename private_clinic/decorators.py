@@ -19,7 +19,7 @@ def check_is_confirmed(func):
     def decorated_function(*args, **kwargs):
         if current_user.is_authenticated and current_user.is_confirmed is False:
             flash('Please confirm your account!', 'warning')
-            return redirect(url_for('inactive'))
+            return redirect(url_for('notification'))
         return func(*args, **kwargs)
 
     return decorated_function

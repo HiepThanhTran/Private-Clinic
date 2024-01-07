@@ -1,0 +1,129 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Profile Settings{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/settings.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customer/profile_settings.css') }}">
+{% endblock %}
+
+{% block js_body %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/customer/profile_settings.js') }}"></script>
+    <script>
+        window.onload = function () {
+            const modalTitle = document.querySelector('.modal-title')
+            const modalBody = document.querySelector('.modal-body')
+            const btnConfirm = document.querySelector('.btn-modal-confirm')
+
+            btnConfirm.setAttribute('form', 'profile-settings-form')
+            modalTitle.innerHTML = 'Save profile'
+            modalBody.innerHTML = 'Are you sure to save?'
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container mb-3 mt-5">
+        <h1 class="container__title fw-bold mb-4 col-6">Profile settings</h1>
+        <div class="row">
+            <div class="col-6 align-items-center d-flex">
+                <section class="form__container">
+
+                    <form method="post" action="{{ url_for('profile_settings', slug=current_user.slug) }}" id="profile-settings-form"
+                          enctype="multipart/form-data">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar__profile__image">
+                                <img src="{{ current_user.avatar }}" alt="Avatar" id="avatar-img">
+                                <label for="avatar" style="cursor: pointer;"><i class="fa-solid fa-camera"></i></label>
+                                <input type="file" style="display: none;" id="avatar" name="avatar" accept="image/*">
+                            </div>
+                            <div class="d-block ms-3">
+                                <p class="profile__name fw-bold mb-0" style="color:#43494f">{{ current_user.user.full_name }}</p>
+                                <p class="profile__role text-black-50 fw-bold">{{ current_user.role.name }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    {% if category != 'message' %}
+                                        <div class="alert alert-{{ category }} noti-alert" role="alert">{{ message }}</div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <div class="row">
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="first_name">First Name<span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="text" placeholder="Your firstname" id="first_name" name="first_name"
+                                       value="{{ current_user.user.first_name }}" required>
+                            </div>
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="last_name">Last Name<span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="text" placeholder="Your lastname" id="last_name" name="last_name"
+                                       value="{{ current_user.user.last_name }}" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="dob">Date of birth</label>
+                                <input class="form-control" type="date" id="dob" name="dob"
+                                       {% if current_user.user.dob %}value="{{ current_user.user.dob.strftime('%Y-%m-%d') }}"{% endif %}>
+                            </div>
+                            <div class="col-6 mb-3 mt-3">
+                                <label class=" text-secondary fw-bold" for="gender">Gender</label>
+                                <select name="gender" id="gender" class="form-select">
+                                    <option value="---" {% if not current_user.user.gender %} selected {% endif %}>---</option>
+                                    <option value="Male" {% if current_user.user.gender == 'Male' %} selected {% endif %}>Male</option>
+                                    <option value="Female" {% if current_user.user.gender == 'Female' %} selected {% endif %}>Female
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="email">Email<span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="email" placeholder="example123@mail.com" id="email" name="email"
+                                       value="{{ current_user.user.email }}" required>
+                            </div>
+                            <div class="col-6 mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="phone_number">Phone Number</label>
+                                <input class="form-control" type="tel" placeholder="Enter your phone number" id="phone_number"
+                                       name="phone_number"
+                                       {% if current_user.user.phone_number %}value="{{ current_user.user.phone_number }}"{% endif %}>
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="control-label text-secondary fw-bold" for="address">Address</label>
+                            <input class="form-control" type="text" placeholder="Enter your address" id="address" name="address"
+                                   {% if current_user.user.address %}value="{{ current_user.user.address }}"{% endif %}>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="control-label text-secondary fw-bold" for="insurance_id">Insurance<span
+                                    class="text-danger">*</span></label>
+                            <input class="form-control" type="text" placeholder="Your insurance ID" id="insurance_id" name="insurance_id"
+                                   {% if current_user.user.patient.insurance_id %}value="{{ current_user.user.patient.insurance_id }}"{% endif %}
+                                   required>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn form-settings__btn" id="confirm" data-bs-toggle="modal"
+                                    data-bs-target="#myModal">Save
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="col-6">
+                <div class="form-appointment__image">
+                    <img src="{{ url_for('static', filename='images/profile-settings.svg') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'layout/modal.html' %}
+{% endblock %}

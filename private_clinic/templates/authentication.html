@@ -3,11 +3,11 @@
 {% block title %}Sign in & Sign up{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/authentication.css') }}">
 {% endblock %}
 
 {% block js_body %}
-    <script src="{{ url_for('static', filename='js/api/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/authentication.js') }}"></script>
     <script>
         const signInBtn = document.querySelector("#sign-in-btn");
         const signUpBtn = document.querySelector("#sign-up-btn");
@@ -34,6 +34,11 @@
         modalForgotPassWrapper.addEventListener("click", function (e) {
             e.stopPropagation();
         })
+
+        window.onload = function () {
+            const query = new URLSearchParams(window.location.search)
+            document.getElementById('next').value = query.has('next') ? query.get('next') : '/'
+        }
     </script>
 {% endblock %}
 
@@ -53,9 +58,9 @@
                         <input type="password" name="password_signin" placeholder="Password" id="password_signin" required>
                     </div>
 
-                    <input type="hidden" value="" name="next" id="next" />
+                    <input type="hidden" value="" name="next" id="next"/>
 
-                    <button class="btn-signin-and-signup" my-type="signin">Sign in</button>
+                    <button type="submit" class="btn-signin-and-signup">Sign in</button>
                     <a href="javascript: void(0)" class="forgot-password-btn">Forgot password</a>
                     <p class="social-text">Or sign in with social platforms</p>
                     <div class="social-media">
@@ -106,7 +111,7 @@
                         <input type="email" name="email_signup" placeholder="Email" id="email_signup" required>
                     </div>
 
-                    <button class="btn-signin-and-signup" my-type="signup">Sign up</button>
+                    <button type="submit" class="btn-signin-and-signup">Sign up</button>
                     <p class="social-text">Or sign up with social platforms</p>
                     <div class="social-media">
                         <button class="social-icon"><i class="fab fa-facebook-f"></i></button>
@@ -119,7 +124,7 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Do not have an account ?</h3>
+                    <h3>Do not have an account?</h3>
                     <p>Please sign up to become a member of F&H.</p>
                     <button class="my-btn btn-animation animation-transparent" id="sign-up-btn">Sign up</button>
                 </div>
@@ -127,7 +132,7 @@
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3 class="none">Do you already have an account ?</h3>
+                    <h3 class="none">Do you already have an account?</h3>
                     <p class="none">Please sign in to receive many F&H offers.</p>
                     <button class="my-btn btn-animation animation-transparent" id="sign-in-btn">Sign in</button>
                 </div>
@@ -140,9 +145,9 @@
         <div class="wrapper">
             <form method="post" action="{{ url_for('forgot_password') }}" class="forgot-password-form">
                 <h2 class="forgot-password-form--title">Forgot password</h2>
-                <input type="email" id="infor_forgotpassword" name="infor_forgotpassword" placeholder="Enter your email"
+                <input type="email" id="email" name="email" placeholder="Enter your email"
                        class="input-style" required>
-                <button class="button btn-forgot-password"><span class="button-content">Send</span></button>
+                <button type="submit" class="button btn-forgot-password"><span class="button-content">Send</span></button>
             </form>
         </div>
     </div>

@@ -43,7 +43,9 @@
                             bring peace of mind about our services.
                         </p>
                         <div class="banner__content--btn">
-                            <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% if not current_user.is_authenticated %}
+                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,7 @@ class Account(BaseModel, UserMixin):
     user = relationship('User', backref='account', lazy=True, uselist=False)
 
     def __str__(self):
-        return self.userame
+        return self.username
 
     @staticmethod
     def slugify(target, value, oldvalue, initiator):

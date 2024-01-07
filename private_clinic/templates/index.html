@@ -4,7 +4,7 @@
 
 {% block css %}
     {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
 {% endblock %}
 
@@ -22,13 +22,15 @@
                     <div class="banner__content">
                         <h1 class="banner__content--title">Stay Safe, Stay Healthy</h1>
                         <p class="banner__content--des">
-                            With a professional team, web always bring you trust and satisfaction. We always monitor
-                            your
-                            health no matter the circumstances. Your health is our happiness.
+                            With a professional team, web always brings you trust and satisfaction.
+                            We always monitor your health no matter the circumstances.
+                            Your health is our happiness.
                         </p>
                         <div class="banner__content--btn">
                             <a href="{{ url_for('about') }}" class="my-btn">Learn More</a>
-                            <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% if not current_user.is_authenticated %}
+                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,8 @@ btnPasswordReset.addEventListener('click', (e) => {
     const newPassword = document.getElementById('new_password')
     const confirmNewPassword = document.getElementById('confirm_new_password')
 
-    if (newPassword.value.trim() !== confirmNewPassword.value.trim()) {
+    if (newPassword.value.trim() === confirmNewPassword.value.trim()) changePasswordForm.submit()
+    else {
         setTimeout(hidePreLoading, 1000)
         setTimeout(() => {
             toast({
@@ -17,7 +18,5 @@ btnPasswordReset.addEventListener('click', (e) => {
                 type: 'error',
             })
         }, 1100)
-    } else {
-        changePasswordForm.submit()
     }
 })

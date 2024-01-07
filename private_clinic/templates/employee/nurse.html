@@ -5,11 +5,11 @@
 {% block css %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/nurse.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/nurse.css') }}">
 {% endblock %}
 
 {% block js_body %}
-        <script src="{{ url_for('static', filename='js/nurse.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/employee/nurse.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -22,13 +22,13 @@
             <li id="manage-btn" class="active">
                 <a href="#">
                     <i class="bx fa-solid fa-bars-progress"></i>
-                    Manage
+                    Examination list
                 </a>
             </li>
             <li id="examination-btn">
                 <a href="#">
                     <i class="bx fa-solid fa-list"></i>
-                    Examination
+                    Create
                 </a>
             </li>
 
@@ -79,7 +79,7 @@
         </nav>
 
         <!-- End of Navbar -->
-        <h1 class="manage-title">Manage patient registration</h1>
+        <h1 style="text-transform: uppercase" class="manage-title">Examination list</h1>
         <div class="table-manage">
             <table>
                 <tr>
@@ -90,7 +90,7 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Registration Date</th>
-                    <th>Day examination</th>
+                    <th>Examination day</th>
                     <th>Examination time</th>
                     <th>Status</th>
                 </tr>
@@ -281,7 +281,7 @@
             </table>
         </div>
 
-        <h1 class="examination-title">Patient examination schedule</h1>
+        <h1 style="text-transform: uppercase" class="examination-title">Patient examination schedule</h1>
         <div class="table-examination">
             <table>
                 <tr>
