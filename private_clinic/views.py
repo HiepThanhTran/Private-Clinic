@@ -32,6 +32,10 @@ def doctor():
     return render_template(template_name_or_list='doctor.html')
 
 
+def cashier():
+    return render_template(template_name_or_list='cashier.html')
+
+
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
@@ -175,6 +179,9 @@ def appointment():
 
     return render_template(template_name_or_list='customer/appointment.html')
 
+
+def account_settings():
+    return render_template(template_name_or_list='customer/account_settings.html')
 
 @login_required
 def profile_settings(slug):

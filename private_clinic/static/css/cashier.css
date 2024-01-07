@@ -1,0 +1,455 @@
+:root {
+    --light: #f6f6f9;
+    --grey: #eee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bx {
+    font-size: 1.7rem;
+}
+
+body.dark {
+    --light: #181a1e;
+    --grey: #25252c;
+}
+
+body {
+    background: var(--grey);
+    overflow-x: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    width: 230px;
+    height: 100%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    justify-content: center;
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+}
+
+.sidebar .side-menu li {
+    height: 48px;
+    background: transparent;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+}
+
+.sidebar .side-menu li.active {
+    background: var(--grey);
+    position: relative;
+}
+
+.sidebar .side-menu li.active a {
+    color: var(--sub-color);
+}
+
+.sidebar .side-menu li.active::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li.active::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--black);
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: calc(60px - ((4px + 6px) * 2));
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.sidebar .side-menu li a:hover {
+    color: var(--sub-color);
+}
+
+.content {
+    position: relative;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+    padding-bottom: 100px;
+}
+
+.sidebar.close ~ .content {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.content nav {
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px 0 0;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.content nav::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 var(--light);
+}
+
+.content nav a {
+    color: var(--black);
+}
+
+.content nav a:hover {
+    color: var(--sub-color);
+}
+
+.content nav .bx.bx-menu {
+    cursor: pointer;
+    color: var(--sub-color);
+}
+
+.content nav form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+}
+
+.content nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    position: relative;
+}
+
+.content nav form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    width: 100%;
+    color: #363949;
+}
+
+.content nav form .form-input button {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-color);
+    color: var(--light);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
+.content nav .notif {
+    font-size: 20px;
+    position: relative;
+}
+
+.content nav .notif i {
+    color: var(--sub-color);
+}
+
+.content nav .notif .count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    background: var(--sub-color);
+    border-radius: 50%;
+    color: var(--white);
+    border: 2px solid var(--light);
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content nav .profile img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.content nav .profile {
+    color: var(--black);
+}
+
+.content nav .profile:hover {
+    color: var(--black);
+}
+
+.content nav .theme-toggle {
+    display: block;
+    min-width: 50px;
+    height: 25px;
+    background: var(--grey);
+    cursor: pointer;
+    position: relative;
+    border-radius: 25px;
+}
+
+.content nav .theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    width: calc(25px - 4px);
+    background: var(--primary-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.content nav #theme-toggle:checked + .theme-toggle::before {
+    left: calc(100% - (25px - 4px) - 2px);
+}
+
+/* Table */
+.manage-title,
+.bill-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--sub-color);
+}
+
+.table-manage,
+.table-bill-issued {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bill-title,
+.table-bill-issued{
+    display: none;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+    border-radius: 12px 12px 0 0;
+    border: none;
+    overflow: hidden;
+}
+
+td, th {
+    padding: 15px 20px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--sub-color);
+    font-weight: 200;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+}
+
+tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+}
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+.table-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-edit-medical-bill {
+    padding: 1px 4px;
+    margin: 0 5px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+.btn-edit-medical-bill:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-remove-medical-bill {
+    padding: 1px 4px;
+    margin: 0 5px;
+    border: 2px solid red;
+    color: red;
+    transition: all 0.2s ease;
+}
+
+.btn-remove-medical-bill:hover {
+    background-color: red;
+    color: var(--white);
+}
+
+.examination-bill-title {
+    display: none;
+}
+
+.table-examination-bill {
+    display: none;
+}
+
+button.detail,
+button.invoice {
+    padding: 1px 4px;
+    border: 1px solid var(--sub-color);
+    color: var(--sub-color);
+    transition: all 0.2s ease;
+    margin: 0 2px;
+}
+
+button.detail:hover,
+button.invoice:hover {
+    padding: 1px 4px;
+    background-color: var(--sub-color);
+    color: var(--white);
+}
+
+/* Detail */
+.modal-detail {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+}
+
+.modal-detail.open{
+    display: block;
+}
+
+.modal-detail table {
+    width: 1200px;
+    position: fixed;
+    top: 50%;
+    left: 58.2%;
+    transform: translate(-50%, -50%);
+}
+
+/* Modal Print */
+.modal-print {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+}
+
+.modal-print.open{
+    display: block;
+}
+
+.modal-print table {
+    width: 1000px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 59%;
+    transform: translate(-50%, -50%);
+}
+
+.print-btn{
+    padding: 5px 10px;
+    border: 1px solid var(--black);
+}
+
+.print-btn:hover{
+    color: var(--sub-color);
+}
+

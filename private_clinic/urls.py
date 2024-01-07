@@ -6,6 +6,7 @@ app.add_url_rule('/about', 'about', views.about)
 app.add_url_rule('/medicine', 'medicine', views.medicine)
 app.add_url_rule('/notification', 'notification', views.notification)
 app.add_url_rule('/doctor', 'doctor', views.doctor)
+app.add_url_rule('/cashier', 'cashier', views.cashier)
 app.add_url_rule('/authentication', 'authentication', views.authentication)
 app.add_url_rule('/healthcare-staff', 'healthcare_staff', views.healthcare_staff)
 
@@ -17,6 +18,7 @@ app.add_url_rule('/authentication/reset-with-token/<token>', 'reset_with_token',
 
 app.add_url_rule('/user/appointment', 'appointment', views.appointment, methods=['GET', 'POST'])
 app.add_url_rule('/user/profile-settings/<slug>', 'profile_settings', views.profile_settings, methods=['GET', 'POST'])
+app.add_url_rule('/user/account-settings', 'account-settings', views.account_settings)
 
 app.add_url_rule('/employee/login', 'employee_login', views.empoyee_login)
 app.add_url_rule('/employee/nurse', 'employee_nurse', views.employee_nurse)

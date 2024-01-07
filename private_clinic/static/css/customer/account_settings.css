@@ -1,0 +1,27 @@
+.url{
+    padding-right:0;
+    flex: 0 0 auto;
+    width:39.1%;
+}
+.url__name{
+    padding-left:0
+}
+.url input{
+    border-radius: 0.375rem 0 0 0.375rem;
+    padding-right:0;
+    border-right: none;
+}
+.url__name input{
+    border-radius: 0 0.375rem 0.375rem 0;
+    padding-left:0;
+    border-left:none;
+}
+.url > .form-control:focus{
+    border-color:#dee2e6;
+    box-shadow: none;
+}
+.url__name > .form-control:focus{
+    border-color:#dee2e6;
+    box-shadow:none;
+}
+
