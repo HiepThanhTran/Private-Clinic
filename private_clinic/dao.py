@@ -1,7 +1,6 @@
-from sqlalchemy import func
-
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule
 from private_clinic.app import db
+from sqlalchemy import func
 import hashlib
 
 
