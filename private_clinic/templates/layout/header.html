@@ -28,11 +28,15 @@
                                     </div>
                                     <h2 class="avatar-name">{{ current_user.user.full_name }}</h2>
                                     <div class="avatar__des">
-                                        <a href="{{ url_for('profile_settings', slug=current_user.slug) }}" class="avatar__des--btn"><i
-                                                class="fa-solid fa-user"></i>Profile</a>
-                                        <a href="" class="avatar__des--btn"><i class="fa-solid fa-gear"></i>Settings</a>
-                                        <a href="{{ url_for('signout') }}" class="avatar__des--btn"><i
-                                                class="fa-solid fa-right-from-bracket"></i>Sign out</a>
+                                        <a href="{{ url_for('profile_settings', slug=current_user.slug) }}" class="avatar__des--btn">
+                                            <i class="fa-solid fa-user"></i> Profile
+                                        </a>
+                                        <a href="{{ url_for('account_settings', slug=current_user.slug) }}" class="avatar__des--btn">
+                                            <i class="fa-solid fa-gear"></i> Settings
+                                        </a>
+                                        <a href="{{ url_for('signout') }}" class="avatar__des--btn">
+                                            <i class="fa-solid fa-right-from-bracket"></i> Sign out
+                                        </a>
                                     </div>
                                 </div>
                             </li>
