@@ -10,7 +10,6 @@ app.add_url_rule('/healthcare-staff', 'healthcare_staff', views.healthcare_staff
 app.add_url_rule('/appointment', 'appointment', views.appointment, methods=['GET', 'POST'])
 
 app.add_url_rule('/profile-settings', 'profile_settings', views.profile_settings, methods=['GET', 'POST'])
-app.add_url_rule('/account-settings', 'account-settings', views.account_settings)
 
 app.add_url_rule('/authentication/signout', 'signout', views.signout)
 app.add_url_rule('/authentication/signup', 'signup', views.signup, methods=['GET', 'POST'])
