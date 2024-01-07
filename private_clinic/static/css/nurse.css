@@ -1,16 +1,6 @@
 :root {
     --light: #f6f6f9;
-    --primary: #1976D2;
-    --light-primary: #CFE8FF;
     --grey: #eee;
-    --dark-grey: #AAAAAA;
-    --dark: #363949;
-    --danger: #D32F2F;
-    --light-danger: #FECDD3;
-    --warning: #FBC02D;
-    --light-warning: #FFF2C6;
-    --success: #388E3C;
-    --light-success: #BBF7D0;
 }
 
 * {
@@ -27,7 +17,6 @@
 body.dark {
     --light: #181a1e;
     --grey: #25252c;
-    --dark: #fbfbfb
 }
 
 body {
@@ -210,7 +199,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--primary);
+    background: var(--primary-color);
     color: var(--light);
     font-size: 18px;
     border: none;
@@ -265,7 +254,7 @@ body {
     left: 2px;
     bottom: 2px;
     width: calc(25px - 4px);
-    background: var(--primary);
+    background: var(--primary-color);
     border-radius: 50%;
     transition: all 0.3s ease;
 }
@@ -336,7 +325,6 @@ tr:nth-child(even) {
 .table-btn button:nth-child(1){
     border: 2px solid green;
     color: green;
-    transition: all 0.2s ease;
 }
 
 .table-btn button:nth-child(1):hover{
@@ -347,7 +335,6 @@ tr:nth-child(even) {
 .table-btn button:nth-child(2){
     border: 2px solid red;
     color: red;
-    transition: all 0.2s ease;
 }
 
 .table-btn button:nth-child(2):hover{

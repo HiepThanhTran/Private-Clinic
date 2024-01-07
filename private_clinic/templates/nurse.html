@@ -31,10 +31,24 @@
                     Examination
                 </a>
             </li>
+
+             <li id="examination-btn">
+                <a href="#">
+                   <i class="bx fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+             <li id="examination-btn">
+                <a href="#">
+                    <i class="bx fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="#" class="logout" style="margin-top: 350px">
+                <a href="#" class="logout" style="margin-top: 250px">
                     <i class="bx fa-solid fa-right-from-bracket"></i>
                     Logout
                 </a>
@@ -58,8 +72,9 @@
                 <i class="bx fa-solid fa-bell"></i>
                 <span class="count">12</span>
             </a>
-            <a href="#" class="profile">
-                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar">
+            <a href="#" class="profile" style="display: flex; align-items: center">
+                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar" style="margin-right: 8px">
+                Maria
             </a>
         </nav>
 
