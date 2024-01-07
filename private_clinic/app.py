@@ -1,6 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_migrate import Migrate
 from flask_admin import Admin
 from flask_mail import Mail
 from flask import Flask
@@ -24,8 +23,6 @@ app.config['MAIL_DEBUG '] = False
 app.config['MAX_PATIENTS_PER_DAY'] = 2
 
 db = SQLAlchemy(app=app)
-
-migrate = Migrate(app=app, db=db)
 
 login = LoginManager(app=app)
 login.login_view = 'authentication'

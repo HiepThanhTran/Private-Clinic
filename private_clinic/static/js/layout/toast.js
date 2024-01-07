@@ -35,18 +35,6 @@ function toast({title, message, type, duration = 2000, durationDelay = 3000}) {
         }
     };
 
-    toast.addEventListener('mouseenter', () => {
-        console.log('enter')
-        clearTimeout(autoRemove);
-    });
-
-    toast.addEventListener('mouseleave', () => {
-        console.log('leave')
-        autoRemove = setTimeout(() => {
-            toastID.removeChild(toast);
-        }, duration + durationDelay);
-    });
-
     toast.classList.add('my_toast', `my_toast--${type}`);
     const animationDuration = (duration / 1000).toFixed(2);
     const animationDelay = (durationDelay / 1000).toFixed(2);
@@ -58,4 +46,17 @@ function toast({title, message, type, duration = 2000, durationDelay = 3000}) {
                         </div>
                         <div class="my_toast__close"><i class="fa-solid fa-xmark"></i></div>`;
     toastID.appendChild(toast);
+
+
+    toast.addEventListener('mouseenter', () => {
+        clearTimeout(autoRemove);
+        toast.style.animation = null;
+    });
+
+    toast.addEventListener('mouseleave', () => {
+        autoRemove = setTimeout(() => {
+            toastID.removeChild(toast);
+        }, duration + durationDelay);
+        toast.style.animation = `showToast ease 0.3s, hiddenToast linear ${animationDuration}s ${animationDelay}s forwards`;
+    });
 }

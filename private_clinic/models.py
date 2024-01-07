@@ -139,8 +139,8 @@ class Regulation(BaseModel):
     __tablename__ = 'regulations'
 
     regulation_name = Column(String(50), nullable=False, unique=True)
+    regulation_code = Column(String(50), nullable=False, unique=True)
     description = Column(String(100))
-    note = Column(String(100))
     status = Column(Boolean, nullable=False, default=True)
     admin_id = Column(BigInteger, ForeignKey('administrators.id'), nullable=False)
 
@@ -195,7 +195,6 @@ class Medicine(BaseModel):
 
     medicine_name = Column(String(20), nullable=False, unique=True)
     description = Column(String(100))
-    note = Column(String(100))
     price = Column(Double, nullable=False, default=0)
     amount = Column(Integer, default=0)
     image = Column(String(255))
@@ -259,8 +258,8 @@ class MedicalBill(BaseModel):
 class Prescription(BaseModel):
     __tablename__ = 'prescriptions'
 
-    amount = Column(Integer, nullable=False)
     note = Column(String(100))
+    amount = Column(Integer, nullable=False)
     medicine_id = Column(BigInteger, ForeignKey('medicines.id'), primary_key=True)
     medical_bill_id = Column(BigInteger, ForeignKey('medical_bills.id'), primary_key=True)
 
