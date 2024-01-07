@@ -24,14 +24,6 @@ def about():
     return render_template(template_name_or_list='about.html')
 
 
-def doctor():
-    return render_template(template_name_or_list='doctor.html')
-
-
-def cashier():
-    return render_template(template_name_or_list='cashier.html')
-
-
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
@@ -176,9 +168,6 @@ def appointment():
     return render_template(template_name_or_list='customer/appointment.html')
 
 
-def account_settings():
-    return render_template(template_name_or_list='customer/account_settings.html')
-
 @login_required
 def profile_settings(slug):
     if request.method.__eq__('POST'):
@@ -208,9 +197,14 @@ def profile_settings(slug):
     return render_template(template_name_or_list='customer/profile_settings.html')
 
 
+@login_required
+def account_settings(slug):
+    return render_template(template_name_or_list='customer/account_settings.html')
+
+
 # --------------------EMPLOYEE-------------------- #
 @employee_logout_required
-def empoyee_login():
+def employee_login():
     return render_template(template_name_or_list='employee/login.html')
 
 
@@ -220,6 +214,16 @@ def employee_nurse():
 
     return render_template(template_name_or_list='employee/nurse.html')
                            # examination_schedule_list=examination_schedule_list)
+
+
+@employee_login_required
+def employee_doctor():
+    return render_template(template_name_or_list='doctor.html')
+
+
+@employee_login_required
+def employee_cashier():
+    return render_template(template_name_or_list='cashier.html')
 
 
 # --------------------VERIFY EMAIL-------------------- #

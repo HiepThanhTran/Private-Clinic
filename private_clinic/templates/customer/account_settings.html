@@ -1,12 +1,17 @@
 {% extends 'layout/base.html' %}
 
-{% block title %}Profile Settings{% endblock %}
+{% block title %}Account Settings{% endblock %}
 
 {% block css %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/settings.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/customer/account_settings.css') }}">
 {% endblock %}
+
+{% block js_body %}
+    <script src="{{ url_for('static', filename='js/customer/account_settings.js') }}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="container mb-3 mt-5">
         <div class="row justify-content-center mb-5">
@@ -16,18 +21,20 @@
                     <form class="page" id="account-setting-form" method="post" action="">
                         <div class="row">
                             <div class="mb-3 mt-3">
-                                <label class="control-label text-secondary fw-bold" for="user">Username</label>
-                                <input class="form-control" type="text" placeholder="Your firstname" id="user" name="user" value="testuser123" readonly>
+                                <label class="control-label text-secondary fw-bold" for="username">Username</label>
+                                <input class="form-control" type="text" placeholder="Your firstname" id="username" name="username"
+                                       value="{{ current_user.username }}" disabled>
                             </div>
                         </div>
                         <div class="row">
                             <div class="url mb-3 mt-3">
                                 <label class="control-label text-secondary fw-bold" for="url">URL</label>
-                                <input class="form-control" type="text" id="url" name="url" value="faithandhope.com/profile/" readonly>
+                                <input class="form-control" type="text" id="url" name="url" value="faithandhope.com/user/profile/" disabled>
                             </div>
-                            <div class="url__name col-7 mb-3 mt-3">
-                                <label class="control-label text-secondary fw-bold" for="urlname">ㅤ</label>
-                                <input class="form-control" type="text" id="urlname" name="urlname" value="testuser" placeholder="">
+                            <div class="url__name mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="urlname"></label>
+                                <input class="form-control" type="text" id="urlname" name="urlname" value="{{ current_user.slug }}"
+                                       placeholder="">
                             </div>
                         </div>
                         <div class="mt-3">
@@ -52,33 +59,35 @@
                 <section class="form__container">
                     <h1 class="container__title fw-bold">Change password</h1>
                     <form class="page" id="change-password-form" method="post" action="">
-                            <div class="row">
-                                <div class="mb-3 mt-3">
-                                    <label class="control-label text-secondary fw-bold" for="oldpwd">Old Password</label>
-                                    <input class="form-control" type="password" placeholder="Enter your old password" id="old_password" name="oldpwd">
-                                </div>
+                        <div class="row">
+                            <div class="mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="old_password">Old password</label>
+                                <input class="form-control" type="password" placeholder="Enter old password" id="old_password"
+                                       name="old_password">
                             </div>
-                            <div class="row">
-                                <div class="mb-3 mt-3">
-                                    <label class="control-label text-secondary fw-bold" for="newpwd">New Password</label>
-                                    <input class="form-control" type="password" placeholder="Enter your new password" id="new_password" name="newpwd">
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="new_password">New password</label>
+                                <input class="form-control" type="password" placeholder="Enter new password" id="new_password"
+                                       name="new_password">
                             </div>
-                            <div class="row">
-                                <div class="mb-3 mt-3">
-                                    <label class="control-label text-secondary fw-bold" for="confirmpwd">Confirm Password</label>
-                                    <input class="form-control" type="password" placeholder="Retype your new password" id="confirm_new_password" name="confirmpwd">
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 mt-3">
+                                <label class="control-label text-secondary fw-bold" for="confirm_new_password">Confirm password</label>
+                                <input class="form-control" type="password" placeholder="Confirm new password" id="confirm_new_password"
+                                       name="confirm_new_password">
                             </div>
-                            <div class="mt-3">
-                                <button class="form-settings__btn btn-change-password" type="submit" form="changepwd" id="changepassword">Change Password</button>
-                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button class="form-settings__btn btn-change-password" type="submit" form="changepwd" id="changepassword">Change
+                                Password
+                            </button>
+                        </div>
                     </form>
                 </section>
             </div>
         </div>
     </div>
-{% endblock %}
-{% block js_body %}
-    <script src="{{ url_for('static', filename='js/customer/account_settings.js') }}"></script>
 {% endblock %}
