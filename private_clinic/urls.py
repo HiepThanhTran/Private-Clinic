@@ -5,6 +5,7 @@ app.add_url_rule('/', 'index', views.index)
 app.add_url_rule('/about', 'about', views.about)
 app.add_url_rule('/medicine', 'medicine', views.medicine)
 app.add_url_rule('/notification', 'notification', views.notification)
+app.add_url_rule('/doctor', 'doctor', views.doctor)
 app.add_url_rule('/authentication', 'authentication', views.authentication)
 app.add_url_rule('/healthcare-staff', 'healthcare_staff', views.healthcare_staff)
 

@@ -108,7 +108,7 @@ body {
     align-items: center;
     border-radius: 48px;
     font-size: 16px;
-    color: #363949;
+    color: var(--black);
     white-space: nowrap;
     overflow-x: hidden;
     transition: all 0.3s ease;
@@ -164,12 +164,16 @@ body {
 }
 
 .content nav a {
-    color: #363949;
+    color: var(--black);
+}
+
+.content nav a:hover {
+    color: var(--sub-color);
 }
 
 .content nav .bx.bx-menu {
     cursor: pointer;
-    color: #363949;
+    color: var(--sub-color);
 }
 
 .content nav form {
@@ -238,15 +242,19 @@ body {
     justify-content: center;
 }
 
-.content nav .profile{
-    font-weight: 500;
-}
-
 .content nav .profile img {
     width: 36px;
     height: 36px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.content nav .profile{
+    color: var(--black);
+}
+
+.content nav .profile:hover{
+    color: var(--black);
 }
 
 .content nav .theme-toggle {
@@ -277,7 +285,7 @@ body {
 
 /* Table */
 .manage-title,
-.examination-title{
+.examination-bill-title {
     font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
@@ -285,7 +293,8 @@ body {
     color: var(--sub-color);
 }
 
-.table-manage {
+.table-manage,
+.table-examination-bill {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -323,65 +332,155 @@ tr:nth-child(even) {
     background-color: #eeeeee;
 }
 
-.table-btn{
+.table-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.table-btn button{
+.btn-edit-medical-bill {
     padding: 1px 4px;
     margin: 0 5px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.2s ease;
 }
 
-.table-btn button:nth-child(1){
-    border: 2px solid green;
-    color: green;
-}
-
-.table-btn button:nth-child(1):hover{
-    background-color: green;
+.btn-edit-medical-bill:hover {
+    background-color: var(--primary-color);
     color: var(--white);
 }
 
-.table-btn button:nth-child(2){
+.btn-remove-medical-bill {
+    padding: 1px 4px;
+    margin: 0 5px;
     border: 2px solid red;
     color: red;
+    transition: all 0.2s ease;
 }
 
-.table-btn button:nth-child(2):hover{
+.btn-remove-medical-bill:hover {
     background-color: red;
     color: var(--white);
 }
 
-.table-examination{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.examination-title,
-.table-examination{
+.examination-bill-title {
     display: none;
 }
 
-.ex-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-     display: none;
+.table-examination-bill {
+    display: none;
 }
 
-.btn-ex{
-    padding: 10px;
-    border: 2px solid var(--sub-color);
-    color: var(--sub-color);
-    border-radius: 10px;
+/* Add medicine */
+.modal-add-medicine {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+
+.modal-add-medicine.open {
+    display: block;
+}
+
+.modal-add-examination-course {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+
+.modal-add-examination-course.open {
+    display: block;
+}
+
+.wrapper-examincation {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--primary-color);
+}
+
+.wrapper {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--primary-color);
+}
+
+.modal-content .search {
+    position: relative;
+}
+
+.modal-content .search i {
+    top: 50%;
+    left: 15px;
+    color: #999;
+    font-size: 20px;
+    pointer-events: none;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.modal-content .search input {
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 0 20px 0 43px;
+    border: 1px solid #B3B3B3;
+}
+
+.modal-content .options {
+    margin-top: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 7px;
+    margin-top: 20px;
+}
+
+.modal-content .options::-webkit-scrollbar {
+    width: 7px;
+}
+
+.modal-content .options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+
+.modal-content .options::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 25px;
+}
+
+.modal-content .options li {
+    height: 50px;
+    padding: 0 13px;
+    font-size: 1.125rem;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.btn-ex:hover{
-    background-color: var(--sub-color);
+.modal-content .options li:hover {
+    background-color: var(--primary-color);
     color: var(--white);
+    border-radius: 5px;
 }

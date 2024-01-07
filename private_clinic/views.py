@@ -24,6 +24,13 @@ def about():
     return render_template(template_name_or_list='about.html')
 
 
+def nurse():
+    return render_template(template_name_or_list='nurse.html')
+
+
+def doctor():
+    return render_template(template_name_or_list='doctor.html')
+
 def healthcare_staff():
     return render_template(template_name_or_list='healthcare_staff.html')
 
