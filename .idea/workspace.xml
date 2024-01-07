@@ -4,37 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="change requirements.txt and delete migration folder" />
     <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="Add Nurse Manage Page">
-    <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="authentication: sign in, sign up, forgot password, send email for verify and reset password">
-      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/alembic.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/env.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/script.py.mako" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/private_clinic/migrations/versions/5bdaf184e058_.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/private_clinic/static/js/appointment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/private_clinic/templates/layout/modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BlueFH.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BlueFH.iml" afterDir="false" />
+    <list default="true" id="52b1cfd8-f7f6-4978-a48d-f3ae169a62e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Private-Clinic-Website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Private-Clinic-Website.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_31_2023_12_55_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_31_2023_12_55_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlueFH_PrivateClinic.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/private_clinic/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/dao.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/private_clinic/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/static/css/appointment.css" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/css/appointment.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/static/css/layout/preloading.css" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/css/layout/preloading.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/static/js/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/js/api/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/private_clinic/static/js/layout/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/static/js/layout/toast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/appointment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/layout/mail_btn.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/layout/mail_btn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/layout/non_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/layout/non_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/layout/preloading.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/layout/preloading.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/mail/inactive.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/mail/inactive.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/templates/medicine.html" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/templates/medicine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private_clinic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_clinic/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/Private-Clinic-Website.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
@@ -121,7 +101,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/hiept/Downloads/Compressed/Private-Clinic-Website",
     "last_opened_file_path": "D:/Private-Clinic-Website",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -148,31 +127,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.index">
-    <configuration name="Private-Clinic-Website" type="PythonConfigurationType" factoryName="Python">
-      <module name="Private-Clinic-Website" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/private_clinic/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Private-Clinic-Website" />
+      <module name="BlueFH" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -180,8 +136,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (BlueFH) (2)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/private_clinic" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -203,8 +160,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (BlueFH) (2)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/private_clinic" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -217,24 +175,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="BlueFH" type="Python.FlaskServer">
-      <module name="BlueFH" />
-      <option name="target" value="$PROJECT_DIR$/private_clinic/app.py" />
-      <option name="targetType" value="PATH" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Flask server.BlueFH" />
       <item itemvalue="Python.index" />
       <item itemvalue="Python.models" />
     </list>
@@ -278,6 +219,7 @@
       <workItem from="1704538445498" duration="7069000" />
       <workItem from="1704546328785" duration="21656000" />
       <workItem from="1704555605557" duration="15617000" />
+      <workItem from="1704619199485" duration="1414000" />
       <workItem from="1704528790561" duration="3388000" />
       <workItem from="1704555605557" duration="16520000" />
     </task>
@@ -337,6 +279,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704530016131</updated>
     </task>
+    <task id="LOCAL-00008" summary="appointment request">
+      <option name="closed" value="true" />
+      <created>1704572237522</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704572237522</updated>
+    </task>
+    <task id="LOCAL-00009" summary="change requirements.txt and delete migration folder">
+      <option name="closed" value="true" />
+      <created>1704620611639</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704620611639</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <task id="LOCAL-00008" summary="Add Nurse Manage Page">
       <option name="closed" value="true" />
       <created>1704571677339</created>
@@ -371,10 +330,16 @@
     <MESSAGE value="commit" />
     <MESSAGE value="add urls file" />
     <MESSAGE value="authentication: sign in, sign up, forgot password, send email for verify and reset password" />
+    <MESSAGE value="appointment request" />
+    <MESSAGE value="change requirements.txt and delete migration folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="change requirements.txt and delete migration folder" />
     <MESSAGE value="Add Nurse Manage Page" />
     <option name="LAST_COMMIT_MESSAGE" value="Add Nurse Manage Page" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Private_Clinic_Website$index.coverage" NAME="index Coverage Results" MODIFIED="1704557221310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
+    <SUITE FILE_PATH="coverage/BlueFH$index.coverage" NAME="index Coverage Results" MODIFIED="1704571859202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
+    <SUITE FILE_PATH="coverage/BlueFH$BlueFH.coverage" NAME="BlueFH Coverage Results" MODIFIED="1704539095936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/BlueFH$index.coverage" NAME="index Coverage Results" MODIFIED="1704567286732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
     <SUITE FILE_PATH="coverage/BlueFH$BlueFH.coverage" NAME="BlueFH Coverage Results" MODIFIED="1704539095936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/BlueFH$BlueFH.coverage" NAME="BlueFH Coverage Results" MODIFIED="1704529016060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -382,6 +347,5 @@
     <SUITE FILE_PATH="coverage/BlueFH$models.coverage" NAME="models Coverage Results" MODIFIED="1704463928354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
     <SUITE FILE_PATH="coverage/BlueFH$Flask__private_clinic_app_py_.coverage" NAME="Flask (private_clinic/app.py) Coverage Results" MODIFIED="1704302223528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/BlueFH$models.coverage" NAME="models Coverage Results" MODIFIED="1704555335524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
-    <SUITE FILE_PATH="coverage/BlueFH$index.coverage" NAME="index Coverage Results" MODIFIED="1704532188419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/private_clinic" />
   </component>
 </project>

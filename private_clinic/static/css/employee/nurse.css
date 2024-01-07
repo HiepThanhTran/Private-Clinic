@@ -72,6 +72,10 @@ body {
     position: relative;
 }
 
+.sidebar .side-menu li.active a{
+    color: var(--sub-color);
+}
+
 .sidebar .side-menu li.active::before {
     content: "";
     position: absolute;
@@ -104,7 +108,7 @@ body {
     align-items: center;
     border-radius: 48px;
     font-size: 16px;
-    color: var(--dark);
+    color: #363949;
     white-space: nowrap;
     overflow-x: hidden;
     transition: all 0.3s ease;
@@ -160,12 +164,12 @@ body {
 }
 
 .content nav a {
-    color: var(--dark);
+    color: #363949;
 }
 
 .content nav .bx.bx-menu {
     cursor: pointer;
-    color: var(--dark);
+    color: #363949;
 }
 
 .content nav form {
@@ -190,7 +194,7 @@ body {
     border-radius: 36px 0 0 36px;
     outline: none;
     width: 100%;
-    color: var(--dark);
+    color: #363949;
 }
 
 .content nav form .form-input button {
@@ -213,6 +217,10 @@ body {
     position: relative;
 }
 
+.content nav .notif i{
+    color: var(--sub-color);
+}
+
 .content nav .notif .count {
     position: absolute;
     top: -6px;
@@ -228,6 +236,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.content nav .profile{
+    font-weight: 500;
 }
 
 .content nav .profile img {

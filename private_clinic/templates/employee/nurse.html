@@ -5,11 +5,11 @@
 {% block css %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/nurse.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/nurse.css') }}">
 {% endblock %}
 
 {% block js_body %}
-        <script src="{{ url_for('static', filename='js/nurse.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/employee/nurse.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -22,33 +22,32 @@
             <li id="manage-btn" class="active">
                 <a href="#">
                     <i class="bx fa-solid fa-bars-progress"></i>
-                    Manage
+                    Examination list
                 </a>
             </li>
             <li id="examination-btn">
                 <a href="#">
                     <i class="bx fa-solid fa-list"></i>
-                    Examination
+                    Create
                 </a>
             </li>
 
-             <li id="examination-btn">
+             <li style="margin-top: 300px">
                 <a href="#">
                    <i class="bx fa-solid fa-user"></i>
                     Profile
                 </a>
             </li>
 
-             <li id="examination-btn">
+             <li>
                 <a href="#">
                     <i class="bx fa-solid fa-gear"></i>
                     Settings
                 </a>
             </li>
-        </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#" class="logout" style="margin-top: 250px">
+
+             <li>
+                <a href="#" class="logout">
                     <i class="bx fa-solid fa-right-from-bracket"></i>
                     Logout
                 </a>
@@ -79,7 +78,7 @@
         </nav>
 
         <!-- End of Navbar -->
-        <h1 class="manage-title">Manage patient registration</h1>
+        <h1 style="text-transform: uppercase" class="manage-title">Examination list</h1>
         <div class="table-manage">
             <table>
                 <tr>
@@ -90,7 +89,7 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Registration Date</th>
-                    <th>Day examination</th>
+                    <th>Examination day</th>
                     <th>Examination time</th>
                     <th>Status</th>
                 </tr>
@@ -281,7 +280,7 @@
             </table>
         </div>
 
-        <h1 class="examination-title">Patient examination schedule</h1>
+        <h1 style="text-transform: uppercase" class="examination-title">Patient examination schedule</h1>
         <div class="table-examination">
             <table>
                 <tr>
@@ -309,7 +308,7 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
+                    <td>2</td>
                     <td>Hiep</td>
                     <td>Thanh</td>
                     <td>Male</td>
@@ -321,7 +320,7 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
+                    <td>3</td>
                     <td>Hiep</td>
                     <td>Thanh</td>
                     <td>Male</td>
@@ -333,7 +332,7 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
+                    <td>4</td>
                     <td>Hiep</td>
                     <td>Thanh</td>
                     <td>Male</td>
@@ -345,7 +344,7 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
+                    <td>5</td>
                     <td>Hiep</td>
                     <td>Thanh</td>
                     <td>Male</td>
@@ -357,7 +356,7 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
+                    <td>6</td>
                     <td>Hiep</td>
                     <td>Thanh</td>
                     <td>Male</td>
