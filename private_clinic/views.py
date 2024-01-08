@@ -228,9 +228,10 @@ def employee_nurse():
         flash('Create an examination list and send notifications to patients successfully', 'success')
         return redirect(url_for('employee_nurse'))
 
-    examination_schedule_list = services.get_examination_schedule_list()
 
-    return render_template(template_name_or_list='employee/nurse.html', examination_schedule_list=examination_schedule_list)
+    # examination_schedule_list = services.get_examination_schedule_list()
+
+    return render_template(template_name_or_list='employee/nurse.html')#examination_schedule_list=examination_schedule_list
 
 
 # @employee_login_required

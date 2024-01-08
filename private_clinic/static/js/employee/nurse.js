@@ -5,6 +5,8 @@ const tableManageTitle = document.querySelector(".manage-title");
 const tableEx = document.querySelector(".table-examination");
 const tableExTitle = document.querySelector(".examination-title");
 const exBtn = document.querySelector(".ex-btn");
+const appointmentBtn = document.querySelector("#appointment-btn");
+const appointmentForm = document.querySelector(".appointment-form");
 manageBtn.addEventListener("click", function (event) {
     manageBtn.classList.add("active");
     tableManageTitle.style.display = "block";
@@ -15,6 +17,8 @@ manageBtn.addEventListener("click", function (event) {
     tableEx.style.display = "none";
     exBtn.style.display = "none";
     examinationBtn.classList.remove("active");
+    appointmentForm.style.display = "none";
+    appointmentBtn.classList.remove("active");
 })
 
 examinationBtn.addEventListener("click", function (event) {
@@ -23,12 +27,24 @@ examinationBtn.addEventListener("click", function (event) {
     tableEx.style.display = "flex";
     tableEx.style.justifyContent = "center";
     tableEx.style.alignItems = "center";
-    tableManageTitle.style.display = "none";
-    tableManage.style.display = "none";
     exBtn.style.display = "flex";
     exBtn.style.jutifyContent = "center";
     exBtn.style.alignItems = "center";
+    tableManageTitle.style.display = "none";
+    tableManage.style.display = "none";
     manageBtn.classList.remove("active");
+})
+
+appointmentBtn.addEventListener("click", function () {
+    appointmentBtn.classList.add("active");
+    appointmentForm.style.display = "block";
+    tableManageTitle.style.display = "none";
+    tableManage.style.display = "none";
+    manageBtn.classList.remove("active");
+    tableExTitle.style.display = "none";
+    tableEx.style.display = "none";
+    exBtn.style.display = "none";
+    examinationBtn.classList.remove("active");
 })
 
 const tableBody = document.getElementById('create-examination-table')
