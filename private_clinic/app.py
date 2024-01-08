@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '1HV98N4L#&UNg?:E;82{Ef@Bftfpl9eC#DtTP~oJ"Pufpi|V)2&}_aqM/g?Pbp2'
 app.config['SECURITY_PASSWORD_SALT'] = 'fkslkfsdlkfnsdfnsfd'
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root:H29012003@localhost/bluefh?charset=utf8mb4"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root:19892811@localhost/bluefh?charset=utf8mb4"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['MAIL_DEFAULT_SENDER'] = 'noreply@faithnhope.com'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
