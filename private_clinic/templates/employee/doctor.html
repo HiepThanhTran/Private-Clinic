@@ -5,11 +5,11 @@
 {% block css %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/doctor.css') }}">
 {% endblock %}
 
 {% block js_body %}
-    <script src="{{ url_for('static', filename='js/doctor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/employee/doctor.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -67,11 +67,6 @@
                     <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
-
-            <a href="#" class="notif">
-                <i class="bx fa-solid fa-bell"></i>
-                <span class="count">12</span>
-            </a>
             <a href="#" class="profile" style="display: flex; align-items: center">
                 <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar"
                      style="margin-right: 8px">
@@ -274,18 +269,18 @@
                 </tr>
 
                 <tr>
+                    <td colspan="6">
+                        <a href="" class="add-examination-course">Add examination course</a>
+                    </td>
+                </tr>
+
+                <tr>
                     <th>ID</th>
                     <th>Medicine</th>
                     <th>Unit</th>
                     <th>Amount</th>
                     <th>Directions</th>
                     <th>Edit</th>
-                </tr>
-
-                <tr>
-                    <td colspan="6">
-                        <a href="" class="add-examination-course">Add examination course</a>
-                    </td>
                 </tr>
 
                 <tr>

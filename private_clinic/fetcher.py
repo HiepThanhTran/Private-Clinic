@@ -1,4 +1,4 @@
-from private_clinic.decorators import logout_required
+from private_clinic.decorators import logout_required, employee_login_required
 from flask_login import login_required, current_user
 from private_clinic import services
 from flask import request, jsonify
@@ -64,19 +64,22 @@ def check_appointment_availability():
     time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
 
     amount_patients_of_day = services.count_examination_schedule_by_date(date=date_obj)
-    has_examination_schedule_at_time = services.check_examination_schedule_by_time(time=time_obj)
+    if amount_patients_of_day >= app.config['MAX_PATIENTS_PER_DAY']:
+        return jsonify({
+            'status_code': 401,
+            'message': 'The number of registrations for the day has reached the maximum',
+        })
 
-    if amount_patients_of_day < app.config['MAX_PATIENTS_PER_DAY']:
-        if has_examination_schedule_at_time:
-            status_code, message = 402, 'The time has been pre-registered by someone else'
-        else:
-            status_code, message = 200, 'Successfully registered'
-    else:
-        status_code, message = 401, 'The number of registrations for the day has reached the maximum'
+    has_examination_schedule_at_time = services.check_examination_schedule_by_time(time=time_obj)
+    if has_examination_schedule_at_time:
+        return jsonify({
+            'status_code': 402,
+            'message': 'The time has been pre-registered by someone else',
+        })
 
     return jsonify({
-        'status_code': status_code,
-        'message': message,
+        'status_code': 200,
+        'message': 'Successfully registered',
     })
 
 
@@ -106,3 +109,23 @@ def check_profile_infor():
         'message': 'Saved successfully',
     })
 
+
+# @employee_login_required
+def load_examination_schedule_list_by_date():
+    data = request.json
+    day_of_exam = data.get('day_of_exam')
+
+    date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
+
+    schedules = services.get_examination_schedule_list_by_date(date=date_obj)
+    schedule_list = []
+    for schedule in schedules:
+        schedule_list.append({
+            'id': schedule.id,
+            'full_name': schedule.last_name + ' ' + schedule.first_name,
+            'gender': schedule.gender,
+            'dob': schedule.dob,
+            'address': schedule.address,
+        })
+
+    return jsonify(schedule_list)

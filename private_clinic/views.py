@@ -1,7 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, jsonify
 from flask_login import login_required, current_user, login_user, logout_user
-from private_clinic.decorators import logout_required, check_is_confirmed, employee_login_required, \
-    employee_logout_required
+from private_clinic.decorators import logout_required, check_is_confirmed, employee_login_required, employee_logout_required
 from private_clinic.token import confirm_token, generate_token
 from private_clinic.services import send_email
 from private_clinic.app import db, login, app
@@ -31,6 +30,11 @@ def healthcare_staff():
 
 def medicine():
     return render_template(template_name_or_list='customer/medicine.html')
+
+
+# @employee_login_required
+def employee():
+    return render_template(template_name_or_list='employee/employee_home.html')
 
 
 @logout_required
@@ -162,9 +166,8 @@ def appointment():
             phone_number=phone_number,
             address=address)
 
-        flash(
-            'Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
-            'success')
+        flash('Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
+              'success')
         return redirect(url_for('notification'))
 
     return render_template(template_name_or_list='customer/appointment.html')
@@ -184,7 +187,7 @@ def profile_settings(slug):
         avatar = request.files.get('avatar')
 
         user = services.update_profile_user(
-            user=current_user.user,
+            user_id=current_user.user.id,
             first_name=first_name,
             last_name=last_name,
             dob=dob,
@@ -212,20 +215,29 @@ def employee_login():
 
 # @employee_login_required
 def employee_nurse():
-    # examination_schedule_list = services.get_examination_schedule_list()
+    if request.method.__eq__('POST'):
+        day_of_exam = request.form.get('day_of_exam')
+        schedules = request.form.getlist('examination_id')
 
-    return render_template(template_name_or_list='employee/nurse.html')
-    # examination_schedule_list=examination_schedule_list)
+        examination_list = services.create_examination_list(examination_date=day_of_exam, nurse_id=current_user.user.employee.nurse.id,
+                                                            examination_schedule_id_list=schedules)
+
+        flash('Create an examination list and send notifications to patients successfully', 'success')
+        return redirect(url_for('employee_nurse'))
+
+    examination_schedule_list = services.get_examination_schedule_list()
+
+    return render_template(template_name_or_list='employee/nurse.html', examination_schedule_list=examination_schedule_list)
 
 
 # @employee_login_required
 def employee_doctor():
-    return render_template(template_name_or_list='doctor.html')
+    return render_template(template_name_or_list='employee/doctor.html')
 
 
-@employee_login_required
+# @employee_login_required
 def employee_cashier():
-    return render_template(template_name_or_list='cashier.html')
+    return render_template(template_name_or_list='employee/cashier.html')
 
 
 def admin_dashboard():

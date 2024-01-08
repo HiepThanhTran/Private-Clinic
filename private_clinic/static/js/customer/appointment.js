@@ -44,6 +44,6 @@ appointmentForm.addEventListener('submit', (e) => {
             console.log(error)
         })
         .finally(() => {
-            setTimeout(hidePreLoading, 1000)
+            hidePreLoading()
         })
 })

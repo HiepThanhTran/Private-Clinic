@@ -18,7 +18,7 @@
             const btnConfirm = document.querySelector('.btn-modal-confirm')
 
             btnConfirm.setAttribute('form', 'appointment-form')
-            modalTitle.innerHTML = 'Make the appointment'
+            modalTitle.innerHTML = 'MAKE AN APPOINTMENT'
             modalBody.innerHTML = 'Are you sure you want to make an appointment?'
         }
     </script>
@@ -166,7 +166,7 @@
                                 <div class="column">
                                     <div class="input-box">
                                         <label for="dob">Date of birth<span class="text-danger">*</span></label>
-                                        <input {% if current_user.user.dob %}value="{{ current_user.user.dob }}"{% endif %} type="date"
+                                        <input {% if current_user.user.dob %}value="{{ current_user.user.dob.strftime('%Y-%m-%d') }}"{% endif %} type="date"
                                                name="dob" id="dob" placeholder="Date of birth" required/>
                                     </div>
 

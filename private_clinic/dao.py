@@ -1,4 +1,5 @@
-from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule
+from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule, \
+    ExaminationList
 from private_clinic.app import db
 from sqlalchemy import func, asc, desc
 import cloudinary.uploader
@@ -123,6 +124,18 @@ def create_examination_schedule(patient_id, examination_date, **kwargs):
     return examination_schedule
 
 
+def create_examination_list(examination_date, nurse_id, examination_schedule_id_list):
+    examination_list = ExaminationList(examination_date=examination_date, nurse_id=nurse_id)
+
+    db.session.add(examination_list)
+    db.session.commit()
+
+    for examination_schedule_id in examination_schedule_id_list:
+        update_examination_schedule(int(examination_schedule_id), status=True, examination_list_id=examination_list.id)
+
+    return examination_list
+
+
 def update_account_password(account_id, new_password):
     new_password = str(hashlib.md5(new_password.strip().encode('utf-8')).hexdigest())
 
@@ -133,7 +146,9 @@ def update_account_password(account_id, new_password):
     return account
 
 
-def update_profile_user(user, **kwargs):
+def update_profile_user(user_id, **kwargs):
+    user = User.query.get(user_id)
+
     for field_name, field_value in kwargs.items():
         if field_value:
             if field_name == 'insurance_id':
@@ -147,8 +162,24 @@ def update_profile_user(user, **kwargs):
     return user
 
 
+def update_examination_schedule(examination_schedule_id, **kwargs):
+    examination_schedule = ExaminationSchedule.query.get(examination_schedule_id)
+
+    for field_name, field_value in kwargs.items():
+        if field_value:
+            setattr(examination_schedule, field_name, field_value)
+
+    db.session.commit()
+    return examination_schedule
+
+
 def get_examination_schedule_list():
     return ExaminationSchedule.query.order_by(ExaminationSchedule.id.asc()).all()
+
+
+def get_examination_schedule_list_by_date(date):
+    return ExaminationSchedule.query.filter(func.DATE(ExaminationSchedule.examination_date) == date,
+                                            ExaminationSchedule.status.is_(False)).all()
 
 
 def get_account_by_id(account_id):

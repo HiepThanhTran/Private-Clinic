@@ -73,6 +73,10 @@ def create_examination_schedule(patient_id, examination_date, **kwargs):
     return dao.create_examination_schedule(patient_id=patient_id, examination_date=examination_date, **kwargs)
 
 
+def create_examination_list(examination_date, nurse_id, examination_schedule_id_list):
+    return dao.create_examination_list(examination_date=examination_date, nurse_id=nurse_id, examination_schedule_id_list=examination_schedule_id_list)
+
+
 def update_account_password(account_id, new_password):
     return dao.update_account_password(account_id=account_id, new_password=new_password)
 
@@ -81,8 +85,16 @@ def update_profile_user(user, **kwargs):
     return dao.update_profile_user(user=user, **kwargs)
 
 
+def update_examination_schedule(examination_schedule_id, **kwargs):
+    return dao.update_examination_schedule(examination_schedule_id=examination_schedule_id, **kwargs)
+
+
 def get_examination_schedule_list():
     return dao.get_examination_schedule_list()
+
+
+def get_examination_schedule_list_by_date(date):
+    return dao.get_examination_schedule_list_by_date(date=date)
 
 
 def get_account_by_id(account_id):

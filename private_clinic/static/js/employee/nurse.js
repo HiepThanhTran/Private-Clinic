@@ -1,5 +1,5 @@
-const manageBtn = document.querySelector("#manage-btn");
-const examinationBtn = document.querySelector("#examination-btn");
+const manageBtn = document.querySelector("#appointment-list-btn");
+const examinationBtn = document.querySelector("#create-examination-btn");
 const tableManage = document.querySelector(".table-manage");
 const tableManageTitle = document.querySelector(".manage-title");
 const tableEx = document.querySelector(".table-examination");
@@ -29,4 +29,58 @@ examinationBtn.addEventListener("click", function (event) {
     exBtn.style.jutifyContent = "center";
     exBtn.style.alignItems = "center";
     manageBtn.classList.remove("active");
+})
+
+const tableBody = document.getElementById('create-examination-table')
+const rowsToDelete = tableBody.getElementsByClassName('tr-body');
+const dayOfExamInput = document.getElementById('day_of_exam')
+const btnCreateExamList = document.querySelector('.btn-ex')
+
+dayOfExamInput.addEventListener('change', () => {
+    showPreLoading()
+
+    fetch('/api/authentication/load-examination-schedule-list-by-date', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            day_of_exam: dayOfExamInput.value.toString(),
+        })
+    }).then(response => response.json())
+        .then(data => {
+            if (data.length) {
+                while (rowsToDelete.length > 0) rowsToDelete[0].remove()
+                btnCreateExamList.disabled = false
+                data.forEach(schedule => {
+                    const tr = document.createElement('tr')
+                    tr.classList.add('tr-body')
+                    const dateObject = new Date(schedule.dob);
+                    const dob = dateObject.toISOString().split('T')[0];
+                    tr.innerHTML = `<td>${schedule.id}<input type="hidden" name="examination_id" value="${schedule.id}"/></td>
+                                    <td>${schedule.full_name}</td>
+                                    <td>${schedule.gender}</td>
+                                    <td>${dob}</td>
+                                    <td>${schedule.address}</td>`
+                    tableBody.appendChild(tr)
+                })
+            } else {
+                while (rowsToDelete.length > 0) rowsToDelete[0].remove()
+                btnCreateExamList.disabled = true
+                const tr = document.createElement('tr')
+                tr.classList.add('tr-body')
+                tr.innerHTML = `<td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>`
+                tableBody.appendChild(tr)
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        .finally(() => {
+            hidePreLoading()
+        })
 })

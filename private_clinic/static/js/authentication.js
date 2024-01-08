@@ -35,7 +35,7 @@ signInForm.addEventListener('submit', (e) => {
             console.log(error)
         })
         .finally(() => {
-            setTimeout(hidePreLoading, 1000)
+            hidePreLoading()
         })
 })
 
@@ -81,7 +81,7 @@ signUpForm.addEventListener('submit', (e) => {
                 console.log(error)
             })
             .finally(() => {
-                setTimeout(hidePreLoading, 1000)
+                hidePreLoading()
             }))
     }
 })
@@ -117,7 +117,7 @@ forgotPasswordForm.addEventListener('submit', (e) => {
             console.log(error)
         })
         .finally(() => {
-            setTimeout(hidePreLoading, 1000)
+            hidePreLoading()
         })
     )
 })

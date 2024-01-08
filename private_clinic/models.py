@@ -132,7 +132,6 @@ class Doctor(Employee):
     years_of_experience = Column(Integer, nullable=False)
 
     medical_bills = relationship('MedicalBill', backref='doctor', lazy=True)
-    examination_schedule_list = relationship('ExaminationSchedule', backref='doctor', lazy=True)
 
 
 class Regulation(BaseModel):
@@ -173,6 +172,7 @@ class ExaminationSchedule(BaseModel):
     __tablename__ = 'examination_schedule'
 
     dob = Column(DateTime, nullable=False)
+    status = Column(Boolean, default=False)
     email = Column(String(50), nullable=False)
     gender = Column(String(10), nullable=False)
     address = Column(String(100), nullable=False)
@@ -180,7 +180,6 @@ class ExaminationSchedule(BaseModel):
     first_name = Column(String(50), nullable=False)
     phone_number = Column(String(11), nullable=False)
     examination_date = Column(DateTime, nullable=False)
-    doctor_id = Column(BigInteger, ForeignKey('doctors.id'))
     examination_list_id = Column(BigInteger, ForeignKey('examination_list.id'))
     patient_id = Column(BigInteger, ForeignKey('patients.id', ondelete='CASCADE'), nullable=False)
 

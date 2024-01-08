@@ -11,23 +11,31 @@
 
 {% block js_body %}
     <script src="{{ url_for('static', filename='js/employee/nurse.js') }}"></script>
+    <script>
+        window.onload = function () {
+            const modalTitle = document.querySelector('.modal-title')
+            const modalBody = document.querySelector('.modal-body')
+            const btnConfirm = document.querySelector('.btn-modal-confirm')
+
+            btnConfirm.setAttribute('form', 'create-examination-form')
+            modalTitle.innerHTML = 'CREATE AN EXAMINATION LIST'
+            modalBody.innerHTML = 'Are you sure you want to create?'
+        }
+    </script>
 {% endblock %}
 
 {% block content %}
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#" class="logo">
+        <a href="{{ url_for('index') }}" class="logo">
             <div class="logo-name">F & H</div>
         </a>
-        <ul class="side-menu">
-            <li id="manage-btn" class="active"><a href="#"><i class="bx fa-solid fa-bars-progress"></i>Examination list</a>
-            </li>
-            <li id="examination-btn"><a href="#"><i class="bx fa-solid fa-list"></i>Create</a></li>
-            <li style="margin-top: 300px"><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i
-                    class="bx fa-solid fa-user"></i>Profile</a></li>
+        <ul class="side-menu d-flex flex-column">
+            <li id="appointment-list-btn" class="active"><a href="javascript:void(0)"><i class="bx fa-solid fa-bars-progress"></i>Appointment list</a></li>
+            <li id="create-examination-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-list"></i>Create list</a></li>
+            <li style="margin-top: 520px"><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
             <li><a href="#"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
-            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a>
-            </li>
+            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -42,15 +50,23 @@
                     <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
-            <a href="#" class="profile" style="display: flex; align-items: center">
-                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar"
-                     style="margin-right: 8px">
-                Maryokuu
+            <a href="javascript:void(0)" class="profile" style="display: flex; align-items: center">
+                <img src="{{ current_user.avatar }}" alt="Avatar" style="margin-right: 8px">
+                {{ current_user.user.full_name }}
             </a>
         </nav>
 
         <!-- End of Navbar -->
         <h1 style="text-transform: uppercase" class="manage-title">appointment list</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category != 'message' %}
+                        <div class="alert alert-{{ category }} text-center mt-3 text-center" style="width: 50%; margin: 16px auto;">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <div class="table-manage">
             <table>
                 <tr>
@@ -79,9 +95,16 @@
                             <!-- Red: critical-low -->
                             <!-- Green: positive-medium -->
                             <!-- Yellow: attention-low -->
-                            <div class="status-tag attention-low">
-                                <i class="highlight attention-low"></i>
-                                <p class="status-tag__txt bac-l-stack-xs">Pending</p>
+                            <div class="status-tag {% if examination_schedule.status %}positive-medium{% else %}attention-low{% endif %}">
+                                <i class="highlight {% if examination_schedule.status %}positive-medium{% else %}attention-low{% endif %}"
+                                   style="--iteration-count: infinite;"></i>
+                                <p class="status-tag__txt bac-l-stack-xs">
+                                    {% if examination_schedule.status %}
+                                        Accepted
+                                    {% else %}
+                                        Pending
+                                    {% endif %}
+                                </p>
                             </div>
                         </td>
                     </tr>
@@ -91,38 +114,36 @@
 
         <h1 style="text-transform: uppercase" class="examination-title">medical examination list</h1>
         <div class="table-examination">
-            <table>
-                <tr>
-                    <th colspan="9" style="background-color: transparent;">
-                        <span style="color: var(--black); margin-right: 20px; font-weight: 500;">Day of examination</span>
-                        <input type="date">
-                    </th>
-                </tr>
-                <tr>
-                    <th>ID</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Gender</th>
-                    <th>Phone</th>
-                    <th>Registration Date</th>
-                    <th>Examination day</th>
-                    <th>Examination time</th>
-                </tr>
+            <form method="post" action="{{ url_for('employee_nurse') }}" class="create-examination-form" id="create-examination-form">
+                <table id="create-examination-table">
+                    <tr>
+                        <th colspan="9" style="background-color: transparent;">
+                            <label for="day_of_exam" style="color: var(--black); margin-right: 20px; font-weight: 500;">Day of examination</label>
+                            <input type="date" id="day_of_exam" name="day_of_exam" required>
+                        </th>
+                    </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>0349568896</td>
-                    <td>07/01/2024</td>
-                    <td>08/01/2024</td>
-                    <td>1:00 PM</td>
-                </tr>
-            </table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full name</th>
+                        <th>Gender</th>
+                        <th>Date of birth</th>
+                        <th>Address</th>
+                    </tr>
+
+                    <tr class="tr-body">
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <div class="ex-btn">
-            <button class="btn-ex">Create an examination schedule</button>
+            <button type="submit" class="btn btn-ex" data-bs-toggle="modal" data-bs-target="#myModal" disabled>Create an examination list</button>
         </div>
     </div>
+    {% include 'layout/modal.html' %}
 {% endblock %}

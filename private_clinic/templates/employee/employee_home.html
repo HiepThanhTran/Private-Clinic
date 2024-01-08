@@ -1,0 +1,52 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Employee{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <style>
+        header {
+            position: relative;
+        }
+        body {
+            overflow-y: hidden;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container d-flex flex-column align-items-center">
+        <div class="row mt-3">
+            <div class="card col-6 mb-3 me-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Nurse</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="{{ url_for('employee_nurse') }}" class="btn btn-primary w-50">Go</a>
+                </div>
+            </div>
+            <div class="card col-6 ms-3 mb-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Doctor</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="{{ url_for('employee_doctor') }}" class="btn btn-primary w-50">Go</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="card col-6 mt-3 me-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Cashier</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="{{ url_for('employee_cashier') }}" class="btn btn-primary w-50">Go</a>
+                </div>
+            </div>
+            <div class="card col-6 mt-3 ms-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Administrator</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary w-50">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

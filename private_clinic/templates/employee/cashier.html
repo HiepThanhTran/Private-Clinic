@@ -1,0 +1,319 @@
+{% extends 'layout/non_base.html' %}
+
+{% block title %}Cashier{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/cashier.css') }}">
+{% endblock %}
+
+{% block js_body %}
+    <script src="{{ url_for('static', filename='js/employee/cashier.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <div class="logo-name">F & H</div>
+        </a>
+        <ul class="side-menu">
+            <li id="manage-btn" class="active">
+                <a href="#">
+                    <i class="bx fa-solid fa-bars-progress"></i>
+                    Manage
+                </a>
+            </li>
+            <li id="bill-btn">
+                <a href="#">
+                    <i class="bx fa-solid fa-newspaper"></i>
+                    Bill
+                </a>
+            </li>
+
+            <li style="margin-top: 300px">
+                <a href="#">
+                    <i class="bx fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bx fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logout">
+                    <i class="bx fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+
+            <a href="#" class="profile" style="display: flex; align-items: center">
+                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar"
+                     style="margin-right: 8px">
+                Maria
+            </a>
+        </nav>
+
+        <!-- End of Navbar -->
+        <h1 class="manage-title">Manage medical examination</h1>
+        <div class="table-manage">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Day of the examination</th>
+                    <th>Date created</th>
+                    <th>Examination package</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>Package 1</td>
+                    <td>No</td>
+                    <td>
+                        <button class="detail">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>Package 1</td>
+                    <td>No</td>
+                    <td>
+                        <button class="detail">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>Package 1</td>
+                    <td>No</td>
+                    <td>
+                        <button class="detail">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>Package 1</td>
+                    <td>No</td>
+                    <td>
+                        <button class="detail">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>Package 1</td>
+                    <td>No</td>
+                    <td>
+                        <button class="detail">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h1 class="bill-title">Manage issued invoices</h1>
+        <div class="table-bill-issued">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Day of the examination</th>
+                    <th>Date created</th>
+                    <th>Total</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>4.000.000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>4.000.000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>4.000.000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Hiep</td>
+                    <td>Thanh</td>
+                    <td>09/01/2024</td>
+                    <td>10/01/2024</td>
+                    <td>4.000.000 VNĐ</td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-detail">
+            <table>
+                <tr>
+                    <th colspan="6" style="background: var(--primary-color)">MEDICAL BILL</th>
+                </tr>
+
+                <tr style="background-color: var(--white);">
+                    <td colspan="3">Patient Name: Alexander Michael</td>
+                    <td colspan="3">Examination: 01/03/2024</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">Systoms: Sneezing, coughing</td>
+                    <td colspan="3">Diagnostic: Allergies</td>
+                </tr>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Medicine</th>
+                    <th>Unit</th>
+                    <th>Amount</th>
+                    <th>Directions</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Antihistamine</td>
+                    <td>Packs</td>
+                    <td>1 packs</td>
+                    <td>Use right after having symtoms</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modal-print">
+            <table>
+                <tr>
+                    <th colspan="6">Bill</th>
+                </tr>
+
+                <tr>
+                    <td colspan="3">Name: Hiep Thanh</td>
+                    <td colspan="3">Day of the examination: 09/01/2024</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">Examination fee: 3000000 VNĐ</td>
+                    <td colspan="3">Medicine money: 1000000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <td colspan="6">Total: 4000000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <th colspan="6">
+                        <button class="print-btn">Print</button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}

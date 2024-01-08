@@ -31,7 +31,6 @@ body {
     background: var(--light);
     width: 230px;
     height: 100%;
-    z-index: 2000;
     overflow-x: hidden;
     scrollbar-width: none;
     transition: all 0.3s ease;
@@ -243,8 +242,8 @@ body {
 }
 
 .content nav .profile img {
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -398,7 +397,7 @@ tr:nth-child(even) {
 }
 
 /* Input Date */
-input[type="date"]{
+input[type="date"] {
     background-color: #0080ff;
     padding: 8px;
     color: #ffffff;
@@ -407,9 +406,16 @@ input[type="date"]{
     outline: none;
     border-radius: 5px;
 }
-::-webkit-calendar-picker-indicator{
+
+::-webkit-calendar-picker-indicator {
     background-color: #ffffff;
     padding: 5px;
     cursor: pointer;
     border-radius: 3px;
+}
+
+.create-examination-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
