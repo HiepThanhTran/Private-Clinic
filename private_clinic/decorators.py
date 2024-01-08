@@ -1,7 +1,9 @@
-from private_clinic.models import AccountRoleEnum
+from functools import wraps
+
 from flask import flash, redirect, url_for
 from flask_login import current_user
-from functools import wraps
+
+from private_clinic.models import AccountRoleEnum
 
 
 def employee_login_required(func):
@@ -46,3 +48,17 @@ def check_is_confirmed(func):
         return func(*args, **kwargs)
 
     return decorated_function
+
+
+def check_role(role):
+    def decorator(func):
+        @wraps(func)
+        def decorated_function(*args, **kwargs):
+            if current_user.is_authenticated and current_user.role != role:
+                flash('Please log in to your account with the correct role', 'warning')
+                return redirect(url_for('notification'))
+            return func(*args, **kwargs)
+
+        return decorated_function
+
+    return decorator

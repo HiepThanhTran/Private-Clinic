@@ -1,7 +1,7 @@
-.container
-{
+.container {
     grid-template-columns: 16rem 52rem 52rem;
 }
+
 .chart {
     margin-top: 60px;
     width: 100%;
@@ -10,24 +10,30 @@
     border-radius: var(--card-border-radius);
     transition: all 0.2s;
 }
-.chart:hover{
+
+.chart:hover {
     box-shadow: none;
 }
-.sales__chart{
+
+.sales__chart {
     margin-top: 80px;
 }
-.medicine__chart{
+
+.medicine__chart {
     display: none;
 }
-.medicine__table{
+
+.medicine__table {
     display: none;
 }
-.choose__table{
-    margin-top:20px;
+
+.choose__table {
+    margin-top: 20px;
     display: flex;
 }
-.choose__table h2{
-    padding:10px;
+
+.choose__table h2 {
+    padding: 10px;
     margin-right: 10px;
     color: var(--color-dark);
     background-color: var(--color-white);
@@ -36,44 +42,47 @@
     transition: all 0.2s;
     cursor: pointer;
 }
-.choose__table h2:hover{
+
+.choose__table h2:hover {
     box-shadow: 0 0 0 0.2rem rgba(0, 115, 255, 0.86);
 }
-.choose__table .is__choose{
+
+.choose__table .is__choose {
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
-.sort__table{
-    left:0;
-    margin-left:3px;
+
+.sort__table {
+    left: 0;
+    margin-left: 3px;
     padding: 10px;
     border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
     color: var(--color-dark);
     background-color: var(--color-white);
     border-color: var(--color-white);
 }
-.sort__table:active{
-    box-shadow: var(--box-shadow)!important;
-    border-color: var(--color-white)!important;
+
+.sort__table:active {
+    box-shadow: var(--box-shadow) !important;
+    border-color: var(--color-white) !important;
 }
-.search__table{
-    left:0;
-    margin-left:3px;
+
+.search__table {
+    left: 0;
+    margin-left: 3px;
     padding: 10px;
     border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
     color: var(--color-dark);
     background-color: var(--color-white);
 }
-.choose__date{
-    left:0;
-    margin-left:3px;
+
+.choose__date {
+    left: 0;
+    margin-left: 3px;
     padding: 10px;
     border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
     color: var(--color-dark);
     background-color: var(--color-white);

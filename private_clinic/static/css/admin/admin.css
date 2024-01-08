@@ -215,7 +215,7 @@ aside .sidebar a:hover{
 }
 
 aside .sidebar a:hover span{
-    margin-left: 0.4rem;
+    /*margin-left: 0.4rem;*/
 }
 
 aside .sidebar .message-count{
@@ -256,7 +256,6 @@ main .statistic-table table:hover{
 main .statistic-table .choose__month{
     padding: 10px;
     border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
     color: var(--color-dark);
     background-color: var(--color-white);

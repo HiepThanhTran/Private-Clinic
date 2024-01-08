@@ -31,7 +31,6 @@ body {
     background: var(--light);
     width: 230px;
     height: 100%;
-    z-index: 2000;
     overflow-x: hidden;
     scrollbar-width: none;
     transition: all 0.3s ease;
@@ -149,7 +148,6 @@ body {
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 1000;
 }
 
 .content nav::before {

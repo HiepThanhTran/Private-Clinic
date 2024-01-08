@@ -3,7 +3,7 @@ const detailBtn = document.querySelectorAll(".detail");
 const modalDetail = document.querySelector(".modal-detail");
 const modalDetailContainer = document.querySelector(".modal-detail table");
 
-for (var i = 0; i < detailBtn.length; i++) {
+for (let i = 0; i < detailBtn.length; i++) {
     detailBtn[i].addEventListener("click", function () {
         modalDetail.classList.add("open");
     })
@@ -21,7 +21,7 @@ modalDetailContainer.addEventListener("click", function (event) {
 const invoiceBtn = document.querySelectorAll(".invoice");
 const modalPrint = document.querySelector(".modal-print");
 const modalPrintContainer = document.querySelector(".modal-print table");
-for (var i = 0; i < invoiceBtn.length; i++) {
+for (let i = 0; i < invoiceBtn.length; i++) {
     invoiceBtn[i].addEventListener("click", function () {
         modalPrint.classList.add("open");
     })

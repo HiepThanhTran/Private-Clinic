@@ -6,7 +6,6 @@
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/nurse.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/status_tags.css') }}">
 {% endblock %}
 
 {% block js_body %}
@@ -30,12 +29,13 @@
         <a href="{{ url_for('index') }}" class="logo">
             <div class="logo-name">F & H</div>
         </a>
-        <ul class="side-menu d-flex flex-column">
+        <ul class="side-menu">
             <li id="appointment-list-btn" class="active"><a href="javascript:void(0)"><i class="bx fa-solid fa-bars-progress"></i>Appointment list</a></li>
             <li id="create-examination-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-list"></i>Create list</a></li>
-            <li style="margin-top: 520px"><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
-            <li><a href="#"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
-            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            <li id=""><a href="javascript:void(0)"><i class=""></i>Appointment</a></li>
+            <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
+            <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
+            <li style="margin-top: 50vh"><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->

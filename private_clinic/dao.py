@@ -1,14 +1,15 @@
+import cloudinary.uploader
+from passlib.hash import sha256_crypt
+from sqlalchemy import func
+
+from private_clinic.app import db
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule, \
     ExaminationList
-from private_clinic.app import db
-from sqlalchemy import func, asc, desc
-import cloudinary.uploader
-import hashlib
 
 
 def authenticate(username, password):
     if username and password:
-        password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+        password = sha256_crypt.encrypt(password.strip())
 
         return Account.query.filter(Account.username.__eq__(username.strip()), Account.password.__eq__(password)).first()
 
@@ -34,7 +35,7 @@ def count_examination_schedule_by_date(date):
 
 
 def create_account(username, password):
-    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    password = sha256_crypt.encrypt(password.strip())
     account = Account(username=username.strip(), password=password)
 
     db.session.add(account)
@@ -108,13 +109,13 @@ def create_doctor(doctor_id):
 
 def create_examination_schedule(patient_id, examination_date, **kwargs):
     examination_schedule = ExaminationSchedule(
-        first_name=kwargs['first_name'],
-        last_name=kwargs['last_name'],
-        gender=kwargs['gender'],
+        first_name=kwargs['first_name'].strip(),
+        last_name=kwargs['last_name'].strip(),
+        gender=kwargs['gender'].strip(),
         dob=kwargs['dob'],
-        address=kwargs['address'],
-        email=kwargs['email'],
-        phone_number=kwargs['phone_number'],
+        address=kwargs['address'].strip(),
+        email=kwargs['email'].strip(),
+        phone_number=kwargs['phone_number'].strip(),
         patient_id=patient_id,
         examination_date=examination_date)
 
@@ -137,7 +138,7 @@ def create_examination_list(examination_date, nurse_id, examination_schedule_id_
 
 
 def update_account_password(account_id, new_password):
-    new_password = str(hashlib.md5(new_password.strip().encode('utf-8')).hexdigest())
+    new_password = sha256_crypt.encrypt(new_password.strip())
 
     account = Account.query.get(account_id)
     account.password = new_password
@@ -152,11 +153,11 @@ def update_profile_user(user_id, **kwargs):
     for field_name, field_value in kwargs.items():
         if field_value:
             if field_name == 'insurance_id':
-                user.patient.insurance_id = field_value
+                user.patient.insurance_id = field_value.strip()
             elif field_name == 'avatar':
                 user.account.avatar = cloudinary.uploader.upload(field_value)['secure_url']
             else:
-                setattr(user, field_name, field_value)
+                setattr(user, field_name, field_value.strip())
 
     db.session.commit()
     return user
@@ -167,7 +168,7 @@ def update_examination_schedule(examination_schedule_id, **kwargs):
 
     for field_name, field_value in kwargs.items():
         if field_value:
-            setattr(examination_schedule, field_name, field_value)
+            setattr(examination_schedule, field_name, field_value.strip())
 
     db.session.commit()
     return examination_schedule

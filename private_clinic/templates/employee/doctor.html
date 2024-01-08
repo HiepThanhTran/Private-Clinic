@@ -15,44 +15,15 @@
 {% block content %}
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#" class="logo">
+        <a href="{{ url_for('index') }}" class="logo">
             <div class="logo-name">F & H</div>
         </a>
         <ul class="side-menu">
-            <li id="manage-btn" class="active">
-                <a href="#">
-                    <i class="bx fa-solid fa-bars-progress"></i>
-                    Manage
-                </a>
-            </li>
-
-            <li id="patient-btn">
-                <a href="#">
-                    <i class="bx fa-solid fa-person"></i>
-                    Patient
-                </a>
-            </li>
-
-            <li style="margin-top: 300px">
-                <a href="#">
-                    <i class="bx fa-solid fa-user"></i>
-                    Profile
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="bx fa-solid fa-gear"></i>
-                    Settings
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="logout">
-                    <i class="bx fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </a>
-            </li>
+            <li id="manage-btn" class="active"><a href="javascript:void(0)"><i class="bx fa-solid fa-bars-progress"></i>Manage</a></li>
+            <li id="patient-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-person"></i>Patient</a></li>
+            <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
+            <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
+            <li style="margin-top: 50vh"><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->

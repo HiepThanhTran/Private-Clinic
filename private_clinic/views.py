@@ -1,11 +1,13 @@
-from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, jsonify
-from flask_login import login_required, current_user, login_user, logout_user
-from private_clinic.decorators import logout_required, check_is_confirmed, employee_login_required, employee_logout_required
-from private_clinic.token import confirm_token, generate_token
-from private_clinic.services import send_email
-from private_clinic.app import db, login, app
-from private_clinic import services
 from datetime import datetime
+
+from flask import render_template, request, redirect, url_for, flash, get_flashed_messages
+from flask_login import login_required, current_user, login_user, logout_user
+
+from private_clinic import services
+from private_clinic.app import db, login, app
+from private_clinic.decorators import logout_required, check_is_confirmed, employee_logout_required
+from private_clinic.services import send_email
+from private_clinic.token import confirm_token, generate_token
 
 
 # --------------------RENDER FUNCTIONS-------------------- #
@@ -214,6 +216,7 @@ def employee_login():
 
 
 # @employee_login_required
+# @check_role(AccountRoleEnum.NURSE)
 def employee_nurse():
     if request.method.__eq__('POST'):
         day_of_exam = request.form.get('day_of_exam')
@@ -231,11 +234,13 @@ def employee_nurse():
 
 
 # @employee_login_required
+# @check_role(AccountRoleEnum.DOCTOR)
 def employee_doctor():
     return render_template(template_name_or_list='employee/doctor.html')
 
 
 # @employee_login_required
+# @check_role(AccountRoleEnum.STAFF)
 def employee_cashier():
     return render_template(template_name_or_list='employee/cashier.html')
 
@@ -243,8 +248,10 @@ def employee_cashier():
 def admin_dashboard():
     return render_template(template_name_or_list='admin/dashboard.html')
 
+
 def admin_analytics():
     return render_template(template_name_or_list='admin/analytics.html')
+
 
 # --------------------VERIFY EMAIL-------------------- #
 @login_required
