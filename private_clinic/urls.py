@@ -27,6 +27,9 @@ app.add_url_rule('/mail/confirm/<token>', 'confirm_email', views.confirm_email)
 app.add_url_rule('/mail/resend', 'resend_confirmation', views.resend_confirmation)
 app.add_url_rule('/mail/password-reset/<token>', 'password_reset', views.password_reset)
 
+app.add_url_rule('/admin/dashboard', 'dashboard', views.admin_dashboard)
+app.add_url_rule('/admin/analytics', 'analytics', views.admin_analytics)
+
 app.add_url_rule('/api/authentication/check-signin-infor', 'check_signin_infor', fetcher.check_signin_infor, methods=['POST'])
 app.add_url_rule('/api/authentication/check-signup-infor', 'check_signup_infor', fetcher.check_signup_infor, methods=['POST'])
 app.add_url_rule('/api/authentication/check-profile-infor', 'check_profile_infor', fetcher.check_profile_infor, methods=['POST'])

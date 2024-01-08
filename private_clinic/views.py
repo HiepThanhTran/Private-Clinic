@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, jsonify
 from flask_login import login_required, current_user, login_user, logout_user
-from private_clinic.decorators import logout_required, check_is_confirmed, employee_login_required, employee_logout_required
+from private_clinic.decorators import logout_required, check_is_confirmed, employee_login_required, \
+    employee_logout_required
 from private_clinic.token import confirm_token, generate_token
 from private_clinic.services import send_email
 from private_clinic.app import db, login, app
@@ -161,8 +162,9 @@ def appointment():
             phone_number=phone_number,
             address=address)
 
-        flash('Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
-              'success')
+        flash(
+            'Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
+            'success')
         return redirect(url_for('notification'))
 
     return render_template(template_name_or_list='customer/appointment.html')
@@ -213,7 +215,7 @@ def employee_nurse():
     # examination_schedule_list = services.get_examination_schedule_list()
 
     return render_template(template_name_or_list='employee/nurse.html')
-                           # examination_schedule_list=examination_schedule_list)
+    # examination_schedule_list=examination_schedule_list)
 
 
 @employee_login_required
@@ -225,6 +227,12 @@ def employee_doctor():
 def employee_cashier():
     return render_template(template_name_or_list='cashier.html')
 
+
+def admin_dashboard():
+    return render_template(template_name_or_list='admin/dashboard.html')
+
+def admin_analytics():
+    return render_template(template_name_or_list='admin/analytics.html')
 
 # --------------------VERIFY EMAIL-------------------- #
 @login_required
