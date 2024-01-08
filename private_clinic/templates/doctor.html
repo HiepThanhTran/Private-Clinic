@@ -25,10 +25,11 @@
                     Manage
                 </a>
             </li>
-            <li id="medical-bill-btn">
+
+            <li id="patient-btn">
                 <a href="#">
-                    <i class="bx fa-solid fa-newspaper"></i>
-                    Medical bill
+                    <i class="bx fa-solid fa-person"></i>
+                    Patient
                 </a>
             </li>
 
@@ -184,8 +185,115 @@
             </table>
         </div>
 
-        <h1 class="examination-bill-title">Create Medical Bill</h1>
-        <div class="table-examination-bill">
+        <h1 class="patient-title">List of patients</h1>
+        <div class="table-patient">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Full name</th>
+                    <th>Gender</th>
+                    <th>Date</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Thanh Hiep</td>
+                    <td>Male</td>
+                    <td>29/1/2003</td>
+                    <td>0388227064</td>
+                    <td>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Thanh Hiep</td>
+                    <td>Male</td>
+                    <td>29/1/2003</td>
+                    <td>0388227064</td>
+                    <td>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Thanh Hiep</td>
+                    <td>Male</td>
+                    <td>29/1/2003</td>
+                    <td>0388227064</td>
+                    <td>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Thanh Hiep</td>
+                    <td>Male</td>
+                    <td>29/1/2003</td>
+                    <td>0388227064</td>
+                    <td>
+                        <button class="invoice">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modal-add-medicine">
+            <div class="wrapper">
+                <div class="modal-content">
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input spellcheck="false" type="text" placeholder="Search">
+                    </div>
+                    <ul class="options">
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                        <li>Paracetamol</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-add-examination-course">
+            <div class="wrapper-examincation">
+                <div class="modal-content">
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input spellcheck="false" type="text" placeholder="Search">
+                    </div>
+                    <ul class="options">
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                        <li>Course 1</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-create-medical-bill">
             <table>
                 <tr>
                     <th colspan="6" style="background: var(--primary-color)">MEDICAL BILL</th>
@@ -197,8 +305,14 @@
                 </tr>
 
                 <tr>
-                    <td colspan="3">Systoms: Sneezing, coughing</td>
-                    <td colspan="3">Diagnostic: Allergies</td>
+                    <td colspan="3">
+                        Systoms:
+                        <input type="text" placeholder="Enter systoms">
+                    </td>
+                    <td colspan="3">
+                        Diagnostic:
+                        <input type="text" placeholder="Enter diagnostic">
+                    </td>
                 </tr>
 
                 <tr>
@@ -227,13 +341,13 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                         <button class="btn-remove-medical-bill">
+                        <button class="btn-remove-medical-bill">
                             <i class="fa-solid fa-x"></i>
                         </button>
                     </td>
                 </tr>
 
-                  <tr>
+                <tr>
                     <td>2</td>
                     <td>Antihistamine</td>
                     <td>Packs</td>
@@ -244,13 +358,13 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                         <button class="btn-remove-medical-bill">
+                        <button class="btn-remove-medical-bill">
                             <i class="fa-solid fa-x"></i>
                         </button>
                     </td>
                 </tr>
 
-                  <tr>
+                <tr>
                     <td>3</td>
                     <td>Antihistamine</td>
                     <td>Packs</td>
@@ -261,13 +375,13 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                         <button class="btn-remove-medical-bill">
+                        <button class="btn-remove-medical-bill">
                             <i class="fa-solid fa-x"></i>
                         </button>
                     </td>
                 </tr>
 
-                  <tr>
+                <tr>
                     <td>4</td>
                     <td>Antihistamine</td>
                     <td>Packs</td>
@@ -278,13 +392,13 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                         <button class="btn-remove-medical-bill">
+                        <button class="btn-remove-medical-bill">
                             <i class="fa-solid fa-x"></i>
                         </button>
                     </td>
                 </tr>
 
-                  <tr>
+                <tr>
                     <td>...</td>
                     <td>
                         <a href="#" class="add-medical">Add medical</a>
@@ -297,53 +411,12 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                         <button class="btn-remove-medical-bill">
+                        <button class="btn-remove-medical-bill">
                             <i class="fa-solid fa-x"></i>
                         </button>
                     </td>
                 </tr>
             </table>
         </div>
-
-        <div class="modal-add-medicine">
-            <div class="wrapper">
-                <div class="modal-content">
-                        <div class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input spellcheck="false" type="text" placeholder="Search">
-                        </div>
-                        <ul class="options">
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                            <li>Paracetamol</li>
-                        </ul>
-                    </div>
-            </div>
-        </div>
-
-        <div class="modal-add-examination-course">
-            <div class="wrapper-examincation">
-                 <div class="modal-content">
-                        <div class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input spellcheck="false" type="text" placeholder="Search">
-                        </div>
-                        <ul class="options">
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                            <li>Course 1</li>
-                        </ul>
-                    </div>
-            </div>
-        </div>
+    </div>
 {% endblock %}

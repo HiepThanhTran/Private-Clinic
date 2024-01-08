@@ -1,26 +1,26 @@
 const manageBtn = document.querySelector("#manage-btn");
-const medicalBillBtn = document.querySelector("#medical-bill-btn");
+const patientBtn = document.querySelector("#patient-btn");
 const tableManage = document.querySelector(".table-manage");
 const tableManageTitle = document.querySelector(".manage-title");
-const tableExaminationBill = document.querySelector(".table-examination-bill");
-const tableExaminationBillTitle = document.querySelector(".examination-bill-title");
+const tablePatient = document.querySelector(".table-patient");
+const tablePatientTitle = document.querySelector(".patient-title");
 manageBtn.addEventListener("click", function (event) {
     manageBtn.classList.add("active");
     tableManageTitle.style.display = "block";
     tableManage.style.display = "flex";
     tableManage.style.justifyContent = "center";
     tableManage.style.alignItems = "center";
-    tableExaminationBillTitle.style.display = "none";
-    tableExaminationBill.style.display = "none";
-    medicalBillBtn.classList.remove("active");
+    tablePatientTitle.style.display = "none";
+    tablePatient.style.display = "none";
+    patientBtn.classList.remove("active");
 })
 
-medicalBillBtn.addEventListener("click", function (event) {
-    medicalBillBtn.classList.add("active");
-    tableExaminationBillTitle.style.display = "block";
-    tableExaminationBill.style.display = "flex";
-    tableExaminationBill.style.justifyContent = "center";
-    tableExaminationBill.style.alignItems = "center";
+patientBtn.addEventListener("click", function (event) {
+    patientBtn.classList.add("active");
+    tablePatientTitle.style.display = "block";
+    tablePatient.style.display = "flex";
+    tablePatient.style.justifyContent = "center";
+    tablePatient.style.alignItems = "center";
     tableManageTitle.style.display = "none";
     tableManage.style.display = "none";
     manageBtn.classList.remove("active");
@@ -57,3 +57,22 @@ modalAddExCourse.addEventListener("click",function (){
 modalContainerExCourse.addEventListener("click",function (event){
     event.stopPropagation();
 })
+
+const invoiceBtn = document.querySelectorAll("button.invoice");
+const modalCreateMedicalBill = document.querySelector(".modal-create-medical-bill");
+const modalContainerCreateMedicalBill = document.querySelector(".modal-create-medical-bill table")
+for(var i=0;i<invoiceBtn.length;i++)
+{
+    invoiceBtn[i].addEventListener("click",function (){
+       modalCreateMedicalBill.classList.add("open");
+    })
+}
+
+modalCreateMedicalBill.addEventListener("click",function (){
+    modalCreateMedicalBill.classList.remove("open");
+})
+
+modalContainerCreateMedicalBill.addEventListener("click",function (e){
+    e.stopPropagation();
+})
+

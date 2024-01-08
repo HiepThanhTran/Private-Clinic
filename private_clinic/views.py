@@ -216,7 +216,7 @@ def employee_nurse():
                            # examination_schedule_list=examination_schedule_list)
 
 
-@employee_login_required
+# @employee_login_required
 def employee_doctor():
     return render_template(template_name_or_list='doctor.html')
 

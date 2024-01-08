@@ -72,7 +72,7 @@ body {
     position: relative;
 }
 
-.sidebar .side-menu li.active a{
+.sidebar .side-menu li.active a {
     color: var(--sub-color);
 }
 
@@ -221,7 +221,7 @@ body {
     position: relative;
 }
 
-.content nav .notif i{
+.content nav .notif i {
     color: var(--sub-color);
 }
 
@@ -249,11 +249,11 @@ body {
     border-radius: 50%;
 }
 
-.content nav .profile{
+.content nav .profile {
     color: var(--black);
 }
 
-.content nav .profile:hover{
+.content nav .profile:hover {
     color: var(--black);
 }
 
@@ -285,7 +285,7 @@ body {
 
 /* Table */
 .manage-title,
-.examination-bill-title {
+.patient-title {
     font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
@@ -294,7 +294,7 @@ body {
 }
 
 .table-manage,
-.table-examination-bill {
+.table-patient {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -483,4 +483,54 @@ tr:nth-child(even) {
     background-color: var(--primary-color);
     color: var(--white);
     border-radius: 5px;
+}
+
+input {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+button.invoice {
+    padding: 1px 4px;
+    border: 1px solid var(--sub-color);
+    color: var(--sub-color);
+    transition: all 0.2s ease;
+    margin: 0 2px;
+}
+
+button.invoice:hover {
+    padding: 1px 4px;
+    background-color: var(--sub-color);
+    color: var(--white);
+}
+
+.patient-title {
+    display: none;
+}
+
+.table-patient {
+    display: none;
+}
+
+.modal-create-medical-bill {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+}
+
+.modal-create-medical-bill table {
+    width: 1200px;
+    position: fixed;
+    top: 55%;
+    left: 58.2%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-create-medical-bill.open {
+    display: block;
 }

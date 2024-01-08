@@ -46,231 +46,534 @@
             <div class="my-row">
                 <div class="my-col-3">
                     <div class="left">
-                        <div class="filter-title">
+                        <div class="filter">
                             <i class="fa-solid fa-filter"></i>
-                            <h3>Filter</h3>
+                            <h3>Advanced filter</h3>
                         </div>
 
-                        <div class="filter-content">
-                            <div class="filter-value filter-price" style="border-bottom: 1px solid #d3d1d8;">
-                                <div class="filter-value__title">
-                                    <span>Price</span>
-                                    <i class="fa-solid fa-chevron-down chevron-down-price"></i>
-                                    <i class="fa-solid fa-chevron-up chevron-up-price"></i>
-                                </div>
-
-                                <ul class="filter-value__content">
-                                    <li class="filter-value__content--option">
-                                        <button>Ascending</button>
-                                    </li>
-                                    <li class="filter-value__content--option">
-                                        <button>Descending</button>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="filter-value filter-type">
-                                <div class="filter-value__title">
-                                    <span>Type Medicine</span>
-                                    <i class="fa-solid fa-chevron-down chevron-down-type"></i>
-                                    <i class="fa-solid fa-chevron-up chevron-up-type"></i>
-                                </div>
-
-                                <div class="filter-value__content">
-                                    <form action="" class="form-filter-type">
-                                        <div class="messageBoxType">
-                                            <input required="" placeholder="Type medicine" type="text"
-                                                   id="messageInputType"/>
-                                            <button>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-                                                    <path
-                                                            fill="none"
-                                                            d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                                    ></path>
-                                                    <path
-                                                            stroke-linejoin="round"
-                                                            stroke-linecap="round"
-                                                            stroke-width="33.67"
-                                                            stroke="#6c6c6c"
-                                                            d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                                    ></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </form>
+                        <div class="filter-price">
+                            <div class="filter-title">
+                                <h3>Price</h3>
+                                <div class="filter-title__btn">
+                                    <i class="fa-solid fa-chevron-down btn-down"></i>
+                                    <i class="fa-solid fa-chevron-up btn-up"></i>
                                 </div>
                             </div>
 
-                            <div class="filter-value filter-name">
-                                <div class="filter-value__title">
-                                    <span>Name Medicine</span>
-                                    <i class="fa-solid fa-chevron-down chevron-down-name"></i>
-                                    <i class="fa-solid fa-chevron-up chevron-up-name"></i>
-                                </div>
+                            <div class="filter-value">
+                                <button>Ascending</button>
+                                <button>Decrease</button>
+                            </div>
+                        </div>
 
-                                <div class="filter-value__content">
-                                    <form action="" class="form-filter-name">
-                                        <div class="messageBoxName">
-                                            <input required="" placeholder="Name medicine" type="text"
-                                                   id="messageInputName"/>
-                                            <button>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-                                                    <path
-                                                            fill="none"
-                                                            d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                                    ></path>
-                                                    <path
-                                                            stroke-linejoin="round"
-                                                            stroke-linecap="round"
-                                                            stroke-width="33.67"
-                                                            stroke="#6c6c6c"
-                                                            d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                                    ></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </form>
+                        <div class="filter-price">
+                            <div class="filter-title">
+                                <h3>Price</h3>
+                                <div class="filter-title__btn">
+                                    <i class="fa-solid fa-chevron-down btn-down"></i>
+                                    <i class="fa-solid fa-chevron-up btn-up"></i>
                                 </div>
+                            </div>
+
+                            <div class="filter-value">
+                                <button>Ascending</button>
+                                <button>Decrease</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="my-col-9">
-                    <div class="cart-medicine">
-                        <h1 class="cart-medicine__title">F&H Medicine Store</h1>
-
-                        <div class="cart-medicine__shopping">
-                            <div class="cart-medicine__shopping--image">
-                                <img src="{{ url_for('static', filename='images/shopping.svg') }}" alt="Shopping">
+                    <div class="card-list">
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-1.webp') }}" alt="Medicine-1">
                             </div>
-                            <span class="cart-medicine__shopping--quantity">0</span>
-                        </div>
-                    </div>
 
-                    <div class="cart-list">
-                        <div class="cart-item">
-                            <div class="cart-product">
-                                <div class="cart-product__image">
-                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}" alt="Medicine-1">
-                                </div>
+                            <div class="card-item__type-medicine">
+                                <span>Digestive</span>
+                            </div>
 
-                                <div class="cart-product__des">
-                                    <div class="cart-product__des--tag">
-                                        Digestive system, liver and bile
-                                    </div>
-                                </div>
+                            <div class="card-item__name">
+                                <span>Truong Phuc Colon</span>
+                            </div>
 
-                                <div class="cart-product__content">
-                                    <div class="cart-product__content--name">Truong Phuc Colon Medicine</div>
-                                    <div class="cart-product__content--price">105.000 VNĐ</div>
-                                    <div class="cart-product__content--type">
-                                        <span>Type:</span> Box
-                                    </div>
-                                    <div class="cart-product__content--des">
-                                        <span> Ingredient:</span> Hoang Lien 1.35g, Moc Huong 1.2g, Atractylodes 0.9g, White
-                                        Dahlia, Hau Loc, Licorice, Astragalus, Talc.
-                                    </div>
-                                </div>
+                            <div class="card-item__price">105.000 VNĐ</div>
 
-                                <button class="cart-product__btn">Add to Cart</button>
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Hoang Lien, Moc Huong, White Atractylodes, White Dahlia, Hau Loc, Licorice, Astragalus, Talc.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
                             </div>
                         </div>
 
-                        <div class="cart-item">
-                            <div class="cart-product">
-                                <div class="cart-product__image">
-                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}" alt="Medicine-1">
-                                </div>
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-2.webp') }}" alt="Medicine-2">
+                            </div>
 
-                                <div class="cart-product__des">
-                                    <div class="cart-product__des--tag">
-                                        Digestive system, liver and bile
-                                    </div>
-                                </div>
+                            <div class="card-item__type-medicine">
+                                <span>Digestive</span>
+                            </div>
 
-                                <div class="cart-product__content">
-                                    <div class="cart-product__content--name">Truong Phuc Colon Medicine</div>
-                                    <div class="cart-product__content--price">105.000 VNĐ</div>
-                                    <div class="cart-product__content--type">
-                                        <span>Type:</span> Box
-                                    </div>
-                                    <div class="cart-product__content--des">
-                                        <span> Ingredient:</span> Hoang Lien 1.35g, Moc Huong 1.2g, Atractylodes 0.9g, White
-                                        Dahlia, Hau Loc, Licorice, Astragalus, Talc.
-                                    </div>
-                                </div>
+                            <div class="card-item__name">
+                                <span>Truong Phuc Jelly</span>
+                            </div>
 
-                                <button class="cart-product__btn">Add to Cart</button>
+                            <div class="card-item__price">95.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Xa Tien Tu, Bach Mao Can, Sinh Dia, Y Di, Kim Tien Thao, Kim Moc.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
                             </div>
                         </div>
 
-                        <div class="cart-item">
-                            <div class="cart-product">
-                                <div class="cart-product__image">
-                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}" alt="Medicine-1">
-                                </div>
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-3.webp') }}" alt="Medicine-1">
+                            </div>
 
-                                <div class="cart-product__des">
-                                    <div class="cart-product__des--tag">
-                                        Digestive system, liver and bile
-                                    </div>
-                                </div>
+                            <div class="card-item__type-medicine">
+                                <span>Digestive</span>
+                            </div>
 
-                                <div class="cart-product__content">
-                                    <div class="cart-product__content--name">Truong Phuc Colon Medicine</div>
-                                    <div class="cart-product__content--price">105.000 VNĐ</div>
-                                    <div class="cart-product__content--type">
-                                        <span>Type:</span> Box
-                                    </div>
-                                    <div class="cart-product__content--des">
-                                        <span> Ingredient:</span> Hoang Lien 1.35g, Moc Huong 1.2g, Atractylodes 0.9g, White
-                                        Dahlia, Hau Loc, Licorice, Astragalus, Talc.
-                                    </div>
-                                </div>
+                            <div class="card-item__name">
+                                <span>Truong Phuc Ronic</span>
+                            </div>
 
-                                <button class="cart-product__btn">Add to Cart</button>
+                            <div class="card-item__price">95.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                   Diep Ha Chau, Dang Sam, White Atractylodes, Licorice, Phuc Linh, Nhan Tran, Tran Bi.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
                             </div>
                         </div>
 
-                        <div class="cart-item">
-                            <div class="cart-product">
-                                <div class="cart-product__image">
-                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}" alt="Medicine-1">
-                                </div>
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-4.webp') }}" alt="Medicine-4">
+                            </div>
 
-                                <div class="cart-product__des">
-                                    <div class="cart-product__des--tag">
-                                        Digestive system, liver and bile
-                                    </div>
-                                </div>
+                            <div class="card-item__type-medicine">
+                                <span>Cardiovascular</span>
+                            </div>
 
-                                <div class="cart-product__content">
-                                    <div class="cart-product__content--name">Truong Phuc Colon Medicine</div>
-                                    <div class="cart-product__content--price">105.000 VNĐ</div>
-                                    <div class="cart-product__content--type">
-                                        <span>Type:</span> Box
-                                    </div>
-                                    <div class="cart-product__content--des">
-                                        <span> Ingredient:</span> Hoang Lien 1.35g, Moc Huong 1.2g, Atractylodes 0.9g, White
-                                        Dahlia, Hau Loc, Licorice, Astragalus, Talc.
-                                    </div>
-                                </div>
+                            <div class="card-item__name">
+                                <span>Dacolfort Danapha</span>
+                            </div>
 
-                                <button class="cart-product__btn">Add to Cart</button>
+                            <div class="card-item__price">260.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                        Diosmin.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="cart-total">
-                        <h1>Cart</h1>
-                        <ul class="listCard"></ul>
-                        <div class="checkOut">
-                            <div class="total">0</div>
-                            <div class="closeShopping">Close</div>
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-5.webp') }}" alt="Medicine-5">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Cardiovascular</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Telmisartan</span>
+                            </div>
+
+                            <div class="card-item__price">200.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                       Telmisartan.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-6.webp') }}" alt="Medicine-6">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Cardiovascular</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Cardilopin</span>
+                            </div>
+
+                            <div class="card-item__price">200.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Amlodipine.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-7.webp') }}" alt="Medicine-7">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Bone</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Truong Phuc Bones</span>
+                            </div>
+
+                            <div class="card-item__price">95.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                   Phong Phong, Doc Hoat, Tang Parasitic, Tan Giao, Te Tan, Bach Linh, Niu Tat, Du Trong.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-8.webp') }}" alt="Medicine-8">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Bone</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Methocarbamol</span>
+                            </div>
+
+                            <div class="card-item__price">150.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Bottle</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Methocarbamol, corn starch, Povidone K30, Tarrazine yellow.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-9.webp') }}" alt="Medicine-9">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Bone</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Calcium Corbiere</span>
+                            </div>
+
+                            <div class="card-item__price">150.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Calcium glubionate, Calcium lactobionate.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-10.webp') }}"
+                                     alt="Medicine-10">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Respiratory</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Midorhum OPV</span>
+                            </div>
+
+                            <div class="card-item__price">300.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Acetamino, Loratadine, Dextromethorphan.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-11.webp') }}"
+                                     alt="Medicine-11">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Respiratory</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Tocemux</span>
+                            </div>
+
+                            <div class="card-item__price">100.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                    Acetylcysteine.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-12.webp') }}"
+                                     alt="Medicine-12">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Respiratory</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Eugica MEGA</span>
+                            </div>
+
+                            <div class="card-item__price">150.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Box</span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                   Eucalyptol, Ash essential oil, Ginger essential oil, Menthol natural.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-13.webp') }}"
+                                     alt="Medicine-13">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Eyes</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span> V.rohto Vitamin</span>
+                            </div>
+
+                            <div class="card-item__price">52.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Bottle </span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                  Sodium chondroitin sulfate, Chlorphenamine, Vitamin B6, Vitamin E.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-14.webp') }}"
+                                     alt="Medicine-14">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Eyes</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Osla Merap Group</span>
+                            </div>
+
+                            <div class="card-item__price">26.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Bottle </span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                  Natri clorid.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <div class="card-item__image">
+                                <img src="{{ url_for('static', filename='images/medicine-15.webp') }}"
+                                     alt="Medicine-15">
+                            </div>
+
+                            <div class="card-item__type-medicine">
+                                <span>Eyes</span>
+                            </div>
+
+                            <div class="card-item__name">
+                                <span>Sanlein 0.1% Santen </span>
+                            </div>
+
+                            <div class="card-item__price">63.000 VNĐ</div>
+
+                            <div class="card-item__type">
+                                Type:
+                                <span>Bottle </span>
+                            </div>
+
+                            <div class="card-item__ingredient">
+                                Ingredient:
+                                <span>
+                                  Natri hyaluronat.
+                                </span>
+                            </div>
+
+                            <div class="card-item__btn">
+                                <button>Add to cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}
