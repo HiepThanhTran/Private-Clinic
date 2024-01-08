@@ -55,8 +55,8 @@
                             <div class="filter-title">
                                 <h3>Price</h3>
                                 <div class="filter-title__btn">
-                                    <i class="fa-solid fa-chevron-down btn-down"></i>
-                                    <i class="fa-solid fa-chevron-up btn-up"></i>
+                                    <i class="fa-solid fa-chevron-down btn-down btn-down-price"></i>
+                                    <i class="fa-solid fa-chevron-up btn-up btn-up-price"></i>
                                 </div>
                             </div>
 
@@ -66,24 +66,81 @@
                             </div>
                         </div>
 
-                        <div class="filter-price">
+                        <div class="filter-type-medicine">
                             <div class="filter-title">
-                                <h3>Price</h3>
+                                <h3>Type medicine</h3>
                                 <div class="filter-title__btn">
-                                    <i class="fa-solid fa-chevron-down btn-down"></i>
-                                    <i class="fa-solid fa-chevron-up btn-up"></i>
+                                    <i class="fa-solid fa-chevron-down btn-down btn-down-type"></i>
+                                    <i class="fa-solid fa-chevron-up btn-up btn-up-type"></i>
                                 </div>
                             </div>
 
                             <div class="filter-value">
-                                <button>Ascending</button>
-                                <button>Decrease</button>
+                                <div class="messageBox">
+                                    <input required="" placeholder="Type medicine" type="text" class="messageInput"/>
+                                    <button class="sendButton">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
+                                            <path
+                                                    fill="none"
+                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                                            ></path>
+                                            <path
+                                                    stroke-linejoin="round"
+                                                    stroke-linecap="round"
+                                                    stroke-width="33.67"
+                                                    stroke="#6c6c6c"
+                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="filter-name-medicine">
+                            <div class="filter-title">
+                                <h3>Name medicine</h3>
+                                <div class="filter-title__btn">
+                                    <i class="fa-solid fa-chevron-down btn-down btn-down-name"></i>
+                                    <i class="fa-solid fa-chevron-up btn-up btn-up-name"></i>
+                                </div>
+                            </div>
+
+                            <div class="filter-value">
+                                <div class="messageBox">
+                                    <input required="" placeholder="Name medicine" type="text" class="messageInput"/>
+                                    <button class="sendButton">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
+                                            <path
+                                                    fill="none"
+                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                                            ></path>
+                                            <path
+                                                    stroke-linejoin="round"
+                                                    stroke-linecap="round"
+                                                    stroke-width="33.67"
+                                                    stroke="#6c6c6c"
+                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="my-col-9">
+                    <div class="shopping-header">
+                        <h1>F&H Medicine Shop</h1>
+                        <div class="shopping">
+                            <img src="{{ url_for('static', filename='images/shopping.svg') }}" alt="Shopping">
+                            <span class="quantity">0</span>
+                        </div>
+                    </div>
+
                     <div class="card-list">
                         <div class="card-item">
                             <div class="card-item__image">
