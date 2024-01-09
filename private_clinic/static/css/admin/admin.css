@@ -163,6 +163,7 @@ aside .sidebar{
     position: relative;
     top: 1.5rem;
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 aside .sidebar:hover{
@@ -212,6 +213,7 @@ aside .sidebar a.active span{
 
 aside .sidebar a:hover{
     color: var(--color-primary);
+    text-decoration: none;
 }
 
 aside .sidebar a:hover span{

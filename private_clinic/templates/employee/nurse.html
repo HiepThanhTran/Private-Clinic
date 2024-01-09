@@ -44,7 +44,7 @@
             </li>
             <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a>
             </li>
-            <li style="margin-top: 50vh"><a href="{{ url_for('signout') }}" class="logout"><i
+            <li><a href="{{ url_for('signout') }}" class="logout"><i
                     class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
     </div>
@@ -92,34 +92,46 @@
                     <th>Status</th>
                 </tr>
 
-                {% for examination_schedule in examination_schedule_list %}
-                    <tr>
-                        <td>{{ examination_schedule.id }}</td>
-                        <td>{{ examination_schedule.first_name }}</td>
-                        <td>{{ examination_schedule.last_name }}</td>
-                        <td>{{ examination_schedule.gender }}</td>
-                        <td>{{ examination_schedule.phone_number }}</td>
-                        <td>{{ examination_schedule.created_date }}</td>
-                        <td>{{ examination_schedule.examination_date.strftime('%Y-%m-%d') }}</td>
-                        <td>{{ examination_schedule.examination_date.strftime('%H:%M') }}</td>
-                        <td>
-                            <!-- Red: critical-low -->
-                            <!-- Green: positive-medium -->
-                            <!-- Yellow: attention-low -->
-                            <div class="status-tag {% if examination_schedule.status %}positive-medium{% else %}attention-low{% endif %}">
-                                <i class="highlight {% if examination_schedule.status %}positive-medium{% else %}attention-low{% endif %}"
-                                   style="--iteration-count: infinite;"></i>
-                                <p class="status-tag__txt bac-l-stack-xs">
-                                    {% if examination_schedule.status %}
-                                        Accepted
-                                    {% else %}
-                                        Pending
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
+                {% if not examination_schedule_list %}
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                {% else %}
+                    {% for examination_schedule in examination_schedule_list %}
+                        <tr>
+                            <td>{{ examination_schedule.id }}</td>
+                            <td>{{ examination_schedule.first_name }}</td>
+                            <td>{{ examination_schedule.last_name }}</td>
+                            <td>{{ examination_schedule.gender }}</td>
+                            <td>{{ examination_schedule.phone_number }}</td>
+                            <td>{{ examination_schedule.created_date }}</td>
+                            <td>{{ examination_schedule.examination_date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ examination_schedule.examination_date.strftime('%H:%M') }}</td>
+                            <td>
+                                <!-- Red: critical-low -->
+                                <!-- Green: positive-medium -->
+                                <!-- Yellow: attention-low -->
+                                <div class="status-tag {% if examination_schedule.status %}positive-medium{% else %}attention-low{% endif %}">
+                                    <i class="highlight {% if examination_schedule.status %}positive-medium{% else %}attention-low{% endif %}"
+                                       style="--iteration-count: infinite;"></i>
+                                    <p class="status-tag__txt bac-l-stack-xs">
+                                        {% if examination_schedule.status %}
+                                            Accepted
+                                        {% else %}
+                                            Pending
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
             </table>
         </div>
 
@@ -161,7 +173,7 @@
         </div>
 
         <div class="appointment-form">
-             <h1 class="appointment-title">Appointment</h1>
+            <h1 class="appointment-title">Appointment</h1>
             <div class="form-appointment-content" id="form-appointment-content">
                 <div class="form-appointment">
                     <section class="form-appointment__container">

@@ -23,7 +23,7 @@
             <li id="bill-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-newspaper"></i>Manage</a></li>
             <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
             <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
-            <li style="margin-top: 50vh"><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->

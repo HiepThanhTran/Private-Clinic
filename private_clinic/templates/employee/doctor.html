@@ -6,6 +6,16 @@
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/doctor.css') }}">
+
+    <style>
+        ul {
+            padding: 0;
+        }
+
+        .modal-content .options {
+            padding: 0;
+        }
+    </style>
 {% endblock %}
 
 {% block js_body %}
@@ -23,7 +33,7 @@
             <li id="patient-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-person"></i>Patient</a></li>
             <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
             <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
-            <li style="margin-top: 50vh"><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -38,15 +48,13 @@
                     <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
-            <a href="#" class="profile" style="display: flex; align-items: center">
-                <img src="{{ url_for('static', filename='images/feedback-1.jpg') }}" alt="Avatar"
-                     style="margin-right: 8px">
-                Maria
+            <a href="javascript:void(0)" class="profile" style="display: flex; align-items: center">
+                <img src="{{ current_user.avatar }}" alt="Avatar" style="margin-right: 8px">{{ current_user.user.full_name }}
             </a>
         </nav>
 
         <!-- End of Navbar -->
-        <h1 class="manage-title">Manage medical examination bill</h1>
+        <h1 class="manage-title">MANAGE MEDICAL BILL LIST</h1>
         <div class="table-manage">
             <table>
                 <tr>
@@ -54,166 +62,55 @@
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Gender</th>
-                    <th>Address</th>
-                    <th>Day examination</th>
-                    <th>The date of the vote</th>
-                    <th>Diagnostic</th>
+                    <th>Examination day</th>
+                    <th>Created date</th>
                 </tr>
 
-
-                <tr>
-                    <td>1</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>5</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>6</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>7</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
-
-                <tr>
-                    <td>8</td>
-                    <td>Hiep</td>
-                    <td>Thanh</td>
-                    <td>Male</td>
-                    <td>Binh Chanh</td>
-                    <td>08/01/2024</td>
-                    <td>09/01/2024</td>
-                    <td>Stomachache</td>
-                </tr>
+                {% if not medical_bills_list %}
+                    <td colspan="6">There are no items in the table.</td>
+                {% else %}
+                    {% for medical_bill in medical_bills_list %}
+                        <tr>
+                            <td>{{ medical_bill.id }}</td>
+                            <td>{{ medical_bill.patient.user.first_name }}</td>
+                            <td>{{ medical_bill.patient.user.last_name }}</td>
+                            <td>{{ medical_bill.patient.user.gender }}</td>
+                            <td>{{ medical_bill.examination_date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ medical_bill.created_date.strftime('%Y-%m-%d') }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
             </table>
         </div>
 
-        <h1 class="patient-title">List of patients</h1>
+        <h1 class="patient-title">LIST OF PATIENTS</h1>
         <div class="table-patient">
             <table>
                 <tr>
                     <th>ID</th>
                     <th>Full name</th>
                     <th>Gender</th>
-                    <th>Date</th>
-                    <th>Phone</th>
+                    <th>Date of birth</th>
+                    <th>Phone number</th>
                     <th>Action</th>
                 </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>Thanh Hiep</td>
-                    <td>Male</td>
-                    <td>29/1/2003</td>
-                    <td>0388227064</td>
-                    <td>
-                        <button class="invoice">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Thanh Hiep</td>
-                    <td>Male</td>
-                    <td>29/1/2003</td>
-                    <td>0388227064</td>
-                    <td>
-                        <button class="invoice">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Thanh Hiep</td>
-                    <td>Male</td>
-                    <td>29/1/2003</td>
-                    <td>0388227064</td>
-                    <td>
-                        <button class="invoice">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>Thanh Hiep</td>
-                    <td>Male</td>
-                    <td>29/1/2003</td>
-                    <td>0388227064</td>
-                    <td>
-                        <button class="invoice">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
-                    </td>
-                </tr>
+                {% if not patients_list %}
+                    <td colspan="6">There are no items in the table.</td>
+                {% else %}
+                    {% for patient in patients_list %}
+                        <tr>
+                            <td>{{ patient.id }}</td>
+                            <td>{{ patient.user.full_name }}</td>
+                            <td>{% if patient.user.gender %}{{ patient.user.gender }}{% else %}...{% endif %}</td>
+                            <td>{% if patient.user.dob %}{{ patient.user.dob.strftime('%Y-%m-%d') }}{% else %}...{% endif %}</td>
+                            <td>{% if patient.user.phone_number %}{{ patient.user.phone_number }}{% else %}...{% endif %}</td>
+                            <td>
+                                <button class="invoice"><i class="fa-solid fa-print"></i></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
             </table>
         </div>
 
@@ -230,19 +127,17 @@
 
                 <tr>
                     <td colspan="3">
-                        Systoms:
-                        <input type="text" placeholder="Enter systoms">
+                        <label for="symptoms">Systoms:</label>
+                        <input id="symptoms" name="symptoms" type="text" placeholder="Enter systoms">
                     </td>
                     <td colspan="3">
-                        Diagnostic:
-                        <input type="text" placeholder="Enter diagnostic">
+                        <label for="diagnostic">Diagnostic:</label>
+                        <input id="diagnostic" name="diagnostic" type="text" placeholder="Enter diagnostic">
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="6">
-                        <a href="" class="add-examination-course">Add examination course</a>
-                    </td>
+                    <td colspan="6"><a href="" class="add-examination-course">Add examination course</a></td>
                 </tr>
 
                 <tr>
@@ -255,127 +150,14 @@
                 </tr>
 
                 <tr>
-                    <td>1</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
                     <td>...</td>
-                    <td>
-                        <a href="#" class="add-medical">Add medical</a>
-                    </td>
+                    <td><a href="javascript:void(0)" class="add-medical">Add medical</a></td>
                     <td>...</td>
                     <td>...</td>
                     <td>...</td>
                     <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="modal-create-medical-bill">
-            <table>
-                <tr>
-                    <th colspan="6" style="background: var(--primary-color)">MEDICAL BILL</th>
-                </tr>
-
-                <tr style="background-color: var(--white);">
-                    <td colspan="3">Patient Name: Alexander Michael</td>
-                    <td colspan="3">Examination: 01/03/2024</td>
-                </tr>
-
-                <tr>
-                    <td colspan="3">
-                        Systoms:
-                        <input type="text" placeholder="Enter systoms">
-                    </td>
-                    <td colspan="3">
-                        Diagnostic:
-                        <input type="text" placeholder="Enter diagnostic">
-                    </td>
-                </tr>
-
-                <tr>
-                    <th>ID</th>
-                    <th>Medicine</th>
-                    <th>Unit</th>
-                    <th>Amount</th>
-                    <th>Directions</th>
-                    <th>Edit</th>
-                </tr>
-
-                <tr>
-                    <td colspan="6">
-                        <a href="" class="add-examination-course">Add examination course</a>
+                        <button class="btn-edit-medical-bill"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-remove-medical-bill"><i class="fa-solid fa-x"></i></button>
                     </td>
                 </tr>
 
@@ -385,76 +167,6 @@
                     <td>Packs</td>
                     <td>1 packs</td>
                     <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>...</td>
-                    <td>
-                        <a href="#" class="add-medical">Add medical</a>
-                    </td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
                     <td>
                         <button class="btn-edit-medical-bill">
                             <i class="fa-solid fa-pen"></i>
@@ -476,14 +188,9 @@
                         <input spellcheck="false" type="text" placeholder="Search">
                     </div>
                     <ul class="options">
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
-                        <li>Paracetamol</li>
+                        {% for medicine in medicine_list %}
+                            <li>{{ medicine.medicine_name }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -497,14 +204,9 @@
                         <input spellcheck="false" type="text" placeholder="Search">
                     </div>
                     <ul class="options">
-                        <li>Course 1</li>
-                        <li>Course 1</li>
-                        <li>Course 1</li>
-                        <li>Course 1</li>
-                        <li>Course 1</li>
-                        <li>Course 1</li>
-                        <li>Course 1</li>
-                        <li>Course 1</li>
+                        {% for packages in packages_list %}
+                            <li>{{ packages.packages_name }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

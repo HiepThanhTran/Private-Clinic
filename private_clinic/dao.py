@@ -1,15 +1,15 @@
+import hashlib
 import cloudinary.uploader
-from passlib.hash import sha256_crypt
 from sqlalchemy import func
-
 from private_clinic.app import db
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule, \
-    ExaminationList
+    ExaminationList, MedicalBill, AccountRoleEnum, MedicineType, MedicineUnit, Medicine, Packages
 
 
 def authenticate(username, password):
     if username and password:
-        password = sha256_crypt.encrypt(password.strip())
+        password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+        print(password)
 
         return Account.query.filter(Account.username.__eq__(username.strip()), Account.password.__eq__(password)).first()
 
@@ -35,7 +35,7 @@ def count_examination_schedule_by_date(date):
 
 
 def create_account(username, password):
-    password = sha256_crypt.encrypt(password.strip())
+    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
     account = Account(username=username.strip(), password=password)
 
     db.session.add(account)
@@ -137,8 +137,23 @@ def create_examination_list(examination_date, nurse_id, examination_schedule_id_
     return examination_list
 
 
+def create_medicine(**kwargs):
+    medicine = Medicine()
+
+    for field_name, field_value in kwargs.items():
+        if field_value:
+            if field_name == 'image':
+                field_value = cloudinary.uploader.upload(field_value)['secure_url']
+            setattr(medicine, field_name, field_value.strip())
+
+    db.session.add(medicine)
+    db.session.commit()
+
+    return medicine
+
+
 def update_account_password(account_id, new_password):
-    new_password = sha256_crypt.encrypt(new_password.strip())
+    new_password = str(hashlib.md5(new_password.strip().encode('utf-8')).hexdigest())
 
     account = Account.query.get(account_id)
     account.password = new_password
@@ -174,11 +189,42 @@ def update_examination_schedule(examination_schedule_id, **kwargs):
     return examination_schedule
 
 
-def get_examination_schedule_list():
+def get_role_list():
+    return [role for role in AccountRoleEnum]
+
+
+def get_medicine_type_list():
+    return MedicineType.query.all()
+
+
+def get_medicine_unit_list():
+    return MedicineUnit.query.all()
+
+
+def get_packages_list():
+    return Packages.query.all()
+
+
+def get_examination_schedules_list():
     return ExaminationSchedule.query.order_by(ExaminationSchedule.id.asc()).all()
 
 
-def get_examination_schedule_list_by_date(date):
+def get_medical_bills_list():
+    return MedicalBill.query.order_by(MedicalBill.id.asc()).all()
+
+
+def get_medicine_list():
+    return Medicine.query.filter(Medicine.amount > 0).order_by(Medicine.medicine_name.asc()).all()
+
+
+def get_patients_list():
+    return (Patient.query.join(User, Patient.id == User.id)
+            .join(Account, Account.id == User.account_id)
+            .filter(Account.confirmed_on.is_(True), Account.active.is_(True))
+            .order_by(Patient.id.asc()).all())
+
+
+def get_examination_schedules_list_by_date(date):
     return ExaminationSchedule.query.filter(func.DATE(ExaminationSchedule.examination_date) == date,
                                             ExaminationSchedule.status.is_(False)).all()
 

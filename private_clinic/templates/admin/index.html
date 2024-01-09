@@ -1,1 +1,166 @@
-{% extends 'admin/base.html' %}
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}Dashboard | Faith and Hope{% endblock %}
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/dashboard.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    <!-- Main Content -->
+    <main>
+        <h1>Dashboard</h1>
+        <div class="dashboard">
+            <div class="sales">
+                <div class="status">
+                    <div class="info">
+                        <h3>Total Sales</h3>
+                        <h1>$65,024</h1>
+                    </div>
+                    <div class="progresss">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>+81%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="medicine-use">
+                <div class="status">
+                    <div class="info">
+                        <h3>Medicine Uses</h3>
+                        <h1>24,981</h1>
+                    </div>
+                    <div class="progresss">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>-48%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="examination-num">
+                <div class="status">
+                    <div class="info">
+                        <h3>Examination</h3>
+                        <h1>14,147</h1>
+                    </div>
+                    <div class="progresss">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>+21%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Analyses -->
+
+        <!-- New Users Section -->
+        <!-- End of New Users Section -->
+
+        <!-- Total Sales Table -->
+        <div class="statistic-table">
+            <h2>Recent Rating</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Rating</th>
+                    <th>Message</th>
+                    <th>User</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></span></td>
+                    <td>Good job</td>
+                    <td>Alexander</td>
+                    <td>Jan 2024</td>
+                </tr>
+                <tr>
+                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></span></td>
+                    <td>Good job</td>
+                    <td>Alexander</td>
+                    <td>Jan 2024</td>
+                </tr>
+                <tr>
+                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></span></td>
+                    <td>Good job</td>
+                    <td>Alexander</td>
+                    <td>Jan 2024</td>
+                </tr>
+                <tr>
+                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></span></td>
+                    <td>Good job</td>
+                    <td>Alexander</td>
+                    <td>Jan 2024</td>
+                </tr>
+                <tr>
+                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></span></td>
+                    <td>Good job</td>
+                    <td>Alexander</td>
+                    <td>Jan 2024</td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="#">Show All</a>
+        </div>
+        <!-- End of Recent Orders -->
+    </main>
+    <!-- End of Main Content -->
+{% endblock %}
+
+{% block right_section_content %}
+    <div class="user-profile">
+        <div class="logo">
+            <img src="{{ current_user.avatar }}" alt="">
+            <h2>{% if current_user.is_authenticated %}{{ current_user.user.full_name }}{% else %}Anonymous{% endif %}</h2>
+            <p>{% if current_user.is_authenticated %}{{ current_user.role.name }}{% endif %}</p>
+        </div>
+    </div>
+    <div class="reminders">
+        <div class="header">
+            <h2>Reminders</h2>
+            <span class="material-icons-sharp">notifications_none</span>
+        </div>
+        <div class="notification">
+            <div class="icon"><span class="material-icons-sharp">volume_up</span></div>
+            <div class="content">
+                <div class="info">
+                    <h3>Workshop</h3>
+                    <small class="text_muted">08:00 AM - 12:00 PM</small>
+                </div>
+                <span class="material-icons-sharp">more_vert</span>
+            </div>
+        </div>
+        <div class="notification deactive">
+            <div class="icon"><span class="material-icons-sharp">edit</span></div>
+            <div class="content">
+                <div class="info">
+                    <h3>Workshop</h3>
+                    <small class="text_muted">08:00 AM - 12:00 PM</small>
+                </div>
+                <span class="material-icons-sharp">more_vert</span>
+            </div>
+        </div>
+        <div class="notification add-reminder">
+            <div>
+                <span class="material-icons-sharp">add</span>
+                <h3>Add Reminder</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}

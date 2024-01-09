@@ -179,6 +179,7 @@ def appointment():
 
 
 @login_required
+@check_is_confirmed
 def profile_settings(slug):
     if request.method.__eq__('POST'):
         first_name = request.form.get('first_name')
@@ -208,6 +209,7 @@ def profile_settings(slug):
 
 
 @login_required
+@check_is_confirmed
 def account_settings(slug):
     return render_template(template_name_or_list='customer/account_settings.html')
 
@@ -219,6 +221,7 @@ def employee_login():
 
 
 # @employee_login_required
+# @check_is_confirmed
 # @check_role(AccountRoleEnum.NURSE)
 def employee_nurse():
     if request.method.__eq__('POST'):
@@ -231,36 +234,70 @@ def employee_nurse():
         flash('Create an examination list and send notifications to patients successfully', 'success')
         return redirect(url_for('employee_nurse'))
 
+    examination_schedule_list = services.get_examination_schedules_list()
 
-    # examination_schedule_list = services.get_examination_schedule_list()
-
-    return render_template(template_name_or_list='employee/nurse.html')#examination_schedule_list=examination_schedule_list
+    return render_template(template_name_or_list='employee/nurse.html', examination_schedule_list=examination_schedule_list)
 
 
 # @employee_login_required
+# @check_is_confirmed
 # @check_role(AccountRoleEnum.DOCTOR)
 def employee_doctor():
-    return render_template(template_name_or_list='employee/doctor.html')
+    if request.method.__eq__('POST'):
+        pass
+
+    medical_bills_list = services.get_medical_bills_list()
+    patients_list = services.get_patients_list()
+    medicine_list = services.get_medicine_list()
+    packages_list = services.get_packages_list()
+
+    return render_template(template_name_or_list='employee/doctor.html',
+                           medical_bills_list=medical_bills_list,
+                           patients_list=patients_list,
+                           medicine_list=medicine_list,
+                           packages_list=packages_list)
 
 
 # @employee_login_required
+# @check_is_confirmed
 # @check_role(AccountRoleEnum.STAFF)
 def employee_cashier():
     return render_template(template_name_or_list='employee/cashier.html')
 
 
-def admin_dashboard():
-    return render_template(template_name_or_list='admin/dashboard.html')
+# --------------------ADMIN-------------------- #
+def create_medicine():
+    medicine_name = request.form.get('medicine_name')
+    description = request.form.get('description')
+    price = request.form.get('price')
+    amount = request.form.get('amount')
+    image = request.files.get('image')
+    direction_for_use = request.form.get('direction_for_use')
+    medicine_type_id = request.form.get('medicine_type')
+    medicine_unit_id = request.form.get('medicine_unit')
 
+    try:
+        new_medicine = services.create_medicine(
+            medicine_name=medicine_name,
+            description=description,
+            price=price,
+            amount=amount,
+            image=image,
+            direction_for_use=direction_for_use,
+            medicine_type_id=medicine_type_id,
+            medicine_unit_id=medicine_unit_id
+        )
 
-def admin_analytics():
-    return render_template(template_name_or_list='admin/analytics.html')
+        flash("Create new medicine successfully!")
+    except:
+        flash("Create new medicine failed!", "error")
+    return redirect("/admin/medicine/")
 
 
 # --------------------VERIFY EMAIL-------------------- #
 @login_required
 def confirm_email(token):
-    if current_user.is_confirmed:
+    if current_user.is_authenticated and current_user.is_confirmed:
         flash('Account already confirmed.', 'success')
         return redirect(url_for('index'))
 
