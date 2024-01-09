@@ -1,10 +1,11 @@
-from private_clinic import services
-from private_clinic.models import (AccountRoleEnum, Account, User, Regulation, ExaminationList, Medicine, MedicineType, MedicineUnit,
-                                   Packages)
 from flask_admin import AdminIndexView, expose, Admin, BaseView
 from flask_admin.contrib.sqla import ModelView
-from private_clinic.app import app, db
 from flask_login import current_user
+
+from private_clinic import services
+from private_clinic.app import app, db
+from private_clinic.models import (AccountRoleEnum, Account, User, Regulation, ExaminationList, Medicine, MedicineType, MedicineUnit,
+                                   Packages)
 
 
 class MyAdminView(AdminIndexView):
@@ -98,9 +99,7 @@ class PackagesView(AuthenticatedAdmin):
     column_filters = ['price']
 
 
-admin = Admin(app=app, template_mode='bootstrap4', index_view=MyAdminView(), category_icon_classes={
-    'Home': 'fa-solid fa-house'
-})
+admin = Admin(app=app, template_mode='bootstrap4', index_view=MyAdminView())
 
 admin.add_view(MyAnalyticsView(name='Analytics', url='/admin/analytics', endpoint='analytics'))
 admin.add_view(AccountView(Account, db.session))

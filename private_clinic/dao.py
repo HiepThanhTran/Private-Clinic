@@ -1,9 +1,11 @@
 import hashlib
+
 import cloudinary.uploader
 from sqlalchemy import func
+
 from private_clinic.app import db
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule, \
-    ExaminationList, MedicalBill, AccountRoleEnum, MedicineType, MedicineUnit, Medicine, Packages
+    ExaminationList, MedicalBill, AccountRoleEnum, MedicineType, MedicineUnit, Medicine, Packages, Prescription
 
 
 def authenticate(username, password):
@@ -34,9 +36,13 @@ def count_examination_schedule_by_date(date):
     return ExaminationSchedule.query.filter(func.DATE(ExaminationSchedule.examination_date) == date).count()
 
 
-def create_account(username, password):
+def create_account(username, password, **kwargs):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
     account = Account(username=username.strip(), password=password)
+
+    for field_name, field_value in kwargs.items():
+        if field_value:
+            setattr(account, field_name, field_value)
 
     db.session.add(account)
     db.session.commit()
@@ -71,8 +77,8 @@ def create_employee(employee_id):
     return employee
 
 
-def create_administrator(administrator_id):
-    administrator = Administrator(id=administrator_id)
+def create_administrator(administrator_id, inauguration_day):
+    administrator = Administrator(id=administrator_id, inauguration_day=inauguration_day)
 
     db.session.add(administrator)
     db.session.commit()
@@ -144,12 +150,39 @@ def create_medicine(**kwargs):
         if field_value:
             if field_name == 'image':
                 field_value = cloudinary.uploader.upload(field_value)['secure_url']
-            setattr(medicine, field_name, field_value.strip())
+            setattr(medicine, field_name, field_value)
 
     db.session.add(medicine)
     db.session.commit()
 
     return medicine
+
+
+def create_medical_bill(symptoms, diagnostic, examination_date, patient_id, doctor_id, packages_id, amount, medicine_id_list):
+    medical_bill = MedicalBill(
+        symptoms=symptoms,
+        diagnostic=diagnostic,
+        examination_date=examination_date,
+        patient_id=patient_id,
+        doctor_id=doctor_id,
+        packages_id=packages_id)
+
+    db.session.add(medical_bill)
+    db.session.commit()
+
+    for i in range(0, len(amount)):
+        create_prescription(amount=amount[i], medicine_id=medicine_id_list[i], medical_bill_id=medical_bill.id)
+
+    return medical_bill
+
+
+def create_prescription(amount, medicine_id, medical_bill_id):
+    prescription = Prescription(amount=amount, medicine_id=medicine_id, medical_bill_id=medical_bill_id)
+
+    db.session.add(prescription)
+    db.session.commit()
+
+    return prescription
 
 
 def update_account_password(account_id, new_password):
@@ -168,11 +201,11 @@ def update_profile_user(user_id, **kwargs):
     for field_name, field_value in kwargs.items():
         if field_value:
             if field_name == 'insurance_id':
-                user.patient.insurance_id = field_value.strip()
+                user.patient.insurance_id = field_value
             elif field_name == 'avatar':
                 user.account.avatar = cloudinary.uploader.upload(field_value)['secure_url']
             else:
-                setattr(user, field_name, field_value.strip())
+                setattr(user, field_name, field_value)
 
     db.session.commit()
     return user
@@ -183,7 +216,7 @@ def update_examination_schedule(examination_schedule_id, **kwargs):
 
     for field_name, field_value in kwargs.items():
         if field_value:
-            setattr(examination_schedule, field_name, field_value.strip())
+            setattr(examination_schedule, field_name, field_value)
 
     db.session.commit()
     return examination_schedule

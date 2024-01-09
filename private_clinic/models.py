@@ -1,11 +1,13 @@
-from sqlalchemy import Column, String, Boolean, Enum, DateTime, ForeignKey, BigInteger, Double, Integer
-from sqlalchemy.orm import relationship, backref
-from private_clinic.app import db, app
-from flask_login import UserMixin
-from enum import Enum as DbEnum
 from datetime import datetime
-from sqlalchemy import event
+from enum import Enum as DbEnum
+
+from flask_login import UserMixin
 from slugify import slugify
+from sqlalchemy import Column, String, Boolean, Enum, DateTime, ForeignKey, BigInteger, Double, Integer
+from sqlalchemy import event
+from sqlalchemy.orm import relationship
+
+from private_clinic.app import db, app
 
 
 class AccountRoleEnum(DbEnum):
@@ -236,8 +238,9 @@ class MedicineUnit(BaseModel):
 class MedicalBill(BaseModel):
     __tablename__ = 'medical_bills'
 
-    diagnostic = Column(String(100))
     symptoms = Column(String(100))
+    diagnostic = Column(String(100))
+    is_pay = Column(Boolean, default=False)
     examination_date = Column(DateTime, nullable=False)
     patient_id = Column(BigInteger, ForeignKey('patients.id'), nullable=False)
     doctor_id = Column(BigInteger, ForeignKey('doctors.id'), nullable=False)
@@ -275,7 +278,6 @@ class Packages(BaseModel):
 
 
 event.listen(Packages.packages_name, 'set', Packages.slugify, retval=False)
-
 
 if __name__ == '__main__':
     with app.app_context():

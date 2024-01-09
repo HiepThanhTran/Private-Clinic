@@ -54,7 +54,17 @@
         </nav>
 
         <!-- End of Navbar -->
-        <h1 class="manage-title">MANAGE MEDICAL BILL LIST</h1>
+        <h1 class="manage-title">LIST OF MEDICAL BILLS</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category != 'message' %}
+                        <div class="alert alert-{{ category }} text-center mt-3 text-center"
+                             style="width: 50%; margin: 16px auto;">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <div class="table-manage">
             <table>
                 <tr>
@@ -100,8 +110,8 @@
                 {% else %}
                     {% for patient in patients_list %}
                         <tr>
-                            <td>{{ patient.id }}</td>
-                            <td>{{ patient.user.full_name }}</td>
+                            <td id="patient_id_{{ loop.index0 }}">{{ patient.id }}</td>
+                            <td id="patient_full_name_{{ loop.index0 }}">{{ patient.user.full_name }}</td>
                             <td>{% if patient.user.gender %}{{ patient.user.gender }}{% else %}...{% endif %}</td>
                             <td>{% if patient.user.dob %}{{ patient.user.dob.strftime('%Y-%m-%d') }}{% else %}...{% endif %}</td>
                             <td>{% if patient.user.phone_number %}{{ patient.user.phone_number }}{% else %}...{% endif %}</td>
@@ -115,69 +125,60 @@
         </div>
 
         <div class="modal-create-medical-bill">
-            <table>
-                <tr>
-                    <th colspan="6" style="background: var(--primary-color)">MEDICAL BILL</th>
-                </tr>
+            <form method="post" action="{{ url_for('employee_doctor') }}">
+                <table id="medicine-list-table">
+                    <tr>
+                        <th colspan="6" style="background: var(--primary-color)">MEDICAL BILL</th>
+                    </tr>
 
-                <tr style="background-color: var(--white);">
-                    <td colspan="3">Patient Name: Alexander Michael</td>
-                    <td colspan="3">Examination: 01/03/2024</td>
-                </tr>
+                    <tr style="background-color: var(--white);">
+                        <td id="patient_name" colspan="3">Patient Name:</td>
+                        <input type="hidden" value="" id="patient_id_input" name="patient_id"/>
+                        <td id="day_of_exam" colspan="3">Examination:</td>
+                        <input type="hidden" value="" id="day_of_exam_input" name="day_of_exam"/>
+                    </tr>
 
-                <tr>
-                    <td colspan="3">
-                        <label for="symptoms">Systoms:</label>
-                        <input id="symptoms" name="symptoms" type="text" placeholder="Enter systoms">
-                    </td>
-                    <td colspan="3">
-                        <label for="diagnostic">Diagnostic:</label>
-                        <input id="diagnostic" name="diagnostic" type="text" placeholder="Enter diagnostic">
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="3">
+                            <label for="symptoms">Systoms:</label>
+                            <input id="symptoms" name="symptoms" type="text" placeholder="Enter systoms" required>
+                        </td>
+                        <td colspan="3">
+                            <label for="diagnostic">Diagnostic:</label>
+                            <input id="diagnostic" name="diagnostic" type="text" placeholder="Enter diagnostic" required>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td colspan="6"><a href="" class="add-examination-course">Add examination course</a></td>
-                </tr>
+                    <tr id="add-packages-row">
+                        <td colspan="6">Examination packages: <a href="" class="add-examination-packages">Add examination packages</a></td>
+                        <input type="text" style="display: none;" value="" name="packages_id" id="packages_id" required/>
+                    </tr>
 
-                <tr>
-                    <th>ID</th>
-                    <th>Medicine</th>
-                    <th>Unit</th>
-                    <th>Amount</th>
-                    <th>Directions</th>
-                    <th>Edit</th>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Medicine name</th>
+                        <th>Unit</th>
+                        <th>Amount</th>
+                        <th>Directions</th>
+                        <th>Edit</th>
+                    </tr>
 
-                <tr>
-                    <td>...</td>
-                    <td><a href="javascript:void(0)" class="add-medical">Add medical</a></td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>
-                        <button class="btn-edit-medical-bill"><i class="fa-solid fa-pen"></i></button>
-                        <button class="btn-remove-medical-bill"><i class="fa-solid fa-x"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>Antihistamine</td>
-                    <td>Packs</td>
-                    <td>1 packs</td>
-                    <td>Use right after having symtoms</td>
-                    <td>
-                        <button class="btn-edit-medical-bill">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button class="btn-remove-medical-bill">
-                            <i class="fa-solid fa-x"></i>
-                        </button>
-                    </td>
-                </tr>
-            </table>
+                    <tr id="add-medicine-row">
+                        <td>...</td>
+                        <td><a href="javascript:void(0)" class="add-medicine">Add medicine</a></td>
+                        <input type="text" style="display: none;" value="" id="is_add_medicine" required/>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
 
         <div class="modal-add-medicine">
@@ -188,15 +189,19 @@
                         <input spellcheck="false" type="text" placeholder="Search">
                     </div>
                     <ul class="options">
-                        {% for medicine in medicine_list %}
-                            <li>{{ medicine.medicine_name }}</li>
-                        {% endfor %}
+                        {% if not medicine_list %}
+                            <li>There are no items here.</li>
+                        {% else %}
+                            {% for medicine in medicine_list %}
+                                <li class="medicines">{{ medicine.medicine_name }}</li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="modal-add-examination-course">
+        <div class="modal-add-examination-packages">
             <div class="wrapper-examincation">
                 <div class="modal-content">
                     <div class="search">
@@ -204,9 +209,13 @@
                         <input spellcheck="false" type="text" placeholder="Search">
                     </div>
                     <ul class="options">
-                        {% for packages in packages_list %}
-                            <li>{{ packages.packages_name }}</li>
-                        {% endfor %}
+                        {% if not packages_list %}
+                            <li>There are no items here.</li>
+                        {% else %}
+                            {% for packages in packages_list %}
+                                <li class="packages">{{ packages.packages_name }}</li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
             </div>

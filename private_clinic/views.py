@@ -241,7 +241,27 @@ def employee_nurse():
 # @check_role(AccountRoleEnum.DOCTOR)
 def employee_doctor():
     if request.method.__eq__('POST'):
-        pass
+        examination_date = request.form.get('day_of_exam')
+        patient_id = request.form.get('patient_id')
+        packages_id = request.form.get('packages_id')
+        symptoms = request.form.get('symptoms')
+        diagnostic = request.form.get('diagnostic')
+        medicine_amount = request.form.getlist('amount')
+        medicine_id_list = request.form.getlist('medicine_id')
+
+        medical_bill = services.create_medical_bill(
+            examination_date=examination_date,
+            patient_id=patient_id,
+            doctor_id=current_user.user.employee.doctor.id,
+            packages_id=packages_id,
+            symptoms=symptoms,
+            diagnostic=diagnostic,
+            amount=medicine_amount,
+            medicine_id_list=medicine_id_list
+        )
+
+        flash('Successfully create medical examination notes for patients', 'success')
+        return redirect(url_for('employee_doctor'))
 
     medical_bills_list = services.get_medical_bills_list()
     patients_list = services.get_patients_list()

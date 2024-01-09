@@ -1,7 +1,9 @@
-from private_clinic.app import app, mail
 from urllib.parse import urlparse
+
 from flask_mail import Message
+
 from private_clinic import dao
+from private_clinic.app import app, mail
 
 
 def is_safe_url(url, allowed_hosts):
@@ -37,8 +39,8 @@ def count_examination_schedule_by_date(date):
     return dao.count_examination_schedule_by_date(date=date)
 
 
-def create_account(username, password):
-    return dao.create_account(username=username, password=password)
+def create_account(username, password, **kwargs):
+    return dao.create_account(username=username, password=password, **kwargs)
 
 
 def create_user(first_name, last_name, email, account_id):
@@ -53,8 +55,8 @@ def create_employee(employee_id):
     return dao.create_employee(employee_id=employee_id)
 
 
-def create_administrator(administrator_id):
-    return dao.create_administrator(administrator_id=administrator_id)
+def create_administrator(administrator_id, inauguration_day):
+    return dao.create_administrator(administrator_id=administrator_id, inauguration_day=inauguration_day)
 
 
 def create_cashier(cashier_id):
@@ -74,11 +76,24 @@ def create_examination_schedule(patient_id, examination_date, **kwargs):
 
 
 def create_examination_list(examination_date, nurse_id, examination_schedule_id_list):
-    return dao.create_examination_list(examination_date=examination_date, nurse_id=nurse_id, examination_schedule_id_list=examination_schedule_id_list)
+    return dao.create_examination_list(examination_date=examination_date, nurse_id=nurse_id,
+                                       examination_schedule_id_list=examination_schedule_id_list)
 
 
 def create_medicine(**kwargs):
     return dao.create_medicine(**kwargs)
+
+
+def create_medical_bill(symptoms, diagnostic, examination_date, patient_id, doctor_id, packages_id, amount, medicine_id_list):
+    return dao.create_medical_bill(
+        symptoms=symptoms,
+        diagnostic=diagnostic,
+        examination_date=examination_date,
+        patient_id=patient_id,
+        doctor_id=doctor_id,
+        packages_id=packages_id,
+        amount=amount,
+        medicine_id_list=medicine_id_list)
 
 
 def update_account_password(account_id, new_password):

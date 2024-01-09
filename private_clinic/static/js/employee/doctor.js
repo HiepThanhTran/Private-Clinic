@@ -1,3 +1,35 @@
+let medicine_list = {}
+let packages_list = {}
+window.onload = () => {
+    fetch('/api/employee/doctor/load-medicine', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    }).then(response => response.json())
+        .then(data => {
+            medicine_list = data
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    fetch('/api/employee/doctor/load-packages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    }).then(response => response.json())
+        .then(data => {
+            packages_list = data
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+
 const manageBtn = document.querySelector("#manage-btn");
 const patientBtn = document.querySelector("#patient-btn");
 const tableManage = document.querySelector(".table-manage");
@@ -26,53 +58,126 @@ patientBtn.addEventListener("click", function (event) {
     manageBtn.classList.remove("active");
 })
 
-const addMedicalBtn = document.querySelector(".add-medical");
+const addMedicineBtn = document.querySelector(".add-medicine");
 const modalAddMedicine = document.querySelector(".modal-add-medicine");
 const modalContainer = document.querySelector(".wrapper");
-addMedicalBtn.addEventListener("click",function (event){
+
+addMedicineBtn.addEventListener("click", function (event) {
     event.preventDefault();
     modalAddMedicine.classList.add("open");
 })
 
-modalAddMedicine.addEventListener("click",function (){
+modalAddMedicine.addEventListener("click", function () {
     modalAddMedicine.classList.remove("open");
 })
 
-modalContainer.addEventListener("click",function (event){
+modalContainer.addEventListener("click", function (event) {
     event.stopPropagation();
 })
 
-const addExCourseBtn = document.querySelector(".add-examination-course");
-const modalAddExCourse = document.querySelector(".modal-add-examination-course");
+const addExCourseBtn = document.querySelector(".add-examination-packages");
+const modalAddExCourse = document.querySelector(".modal-add-examination-packages");
 const modalContainerExCourse = document.querySelector(".wrapper-examincation");
-addExCourseBtn.addEventListener("click",function (event){
+addExCourseBtn.addEventListener("click", function (event) {
     event.preventDefault();
     modalAddExCourse.classList.add("open");
 })
 
-modalAddExCourse.addEventListener("click",function (){
+modalAddExCourse.addEventListener("click", function () {
     modalAddExCourse.classList.remove("open");
 })
 
-modalContainerExCourse.addEventListener("click",function (event){
+modalContainerExCourse.addEventListener("click", function (event) {
     event.stopPropagation();
 })
 
 const invoiceBtn = document.querySelectorAll("button.invoice");
 const modalCreateMedicalBill = document.querySelector(".modal-create-medical-bill");
 const modalContainerCreateMedicalBill = document.querySelector(".modal-create-medical-bill table")
-for(var i=0;i<invoiceBtn.length;i++)
-{
-    invoiceBtn[i].addEventListener("click",function (){
-       modalCreateMedicalBill.classList.add("open");
+for (let i = 0; i < invoiceBtn.length; i++) {
+    invoiceBtn[i].addEventListener("click", function () {
+        const patientID = document.getElementById(`patient_id_${i}`)
+        const patientFullName = document.getElementById(`patient_full_name_${i}`)
+        const patientLabel = document.getElementById('patient_name')
+        const dayOfExamLabel = document.getElementById('day_of_exam')
+        const patientIDInput = document.getElementById('patient_id_input')
+        const dayOfExamInput = document.getElementById('day_of_exam_input')
+
+        patientLabel.textContent = patientLabel.textContent + ' ' + patientFullName.textContent
+        dayOfExamLabel.textContent = dayOfExamLabel.textContent + ' ' + moment().format('YYYY/MM/D')
+
+        patientIDInput.value = patientID.textContent
+        dayOfExamInput.value = moment().format('YYYY/MM/D')
+
+        modalCreateMedicalBill.classList.add("open");
     })
 }
 
-modalCreateMedicalBill.addEventListener("click",function (){
+modalCreateMedicalBill.addEventListener("click", function () {
+    const patientLabel = document.getElementById('patient_name')
+    const dayOfExamLabel = document.getElementById('day_of_exam')
+    const patientIDInput = document.getElementById('patient_id_input')
+    const dayOfExamInput = document.getElementById('day_of_exam_input')
+
+    patientLabel.textContent = 'Patient Name:'
+    dayOfExamLabel.textContent = 'Examination:'
+
+    patientIDInput.value = ''
+    dayOfExamInput.value = ''
+
     modalCreateMedicalBill.classList.remove("open");
 })
 
-modalContainerCreateMedicalBill.addEventListener("click",function (e){
+modalContainerCreateMedicalBill.addEventListener("click", function (e) {
     e.stopPropagation();
 })
 
+const medicines = document.getElementsByClassName('medicines')
+const addMedicineRow = document.getElementById('add-medicine-row')
+const isAddMedicineInput = document.getElementById('is_add_medicine')
+
+for (let i = 0; i < medicines.length; i++) {
+    medicines[i].addEventListener('click', (e) => {
+        for (let j = 0; medicine_list.length; j++) {
+            if (medicine_list[j].medicine_name === e.target.textContent) {
+                const newRow = document.createElement('tr')
+                newRow.classList.add('medicine-row')
+                newRow.innerHTML = `<td>${medicine_list[j].id}</td>
+                                <input type="hidden" value="${medicine_list[j].id}" name="medicine_id" id="medicine_id" />
+                                <td>${medicine_list[j].medicine_name}</td>
+                                <td>${medicine_list[j].medicine_unit}</td>
+                                <td><input type="number" name="amount" id="amount" required /></td>
+                                <td>${medicine_list[j].direction_for_use}</td>
+                                <td><a onclick="removeMedicineRow(this)" class="btn-remove-medicine"><i class="fa-solid fa-x"></i></a></td>`
+                addMedicineRow.parentNode.insertBefore(newRow, addMedicineRow.nextSibling);
+                isAddMedicineInput.value = 'true'
+                modalAddMedicine.classList.remove("open");
+                break
+            }
+        }
+    })
+}
+
+const packages = document.getElementsByClassName('packages')
+
+for (let i = 0; i < packages.length; i++) {
+    packages[i].addEventListener('click', (e) => {
+        for (let j = 0; j < packages_list.length; j++) {
+            if (packages_list[j].packages_name === e.target.textContent) {
+                const input = document.getElementById('packages_id')
+                input.value = packages_list[j].id
+                addExCourseBtn.innerHTML = packages_list[j].packages_name
+                addExCourseBtn.style.color = 'green'
+                modalAddExCourse.classList.remove("open");
+                break
+            }
+        }
+    })
+}
+
+function removeMedicineRow(removeBtn){
+    const medicineRow = removeBtn.closest('.medicine-row');
+    medicineRow.remove()
+    const medicineRows = document.getElementsByClassName('medicine-row')
+    if (medicineRows.length <= 0) isAddMedicineInput.value = null
+}

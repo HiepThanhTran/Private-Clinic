@@ -349,7 +349,7 @@ tr:nth-child(even) {
     color: var(--white);
 }
 
-.btn-remove-medical-bill {
+.btn-remove-medicine {
     padding: 1px 4px;
     margin: 0 5px;
     border: 2px solid red;
@@ -357,7 +357,7 @@ tr:nth-child(even) {
     transition: all 0.2s ease;
 }
 
-.btn-remove-medical-bill:hover {
+.btn-remove-medicine:hover {
     background-color: red;
     color: var(--white);
 }
@@ -385,7 +385,7 @@ tr:nth-child(even) {
     display: block;
 }
 
-.modal-add-examination-course {
+.modal-add-examination-packages {
     position: fixed;
     top: 0;
     right: 0;
@@ -395,7 +395,7 @@ tr:nth-child(even) {
     display: none;
 }
 
-.modal-add-examination-course.open {
+.modal-add-examination-packages.open {
     display: block;
 }
 

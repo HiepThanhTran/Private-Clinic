@@ -1,9 +1,11 @@
-from private_clinic.decorators import logout_required, employee_login_required
-from flask_login import login_required, current_user
-from private_clinic import services
-from flask import request, jsonify
-from private_clinic.app import app
 from datetime import datetime
+
+from flask import request, jsonify
+from flask_login import login_required, current_user
+
+from private_clinic import services
+from private_clinic.app import app
+from private_clinic.decorators import logout_required
 
 
 @logout_required
@@ -129,3 +131,29 @@ def load_examination_schedule_list_by_date():
         })
 
     return jsonify(schedule_list)
+
+
+def load_medicine_list():
+    medicines = services.get_medicine_list()
+    medicine_list = []
+    for medicine in medicines:
+        medicine_list.append({
+            'id': medicine.id,
+            'medicine_name': medicine.medicine_name,
+            'medicine_unit': medicine.medicine_unit.unit_name,
+            'direction_for_use': medicine.direction_for_use
+        })
+
+    return jsonify(medicine_list)
+
+
+def load_packages_list():
+    packages_load = services.get_packages_list()
+    packges_list = []
+    for packages in packages_load:
+        packges_list.append({
+            'id': packages.id,
+            'packages_name': packages.packages_name,
+        })
+
+    return jsonify(packges_list)
