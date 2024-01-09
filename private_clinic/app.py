@@ -1,6 +1,5 @@
 import cloudinary
 from flask import Flask
-from flask_admin import Admin
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
@@ -29,8 +28,6 @@ login = LoginManager(app=app)
 login.login_view = 'authentication'
 
 mail = Mail(app=app)
-
-admin = Admin(app=app, name='Private Clinic Administration', template_mode='bootstrap4')
 
 cloudinary.config(
     cloud_name="dtthwldgs",

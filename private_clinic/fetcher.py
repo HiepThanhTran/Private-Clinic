@@ -49,8 +49,8 @@ def check_account_exists():
     user = services.get_user_by_email(email=email)
 
     return jsonify({
-        'status_code': 200 if not user else 400,
-        'message': 'Account does not exist.' if not user else '',
+        'status_code': 200 if user else 400,
+        'message': 'Account does not exist.' if not user else 'Account exists.',
     })
 
 
@@ -117,7 +117,7 @@ def load_examination_schedule_list_by_date():
 
     date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
 
-    schedules = services.get_examination_schedule_list_by_date(date=date_obj)
+    schedules = services.get_examination_schedules_list_by_date(date=date_obj)
     schedule_list = []
     for schedule in schedules:
         schedule_list.append({

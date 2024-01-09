@@ -1,0 +1,130 @@
+{% extends 'admin/base.html' %}
+
+{% block head %}
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+{% endblock %}
+
+{% block  head_meta %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon-web.png') }}" type="image/x-icon">
+{% endblock %}
+
+{% block head_css %}
+    {#    {{ super() }}#}
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/admin.css') }}">
+    <style>
+        li {
+            font-weight: 500;
+            font-size: 0.87rem;
+            color: var(--color-info-dark);
+        }
+
+        li.active a {
+            width: 100%;
+            color: var(--color-primary);
+            background-color: var(--color-light);
+            margin-left: 0;
+        }
+
+        li.active a::before {
+            content: '';
+            width: 6px;
+            height: 18px;
+            background-color: var(--color-primary);
+        }
+
+        a.dropdown-item {
+            margin: 0 !important;
+        }
+    </style>
+{% endblock %}
+
+{% block tail_js %}
+    {{ super() }}
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
+{% endblock %}
+
+{% block page_body %}
+    <div class="container" style="max-width: none;">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+                    <h2><a style="color: unset;" href="{{ url_for('index') }}">Faith & Hope</a></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                {% block main_menu %}{{ super() }}{% endblock %}
+                {#                <a href="{{ admin_view.admin.url }}" class="active">#}
+                {#                    <span class="material-icons-sharp">dashboard</span>#}
+                {#                    <h3>Dashboard</h3>#}
+                {#                </a>#}
+                {#                <a href="{{ url_for('analytics') }}">#}
+                {#                    <span class="material-icons-sharp">insights</span>#}
+                {#                    <h3>Analytics</h3>#}
+                {#                </a>#}
+                <div>
+                    <a href="{{ url_for('profile_settings', slug=current_user.slug) }}">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>Profile</h3>
+                    </a>
+                    <a href="{{ url_for('account_settings', slug=current_user.slug) }}">
+                        <span class="material-icons-sharp">settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="{{ url_for('signout') }}">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        {% block main_content %}{% endblock %}
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>{% if current_user.is_authenticated %}{{ current_user.user.full_name }}{% else %}Anonymous{% endif %}</b></p>
+                    </div>
+                </div>
+            </div>
+
+            {% block right_section_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

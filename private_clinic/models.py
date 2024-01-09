@@ -28,7 +28,7 @@ class Account(BaseModel, UserMixin):
     __tablename__ = 'accounts'
 
     username = Column(String(50), nullable=False, unique=True)
-    password = Column(String(50), nullable=False)
+    password = Column(String(255), nullable=False)
     slug = Column(String(50), nullable=False)
     active = Column(Boolean, default=True, nullable=False)
     is_confirmed = Column(Boolean, nullable=False, default=False)
@@ -184,23 +184,19 @@ class ExaminationSchedule(BaseModel):
     patient_id = Column(BigInteger, ForeignKey('patients.id', ondelete='CASCADE'), nullable=False)
 
 
-medicine_types = db.Table('medicine_types',
-                          Column('medicine_id', BigInteger, ForeignKey('medicines.id'), primary_key=True),
-                          Column('medicine_type_id', BigInteger, ForeignKey('medicine_type.id'), primary_key=True))
-
-
 class Medicine(BaseModel):
     __tablename__ = 'medicines'
 
     medicine_name = Column(String(20), nullable=False, unique=True)
     description = Column(String(100))
+    slug = Column(String(50), nullable=False)
     price = Column(Double, nullable=False, default=0)
     amount = Column(Integer, default=0)
     image = Column(String(255))
     direction_for_use = Column(String(100))
+    medicine_type_id = Column(BigInteger, ForeignKey('medicine_type.id'), nullable=False)
     medicine_unit_id = Column(BigInteger, ForeignKey('medicine_unit.id'), nullable=False)
 
-    medicine_types = relationship('MedicineType', secondary='medicine_types', lazy='subquery', backref=backref('medicines', lazy=True))
     medical_bills = relationship('Prescription', backref='medicines', lazy=True)
 
     def __str__(self):
@@ -220,6 +216,8 @@ class MedicineType(BaseModel):
 
     type_of_medicine = Column(String(20), nullable=False, unique=True)
 
+    medicines = relationship('Medicine', backref='medicine_type', lazy=True)
+
     def __str__(self):
         return self.type_of_medicine
 
@@ -235,11 +233,6 @@ class MedicineUnit(BaseModel):
         return self.unit_name
 
 
-medicalbill_packages = db.Table('medicalbill_packages',
-                                Column('medical_bill_id', BigInteger, ForeignKey('medical_bills.id'), primary_key=True),
-                                Column('packages_id', BigInteger, ForeignKey('packages.id'), primary_key=True))
-
-
 class MedicalBill(BaseModel):
     __tablename__ = 'medical_bills'
 
@@ -248,8 +241,8 @@ class MedicalBill(BaseModel):
     examination_date = Column(DateTime, nullable=False)
     patient_id = Column(BigInteger, ForeignKey('patients.id'), nullable=False)
     doctor_id = Column(BigInteger, ForeignKey('doctors.id'), nullable=False)
+    packages_id = Column(BigInteger, ForeignKey('packages.id'), nullable=False)
 
-    packages = relationship('Packages', secondary='medicalbill_packages', lazy='subquery', backref=backref('medical_bills', lazy=True))
     bill = relationship('Bill', backref='medical_bill', lazy=True, uselist=False)
     medicines = relationship('Prescription', backref='medical_bills', lazy=True)
 
@@ -268,6 +261,9 @@ class Packages(BaseModel):
 
     packages_name = Column(String(20), nullable=False, unique=True)
     price = Column(Double, nullable=False, default=0)
+    slug = Column(String(50), nullable=False)
+
+    medical_bills = relationship('MedicalBill', backref='packages', lazy=True)
 
     def __str__(self):
         return self.packages_name
