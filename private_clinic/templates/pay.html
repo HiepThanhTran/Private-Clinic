@@ -1,0 +1,215 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Pay{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pay.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+        <div class="my-grid">
+            <div class="my-row">
+                <div class="my-col-6">
+                    <div class="banner__content">
+                        <h1 class="banner__content--title">About F&H</h1>
+                        <p class="banner__content--des">
+                            Below is some information to help you better understand us. At the same time, we also want
+                            to
+                            bring peace of mind about our services.
+                        </p>
+                        <div class="banner__content--btn">
+                            {% if not current_user.is_authenticated %}
+                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-col-6">
+                    <div class=" banner__image">
+                        <img src="{{ url_for('static', filename='images/About.svg') }}" alt="About">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-content">
+        <div class="my-grid">
+            <div class="my-row">
+                <div class="my-col-8">
+                    <div class="cart-title">
+                        <i class="fa-solid fa-prescription-bottle-medical"></i>
+                        <h1>Your Cart</h1>
+                    </div>
+                    <div class="card-list">
+                        <div class="card-item">
+                            <div class="card-item__infor">
+                                <div class="card-item__info--image">
+                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}"
+                                         alt="Medicine-1">
+                                </div>
+
+                                <div class="card-item__infor--des">
+                                    <span class="card-item__infor--des__name">Truong Phuc Colon</span>
+                                    <div class="card-item__infor--des__type">
+                                        Type:
+                                        <span>Box</span>
+                                    </div>
+                                    <div class="card-item__infor--des__ingredient">
+                                        Ingredient: Hoang Lien, Moc Huong, White Atractylodes, White Dahlia, Hau Loc,
+                                        Licorice, Astragalus, Talc.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="card-item__price">105.000 VNĐ</span>
+
+                            <div class="card-item__quantity">
+                                <button class="plus-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span>1</span>
+                                <button class="minus-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="remove-btn">
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                           <div class="card-item">
+                            <div class="card-item__infor">
+                                <div class="card-item__info--image">
+                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}"
+                                         alt="Medicine-1">
+                                </div>
+
+                                <div class="card-item__infor--des">
+                                    <span class="card-item__infor--des__name">Truong Phuc Colon</span>
+                                    <div class="card-item__infor--des__type">
+                                        Type:
+                                        <span>Box</span>
+                                    </div>
+                                    <div class="card-item__infor--des__ingredient">
+                                        Ingredient: Hoang Lien, Moc Huong, White Atractylodes, White Dahlia, Hau Loc,
+                                        Licorice, Astragalus, Talc.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="card-item__price">105.000 VNĐ</span>
+
+                            <div class="card-item__quantity">
+                                <button class="plus-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span>1</span>
+                                <button class="minus-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="remove-btn">
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                           <div class="card-item">
+                            <div class="card-item__infor">
+                                <div class="card-item__info--image">
+                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}"
+                                         alt="Medicine-1">
+                                </div>
+
+                                <div class="card-item__infor--des">
+                                    <span class="card-item__infor--des__name">Truong Phuc Colon</span>
+                                    <div class="card-item__infor--des__type">
+                                        Type:
+                                        <span>Box</span>
+                                    </div>
+                                    <div class="card-item__infor--des__ingredient">
+                                        Ingredient: Hoang Lien, Moc Huong, White Atractylodes, White Dahlia, Hau Loc,
+                                        Licorice, Astragalus, Talc.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="card-item__price">105.000 VNĐ</span>
+
+                            <div class="card-item__quantity">
+                                <button class="plus-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span>1</span>
+                                <button class="minus-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="remove-btn">
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                           <div class="card-item">
+                            <div class="card-item__infor">
+                                <div class="card-item__info--image">
+                                    <img src="{{ url_for('static', filename='images/medicine-1.webp') }}"
+                                         alt="Medicine-1">
+                                </div>
+
+                                <div class="card-item__infor--des">
+                                    <span class="card-item__infor--des__name">Truong Phuc Colon</span>
+                                    <div class="card-item__infor--des__type">
+                                        Type:
+                                        <span>Box</span>
+                                    </div>
+                                    <div class="card-item__infor--des__ingredient">
+                                        Ingredient: Hoang Lien, Moc Huong, White Atractylodes, White Dahlia, Hau Loc,
+                                        Licorice, Astragalus, Talc.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="card-item__price">105.000 VNĐ</span>
+
+                            <div class="card-item__quantity">
+                                <button class="plus-btn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span>1</span>
+                                <button class="minus-btn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <div class="remove-btn">
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-col-4">
+                    <div class="money">
+                        <div class="money__total">
+                            <h3>Total</h3>
+                            <h3>105.000 VNĐ</h3>
+                        </div>
+                        <button class="pay-btn">Pay</button>
+                        <div class="rule">
+                            By placing a purchase order, you agree to the
+                            F&H Medicne Terms of Service, Personal Data Collection and Processing Policy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

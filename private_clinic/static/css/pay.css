@@ -1,0 +1,157 @@
+.pay-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: 100vh;
+    background-color: var(--white);
+    padding: 100px 0;
+}
+
+.cart-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-title i {
+    font-size: 2.5rem;
+    background-color: var(--sub-color);
+    padding: 10px 15px;
+    color: var(--white);
+    border-radius: 50%;
+    border: 1px solid var(--gray);
+    margin-right: 20px;
+}
+
+.cart-title h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--sub-color);
+    margin: 10px 0;
+}
+
+.card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card-item:hover {
+    border: 1px solid var(--sub-color);
+}
+
+.card-item__info--image {
+    width: 160px;
+}
+
+.card-item__infor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-item__infor--des {
+    margin-left: 20px;
+    width: 300px;
+}
+
+.card-item__infor--des__name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.card-item__infor--des__type span {
+    font-weight: 500;
+}
+
+.card-item__infor--des__ingredient {
+    font-size: 1rem;
+}
+
+.card-item__price {
+    color: var(--sub-color);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+..card-item__quantity {
+    margin-left: 50px;
+}
+
+.card-item__quantity button {
+    padding: 2px 6px;
+    border: 1px solid var(--sub-color);
+    background-color: var(--sub-color);
+    color: var(--white);
+    border-radius: 50%;
+}
+
+.card-item__quantity span {
+    font-weight: 500;
+    margin: 0 5px;
+}
+
+.remove-btn button{
+    border: none;
+    font-size: 1.25rem;
+    color: var(--gray);
+}
+
+.money {
+    padding: 16px;
+    background: var(--white);
+    border-radius: 12px 12px 0 0;
+    margin-left: auto;
+    max-width: 100%;
+    padding: 16px;
+    background: var(--white);
+    border-radius: 12px 12px 0 0;
+    margin-left: auto;
+    max-width: 100%;
+    box-shadow: 0 0 7px 2px rgba(0,0,0,0.1);
+    margin-top: 88px;
+}
+
+.money .money__total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.money .money__total h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.pay-btn{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 20px;
+    margin-top:40px;
+    transition: all 0.2s ease;
+}
+
+.pay-btn:hover{
+    background-color: var(--sub-color);
+}
+
+.rule{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--black);
+}
+
+.money-svg{
+    display: block;
+}

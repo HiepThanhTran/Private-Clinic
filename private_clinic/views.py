@@ -34,6 +34,9 @@ def medicine():
     return render_template(template_name_or_list='customer/medicine.html')
 
 
+def pay():
+    return render_template(template_name_or_list='pay.html')
+
 # @employee_login_required
 def employee():
     return render_template(template_name_or_list='employee/employee_home.html')
