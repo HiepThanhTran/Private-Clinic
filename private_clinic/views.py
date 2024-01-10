@@ -5,7 +5,8 @@ from flask_login import login_required, current_user, login_user, logout_user
 
 from private_clinic import services
 from private_clinic.app import db, login, app
-from private_clinic.decorators import logout_required, check_is_confirmed, employee_logout_required
+from private_clinic.decorators import logout_required, check_is_confirmed, employee_logout_required, employee_login_required, check_role
+from private_clinic.models import AccountRoleEnum
 from private_clinic.services import send_email
 from private_clinic.token import confirm_token, generate_token
 
@@ -48,7 +49,7 @@ def pay():
     return render_template(template_name_or_list='pay.html')
 
 
-# @employee_login_required
+@employee_login_required
 def employee():
     return render_template(template_name_or_list='employee/employee_home.html')
 
@@ -231,9 +232,9 @@ def employee_login():
     return render_template(template_name_or_list='employee/login.html')
 
 
-# @employee_login_required
-# @check_is_confirmed
-# @check_role(AccountRoleEnum.NURSE)
+@employee_login_required
+@check_is_confirmed
+@check_role(AccountRoleEnum.NURSE)
 def employee_nurse():
     if request.method.__eq__('POST'):
         day_of_exam = request.form.get('day_of_exam')
@@ -250,9 +251,9 @@ def employee_nurse():
     return render_template(template_name_or_list='employee/nurse.html', examination_schedule_list=examination_schedule_list)
 
 
-# @employee_login_required
-# @check_is_confirmed
-# @check_role(AccountRoleEnum.DOCTOR)
+@employee_login_required
+@check_is_confirmed
+@check_role(AccountRoleEnum.DOCTOR)
 def employee_doctor():
     if request.method.__eq__('POST'):
         examination_date = request.form.get('day_of_exam')
@@ -289,9 +290,9 @@ def employee_doctor():
                            packages_list=packages_list)
 
 
-# @employee_login_required
-# @check_is_confirmed
-# @check_role(AccountRoleEnum.STAFF)
+@employee_login_required
+@check_is_confirmed
+@check_role(AccountRoleEnum.STAFF)
 def employee_cashier():
     if request.method == 'POST':
         patient_id = request.form.get('patient_id')
