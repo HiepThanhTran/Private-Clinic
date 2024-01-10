@@ -110,7 +110,7 @@ class Administrator(db.Model):
     regulations = relationship('Regulation', backref='administrator', lazy=True)
 
 
-class Cashier(Employee):
+class Cashier(db.Model):
     __tablename__ = 'cashiers'
 
     id = Column(BigInteger, ForeignKey('employees.id'), primary_key=True)
@@ -119,14 +119,14 @@ class Cashier(Employee):
     bills = relationship('Bill', backref='cashier', lazy=True)
 
 
-class Nurse(Employee):
+class Nurse(db.Model):
     __tablename__ = 'nurses'
 
     id = Column(BigInteger, ForeignKey('employees.id'), primary_key=True)
     educational_attainment = Column(String(100), nullable=False)
 
 
-class Doctor(Employee):
+class Doctor(db.Model):
     __tablename__ = 'doctors'
 
     id = Column(BigInteger, ForeignKey('employees.id'), primary_key=True)

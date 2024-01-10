@@ -152,8 +152,8 @@ def create_cashier(cashier_id):
     return cashier
 
 
-def create_nurse(nurse_id):
-    nurse = Nurse(id=nurse_id)
+def create_nurse(nurse_id, educational_attainment):
+    nurse = Nurse(id=nurse_id, educational_attainment=educational_attainment)
 
     db.session.add(nurse)
     db.session.commit()
@@ -161,8 +161,8 @@ def create_nurse(nurse_id):
     return nurse
 
 
-def create_doctor(doctor_id):
-    doctor = Doctor(id=doctor_id)
+def create_doctor(doctor_id, specialist, years_of_experience):
+    doctor = Doctor(id=doctor_id, specialist=specialist, years_of_experience=years_of_experience)
 
     db.session.add(doctor)
     db.session.commit()

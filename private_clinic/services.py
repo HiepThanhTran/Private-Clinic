@@ -87,12 +87,12 @@ def create_cashier(cashier_id):
     return dao.create_cashier(cashier_id=cashier_id)
 
 
-def create_nurse(nurse_id):
-    return dao.create_nurse(nurse_id=nurse_id)
+def create_nurse(nurse_id, educational_attainment):
+    return dao.create_nurse(nurse_id=nurse_id, educational_attainment=educational_attainment)
 
 
-def create_doctor(doctor_id):
-    return dao.create_doctor(doctor_id=doctor_id)
+def create_doctor(doctor_id, specialist, years_of_experience):
+    return dao.create_doctor(doctor_id=doctor_id, specialist=specialist, years_of_experience=years_of_experience)
 
 
 def create_examination_schedule(patient_id, examination_date, **kwargs):
