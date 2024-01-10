@@ -1,14 +1,14 @@
 {
   "builds": [
     {
-      "src": "private_clinic/index.py",
+      "src": "./index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "private_clinic/urls.py"
+      "dest": "/"
     }
   ]
 }
