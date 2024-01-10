@@ -21,6 +21,7 @@ app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_DEBUG '] = False
 
 app.config['MAX_PATIENTS_PER_DAY'] = 2
+app.config['CURRENT_YEAR'] = 2024
 
 db = SQLAlchemy(app=app)
 

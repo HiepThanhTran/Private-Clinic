@@ -31,13 +31,15 @@ app.add_url_rule('/mail/confirm/<token>', 'confirm_email', views.confirm_email)
 app.add_url_rule('/mail/resend', 'resend_confirmation', views.resend_confirmation)
 app.add_url_rule('/mail/password-reset/<token>', 'password_reset', views.password_reset)
 
-app.add_url_rule('/api/employee/doctor/load-medicine', 'load_medicine', fetcher.load_medicine_list, methods=['POST'])
 app.add_url_rule('/api/employee/doctor/load-packages', 'load_packages', fetcher.load_packages_list, methods=['POST'])
+app.add_url_rule('/api/employee/doctor/load-medicine', 'load_medicine', fetcher.load_medicines_list, methods=['POST'])
 app.add_url_rule('/api/authentication/check-signin-infor', 'check_signin_infor', fetcher.check_signin_infor, methods=['POST'])
 app.add_url_rule('/api/authentication/check-signup-infor', 'check_signup_infor', fetcher.check_signup_infor, methods=['POST'])
 app.add_url_rule('/api/authentication/check-profile-infor', 'check_profile_infor', fetcher.check_profile_infor, methods=['POST'])
 app.add_url_rule('/api/authentication/check-account-exists', 'check_account_exists', fetcher.check_account_exists, methods=['POST'])
-app.add_url_rule('/api/appointment/check-appointment-availability', 'check_appointment_availability',
-                 fetcher.check_appointment_availability, methods=['POST'])
-app.add_url_rule('/api/authentication/load-examination-schedule-list-by-date', 'load_examination_schedule_list_by_date',
-                 fetcher.load_examination_schedule_list_by_date, methods=['POST'])
+app.add_url_rule('/api/appointment/check-appointment-availability', 'check_appointment_availability', fetcher.check_appointment_availability, methods=['POST'])
+app.add_url_rule('/api/authentication/load-chart-stats-medicine-by-month', 'load_chart_stats_medicine_by_month', fetcher.load_chart_stats_medicine_by_month, methods=['POST'])
+app.add_url_rule('/api/employee/doctor/load-medicine-by-medical-bill-id', 'load_medicines_list_by_medical_bill_id', fetcher.load_medicines_list_by_medical_bill_id,
+                 methods=['POST'])
+app.add_url_rule('/api/authentication/load-examination-schedule-list-by-date', 'load_examination_schedule_list_by_date', fetcher.load_examination_schedule_list_by_date,
+                 methods=['POST'])

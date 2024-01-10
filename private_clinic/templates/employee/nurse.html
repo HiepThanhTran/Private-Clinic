@@ -6,6 +6,7 @@
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/employee/nurse.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/status_tags.css') }}">
 {% endblock %}
 
 {% block js_body %}
@@ -35,10 +36,7 @@
             <li id="create-examination-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-list"></i>Create list</a>
             </li>
             <li id="appointment-btn">
-                <a href="javascript:void(0)">
-                    <i class="bx fa-solid fa-calendar-check"></i>
-                    Appointment
-                </a>
+                <a href="javascript:void(0)"><i class="bx fa-solid fa-calendar-check"></i>Appointment</a>
             </li>
             <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a>
             </li>

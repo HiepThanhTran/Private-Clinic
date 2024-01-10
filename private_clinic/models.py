@@ -31,7 +31,7 @@ class Account(BaseModel, UserMixin):
 
     username = Column(String(50), nullable=False, unique=True)
     password = Column(String(255), nullable=False)
-    slug = Column(String(50), nullable=False)
+    slug = Column(String(50), nullable=False, unique=True)
     active = Column(Boolean, default=True, nullable=False)
     is_confirmed = Column(Boolean, nullable=False, default=False)
     confirmed_on = Column(DateTime, nullable=True)
@@ -183,7 +183,7 @@ class ExaminationSchedule(BaseModel):
     phone_number = Column(String(11), nullable=False)
     examination_date = Column(DateTime, nullable=False)
     examination_list_id = Column(BigInteger, ForeignKey('examination_list.id'))
-    patient_id = Column(BigInteger, ForeignKey('patients.id', ondelete='CASCADE'), nullable=False)
+    patient_id = Column(BigInteger, ForeignKey('patients.id', ondelete='CASCADE'))
 
 
 class Medicine(BaseModel):

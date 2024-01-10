@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/analytics.css') }}">
 {% endblock %}
 
+{% block tail_js %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/admin/analytics.js') }}"></script>
+    <script>
+        let medicineLabels = []
+        let medicineData = []
+        let chart
+        {% for medicine in medicine_stats %}
+            medicineLabels.push('{{ medicine.medicine_name }}')
+            medicineData.push('{{ medicine.usage_count }}')
+
+            medicineColor = generateRandomColor()
+            colors.push(medicineColor.color)
+            borderColors.push(medicineColor.borderColor)
+        {% endfor %}
+    </script>
+{% endblock %}
+
 {% block main_content %}
     <!-- Main Content -->
     <main>
@@ -18,26 +36,20 @@
         <!-- Total Sales Table -->
         <div class="statistic-table sales__table">
             <h2>Total Sales</h2>
-            <div class="statistic__month">
-                <label>
-                    Month: <input class="choose__month" type="month" value="2024-01">
-                </label>
-            </div>
-            <div class="statistic__month d-flex justify-content-between">
-                <label>Search by Date: <input class="choose__date" type="date"></label>
-                <label class="d-flex" style="align-items:center">
-                    Sort:<select class="form-select ms-2 sort__table">
-                    <option>By date</option>
-                    <option>By patient</option>
-                    <option>By revenue</option>
-                    <option>By percentage</option>
-                </select>
-                </label>
+            <div class=" d-flex justify-content-between">
+                <div class="statistic__month">
+                    <label>
+                        Month: <input class="choose__month" type="month" value="{{ default_date }}">
+                    </label>
+                </div>
+                <div class="statistic__month d-flex justify-content-between">
+                    <label>Search by Date: <input class="choose__date" type="date"></label>
+                </div>
             </div>
             <table>
                 <thead>
                 <tr>
-                    <th>Number</th>
+                    <th>ID</th>
                     <th>Date</th>
                     <th>Total Patient</th>
                     <th>Revenue</th>
@@ -45,72 +57,41 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% for examination in examination_stats%}
+                    <tr>
+                        <th>{{ loop.index }}</th>
+                        <th>{{ examination.examination_date.strftime('%Y-%d') }}</th>
+                        <th>{{ examination.total_examinations }}</th>
+                        <th>{{ examination.revenue }}</th>
+                        <th>{{ avgs_list[loop.index0].avg }}</th>
+                    </tr>
+                {% endfor %}
                 <tr>
-                    <td>1</td>
-                    <td>01/01/2024</td>
-                    <td>31</td>
-                    <td>1200$</td>
-                    <td>80%</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>01/01/2024</td>
-                    <td>31</td>
-                    <td>1200$</td>
-                    <td>80%</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>01/01/2024</td>
-                    <td>31</td>
-                    <td>1200$</td>
-                    <td>80%</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>01/01/2024</td>
-                    <td>31</td>
-                    <td>1200$</td>
-                    <td>80%</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>01/01/2024</td>
-                    <td>31</td>
-                    <td>1200$</td>
-                    <td>80%</td>
+                    <th colspan="5">Total revenue: {{ revenue_stats[0].total_revenue }}</th>
                 </tr>
                 </tbody>
             </table>
         </div>
         <!-- End of Total Sales -->
+
         <!-- Medicine Table -->
         <div class="statistic-table medicine__table">
             <h2>Medicine Uses</h2>
-            <div class="statistic__month">
-                <label>
-                    Month: <input class="choose__month" type="month" value="2024-01">
-                </label>
+            <div class=" d-flex justify-content-between">
+                <div class="statistic__month">
+                    <label>Month: <input class="choose__month" id="medicine_stats_month" name="medicine_stats_month" type="month" value="{{ default_date }}"></label>
+                </div>
+                <div class="statistic__month">
+                    <form id="medicine-search-form">
+                        <label>Search: <input class="search__table" type="text" name="kw" placeholder="Enter medicine name..." required></label>
+                        <button class="btn btn-primary rounded ms-2" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-            <div class="statistic__month d-flex justify-content-between">
-                <label>
-                    Search: <input class="search__table" type="text" placeholder="Medicine Name">
-                </label>
-                <label>
-                    <label class="d-flex" style="align-items:center">
-                        Sort:<select class="form-select ms-2 sort__table">
-                        <option>By date</option>
-                        <option>By patient</option>
-                        <option>By revenue</option>
-                        <option>By percentage</option>
-                    </select>
-                    </label>
-                </label>
-            </div>
-            <table>
+            <table id="medicine-stats-table">
                 <thead>
                 <tr>
-                    <th>Number</th>
+                    <th>ID</th>
                     <th>Medicine</th>
                     <th>Unit</th>
                     <th>Amount</th>
@@ -118,13 +99,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>antihistamine</td>
-                    <td>pack</td>
-                    <td>181</td>
-                    <td>81</td>
-                </tr>
+                {% for medicine in medicine_stats %}
+                    <tr class="medicine-stats-row">
+                        <td>{{ loop.index }}</td>
+                        <td>{{ medicine.medicine_name }}</td>
+                        <td>{{ medicine.unit_name }}</td>
+                        <td>{{ medicine.amount }}</td>
+                        <td>{{ medicine.usage_count }}</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -134,6 +117,6 @@
 
 {% block right_section_content %}
     <!-- Canvas section -->
-    <canvas class="chart sales__chart"></canvas>
-    <canvas class="chart medicine__chart"></canvas>
+    <canvas style="padding: 24px;" class="chart sales__chart" id="sales__chart"></canvas>
+    <canvas style="padding: 24px; display: none" class="chart medicine__chart" id="medicine__chart"></canvas>
 {% endblock %}

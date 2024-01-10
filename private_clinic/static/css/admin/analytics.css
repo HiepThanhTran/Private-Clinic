@@ -3,7 +3,7 @@
 }
 
 .chart {
-    margin-top: 60px;
+    margin-top: 80px;
     width: 100%;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
@@ -33,13 +33,12 @@
 }
 
 .choose__table h2 {
-    padding: 10px;
+    padding: 12px 16px;
     margin-right: 10px;
     color: var(--color-dark);
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
     border-radius: var(--card-border-radius);
-    transition: all 0.2s;
     cursor: pointer;
 }
 
@@ -71,7 +70,7 @@
 .search__table {
     left: 0;
     margin-left: 3px;
-    padding: 10px;
+    padding: 12px;
     border-radius: var(--card-border-radius);
     transition: all 0.3s ease;
     color: var(--color-dark);

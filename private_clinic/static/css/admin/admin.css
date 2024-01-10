@@ -68,6 +68,7 @@ img{
 h1{
     font-weight: 800;
     font-size: 1.8rem;
+    margin-left: 8px;
 }
 
 h2{
@@ -90,6 +91,10 @@ p{
 
 b{
     color: var(--color-dark);
+}
+
+td, th {
+    padding: 12px;
 }
 
 .text-muted{
@@ -233,7 +238,7 @@ main{
 }
 
 main .statistic-table{
-    margin-top: 1.2rem;
+    margin-top: 4em;
 }
 
 

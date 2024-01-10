@@ -5,6 +5,75 @@
 {% block head_css %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/status_tags.css') }}">
+{% endblock %}
+
+{% block tail_js %}
+    {{ super() }}
+    <script>
+        let colors = []
+        let borderColors = []
+        const generateRandomColor = () => {
+            let r = Math.random() * 255
+            let g = Math.random() * 255
+            let b = Math.random() * 255
+            return {
+                color: `rgba(${r}, ${g}, ${b}, 0.2)`,
+                borderColor: `rgba(${r}, ${g}, ${b}, 1)`
+            }
+        }
+
+        const generateChart = (ctx, type, label, data) => {
+            new Chart(ctx, {
+                type: type,
+                data: {
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        borderWidth: 1,
+                        backgroundColor: colors,
+                        borderColor: borderColors,
+                    }]
+                },
+            })
+        }
+
+
+        let revenueUsesLabels = []
+        let revenueUsesData = []
+        let revenueColor
+        {% for s in revenue_stats %}
+            revenueUsesLabels.push('{{ s[0] }}')
+            revenueUsesData.push('{{ s[1] }}')
+
+            revenueColor = generateRandomColor()
+            colors.push(revenueColor.color)
+            borderColors.push(revenueColor.borderColor)
+        {% endfor %}
+        const revenueChart = document.getElementById('revenue_chart').getContext('2d')
+        generateChart(ctx = revenueChart, type = 'doughnut', label = '# Revenue', data = revenueUsesData)
+        colors = []
+        borderColors = []
+
+        let medicineUsesLabels = []
+        let medicineUsesData = []
+        let medicineColor
+        {% for s in medicine_stats %}
+            medicineUsesLabels.push('{{ s[0] }}')
+            medicineUsesData.push('{{ s[1] }}')
+
+            medicineColor = generateRandomColor()
+            colors.push(medicineColor.color)
+            borderColors.push(medicineColor.borderColor)
+        {% endfor %}
+        const medicineUsesChart = document.getElementById('medicine_uses_chart').getContext('2d')
+        generateChart(ctx = medicineUsesChart, type = 'doughnut', label = '# Amount', data = medicineUsesData)
+        colors = []
+        borderColors = []
+
+        const appointmentsChart = document.getElementById('appointments_chart').getContext('2d')
+        generateChart(ctx = appointmentsChart, type = 'doughnut', label = '#####', data = [1])
+    </script>
 {% endblock %}
 
 {% block main_content %}
@@ -16,15 +85,10 @@
                 <div class="status">
                     <div class="info">
                         <h3>Total Sales</h3>
-                        <h1>$65,024</h1>
+                        <h1>{{ '${:,.1}'.format(total_revenues[0].total_revenue) }}</h1>
                     </div>
                     <div class="progresss">
-                        <svg>
-                            <circle cx="38" cy="38" r="36"></circle>
-                        </svg>
-                        <div class="percentage">
-                            <p>+81%</p>
-                        </div>
+                        <canvas id="revenue_chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -32,15 +96,10 @@
                 <div class="status">
                     <div class="info">
                         <h3>Medicine Uses</h3>
-                        <h1>24,981</h1>
+                        <h1>{{ '{:,}'.format(total_medicines[0].total_amount) }}</h1>
                     </div>
                     <div class="progresss">
-                        <svg>
-                            <circle cx="38" cy="38" r="36"></circle>
-                        </svg>
-                        <div class="percentage">
-                            <p>-48%</p>
-                        </div>
+                        <canvas id="medicine_uses_chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -48,15 +107,10 @@
                 <div class="status">
                     <div class="info">
                         <h3>Examination</h3>
-                        <h1>14,147</h1>
+                        <h1>---</h1>
                     </div>
                     <div class="progresss">
-                        <svg>
-                            <circle cx="38" cy="38" r="36"></circle>
-                        </svg>
-                        <div class="percentage">
-                            <p>+21%</p>
-                        </div>
+                        <canvas id="appointments_chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -68,55 +122,45 @@
 
         <!-- Total Sales Table -->
         <div class="statistic-table">
-            <h2>Recent Rating</h2>
+            <h2>Recent Examination Schedule</h2>
             <table>
                 <thead>
                 <tr>
-                    <th>Rating</th>
-                    <th>Message</th>
-                    <th>User</th>
-                    <th>Date</th>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Examination Day</th>
+                    <th>Created Date</th>
+                    <th>Status</th>
                 </tr>
+                {% for es in examination_schedules %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ es.first_name }}</td>
+                        <td>{{ es.last_name }}</td>
+                        <td>{{ es.dob.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ es.examination_date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ es.created_date.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <i class="highlight {% if es.status %}positive-medium{% else %}attention-low{% endif %}"
+                               style="--iteration-count: infinite;"></i>
+                            <p class="status-tag__txt bac-l-stack-xs">
+                                {% if es.status %}
+                                    Accepted
+                                {% else %}
+                                    Pending
+                                {% endif %}
+                            </p>
+                        </td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
                 </thead>
                 <tbody>
-                <tr>
-                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></span></td>
-                    <td>Good job</td>
-                    <td>Alexander</td>
-                    <td>Jan 2024</td>
-                </tr>
-                <tr>
-                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></span></td>
-                    <td>Good job</td>
-                    <td>Alexander</td>
-                    <td>Jan 2024</td>
-                </tr>
-                <tr>
-                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></span></td>
-                    <td>Good job</td>
-                    <td>Alexander</td>
-                    <td>Jan 2024</td>
-                </tr>
-                <tr>
-                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></span></td>
-                    <td>Good job</td>
-                    <td>Alexander</td>
-                    <td>Jan 2024</td>
-                </tr>
-                <tr>
-                    <td><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></span></td>
-                    <td>Good job</td>
-                    <td>Alexander</td>
-                    <td>Jan 2024</td>
-                </tr>
+
                 </tbody>
             </table>
-            <a href="#">Show All</a>
         </div>
         <!-- End of Recent Orders -->
     </main>

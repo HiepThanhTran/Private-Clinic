@@ -5,7 +5,7 @@ from sqlalchemy import func
 
 from private_clinic.app import db
 from private_clinic.models import Account, User, Patient, Employee, Administrator, Cashier, Nurse, Doctor, ExaminationSchedule, \
-    ExaminationList, MedicalBill, AccountRoleEnum, MedicineType, MedicineUnit, Medicine, Packages, Prescription
+    ExaminationList, MedicalBill, AccountRoleEnum, MedicineType, MedicineUnit, Medicine, Packages, Prescription, Bill
 
 
 def authenticate(username, password):
@@ -34,6 +34,63 @@ def check_duplicate_insurance_id(insurance_id, current_user_id):
 
 def count_examination_schedule_by_date(date):
     return ExaminationSchedule.query.filter(func.DATE(ExaminationSchedule.examination_date) == date).count()
+
+
+def count_medicines_sold():
+    return db.session.query(func.sum(Prescription.amount).label('total_amount')).all()
+
+
+def count_revenue():
+    return db.session.query(func.sum(Bill.total_price).label('total_revenue')).all()
+
+
+def stats_medicine_per_month():
+    return db.session.query(func.extract('month', Bill.examination_date).label('month'),
+                            func.sum(Prescription.amount).label('total_amount')) \
+        .join(Prescription, Prescription.medical_bill_id == Bill.medical_bill_id) \
+        .join(MedicalBill, Bill.medical_bill_id == MedicalBill.id) \
+        .group_by(func.extract('month', Bill.examination_date)).all()
+
+
+def stats_medicine_usage_per_month(month=None, medicine_name=None):
+    result = db.session.query(func.extract('month', Bill.examination_date).label('month'),
+                              Medicine.medicine_name,
+                              MedicineUnit.unit_name,
+                              Medicine.amount,
+                              func.sum(Prescription.amount).label('usage_count')) \
+        .select_from(Medicine) \
+        .join(Prescription, Prescription.medicine_id == Medicine.id, isouter=True) \
+        .join(MedicalBill, MedicalBill.id == Prescription.medical_bill_id, isouter=True) \
+        .join(Bill, Bill.medical_bill_id == MedicalBill.id, isouter=True) \
+        .join(MedicineUnit, MedicineUnit.id == Medicine.medicine_unit_id, isouter=True) \
+        .group_by(func.extract('month', Bill.examination_date).label('month'), Medicine.medicine_name, MedicineUnit.unit_name)
+
+    if month:
+        result = result.filter(func.extract('month', Bill.examination_date).label('month') == month)
+
+    if medicine_name:
+        result = result.filter(Medicine.medicine_name.contains(medicine_name))
+
+    return result.all()
+
+
+def stats_revenue_per_month(month=None):
+    result = db.session.query(func.extract('month', Bill.examination_date).label('month'), func.sum(Bill.total_price).label('total_revenue')) \
+        .group_by(func.extract('month', Bill.examination_date))
+
+    if month:
+        result = result.filter(func.extract('month', Bill.examination_date).label('month') == month)
+
+    return result.all()
+
+
+def stats_examination_per_month():
+    return db.session.query(ExaminationList.examination_date, func.count(Patient.id).label('total_examinations'), func.sum(Bill.total_price).label('revenue')) \
+        .select_from(ExaminationList) \
+        .join(ExaminationSchedule, ExaminationSchedule.examination_list_id == ExaminationList.id) \
+        .join(Patient, ExaminationSchedule.patient_id == Patient.id) \
+        .join(Bill, Bill.patient_id == Patient.id) \
+        .group_by(ExaminationList.examination_date).all()
 
 
 def create_account(username, password, **kwargs):
@@ -185,6 +242,26 @@ def create_prescription(amount, medicine_id, medical_bill_id):
     return prescription
 
 
+def create_bill(patient_id, examination_date, pre_examination, medicine_money, total_price, medical_bill_id, cashier_id):
+    bill = Bill(
+        patient_id=patient_id,
+        examination_date=examination_date,
+        pre_examination=pre_examination,
+        medicine_money=medicine_money,
+        total_price=total_price,
+        medical_bill_id=medical_bill_id,
+        cashier_id=cashier_id
+    )
+
+    medical_bill = MedicalBill.query.get(medical_bill_id)
+    medical_bill.is_pay = True
+
+    db.session.add(bill)
+    db.session.commit()
+
+    return bill
+
+
 def update_account_password(account_id, new_password):
     new_password = str(hashlib.md5(new_password.strip().encode('utf-8')).hexdigest())
 
@@ -238,15 +315,23 @@ def get_packages_list():
     return Packages.query.all()
 
 
+def get_bill_list():
+    return Bill.query.all()
+
+
 def get_examination_schedules_list():
     return ExaminationSchedule.query.order_by(ExaminationSchedule.id.asc()).all()
+
+
+def get_examination_schedules_list_sort_by_created_date():
+    return ExaminationSchedule.query.order_by(ExaminationSchedule.created_date.desc()).all()
 
 
 def get_medical_bills_list():
     return MedicalBill.query.order_by(MedicalBill.id.asc()).all()
 
 
-def get_medicine_list():
+def get_medicines_list():
     return Medicine.query.filter(Medicine.amount > 0).order_by(Medicine.medicine_name.asc()).all()
 
 
@@ -255,6 +340,22 @@ def get_patients_list():
             .join(Account, Account.id == User.account_id)
             .filter(Account.confirmed_on.is_(True), Account.active.is_(True))
             .order_by(Patient.id.asc()).all())
+
+
+def get_details_bill():
+    return db.session.query(
+        Medicine.id,
+        Medicine.medicine_name,
+        MedicineUnit.unit_name,
+        Medicine.direction_for_use,
+        Prescription.amount,
+        Prescription.medical_bill_id,
+        Medicine.price.label('medicine_price'),
+        Packages.price.label('package_price')) \
+        .join(Prescription, Prescription.medicine_id == Medicine.id) \
+        .join(MedicineUnit, MedicineUnit.id == Medicine.medicine_unit_id) \
+        .join(MedicalBill, MedicalBill.id == Prescription.medical_bill_id) \
+        .join(Packages, Packages.id == MedicalBill.packages_id).all()
 
 
 def get_examination_schedules_list_by_date(date):

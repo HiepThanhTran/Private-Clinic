@@ -1,3 +1,6 @@
+from datetime import datetime
+
+from flask import request
 from flask_admin import AdminIndexView, expose, Admin, BaseView
 from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user
@@ -11,7 +14,12 @@ from private_clinic.models import (AccountRoleEnum, Account, User, Regulation, E
 class MyAdminView(AdminIndexView):
     @expose('/')
     def index(self):
-        return self.render('admin/index.html')
+        return self.render(template='admin/index.html',
+                           total_revenues=services.count_revenue(),
+                           revenue_stats=services.stats_revenue_per_month(),
+                           total_medicines=services.count_medicines_sold(),
+                           medicine_stats=services.stats_medicine_per_month(),
+                           examination_schedules=services.get_examination_schedules_list_sort_by_created_date())
 
 
 class AuthenticatedAdmin(ModelView):
@@ -29,15 +37,16 @@ class AuthenticatedAdmin(ModelView):
         return current_user.is_authenticated and current_user.role == AccountRoleEnum.ADMIN
 
 
-class AuthenticatedUser(BaseView):
-    def is_accessible(self):
-        return current_user.is_authenticated
-
-
-class MyAnalyticsView(AuthenticatedUser):
+class MyAnalyticsView(BaseView):
     @expose("/")
     def index(self):
-        return self.render('admin/analytics.html')
+        return self.render('admin/analytics.html',
+                           revenue_stats=services.stats_revenue_per_month(),
+                           examination_stats=services.stats_examination_per_month(),
+                           medicine_stats=services.stats_medicine_usage_per_month(month=datetime.now().month))
+
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.role == AccountRoleEnum.ADMIN
 
 
 class AccountView(AuthenticatedAdmin):

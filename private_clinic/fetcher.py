@@ -133,8 +133,8 @@ def load_examination_schedule_list_by_date():
     return jsonify(schedule_list)
 
 
-def load_medicine_list():
-    medicines = services.get_medicine_list()
+def load_medicines_list():
+    medicines = services.get_medicines_list()
     medicine_list = []
     for medicine in medicines:
         medicine_list.append({
@@ -157,3 +157,43 @@ def load_packages_list():
         })
 
     return jsonify(packges_list)
+
+
+def load_medicines_list_by_medical_bill_id():
+    prescriptions = services.get_details_bill()
+
+    prescriptions_list = []
+    for prescription in prescriptions:
+        prescriptions_list.append({
+            'id': prescription.id,
+            'medicine_name': prescription.medicine_name,
+            'medicine_unit': prescription.unit_name,
+            'amount': prescription.amount,
+            'direction_for_use': prescription.direction_for_use,
+            'medical_bill_id': prescription.medical_bill_id,
+            'medicine_price': prescription.medicine_price,
+            'package_price': prescription.package_price,
+        })
+
+    return jsonify(prescriptions_list)
+
+
+def load_chart_stats_medicine_by_month():
+    data = request.json
+    month = data.get('month')
+    medicine_name = data.get('medicine_name')
+    date_obj = datetime.strptime(month, '%Y-%m').date() if month else None
+
+    medicine_stats = services.stats_medicine_usage_per_month(month=date_obj.month if month else None, medicine_name=medicine_name)
+    medicine_stats_json = []
+
+    for medicine in medicine_stats:
+        medicine_stats_json.append({
+            'month': medicine.month,
+            'medicine_name': medicine.medicine_name,
+            'unit_name': medicine.unit_name,
+            'amount': medicine.amount,
+            'usage_count': medicine.usage_count
+        })
+
+    return jsonify(medicine_stats_json)

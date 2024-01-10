@@ -13,8 +13,18 @@ from private_clinic.token import confirm_token, generate_token
 # --------------------RENDER FUNCTIONS-------------------- #
 @app.context_processor
 def common_response():
-    return {
+    total_revenue = services.stats_revenue_per_month()[0].total_revenue
+    avgs_list = []
 
+    examination_stats = services.stats_examination_per_month()
+    for examination in examination_stats:
+        avgs_list.append({
+            'avg': examination.revenue/total_revenue * 100,
+        })
+
+    return {
+        'default_date': datetime.now().strftime('%Y-%m'),
+        'avgs_list': avgs_list,
     }
 
 
@@ -36,6 +46,7 @@ def medicine():
 
 def pay():
     return render_template(template_name_or_list='pay.html')
+
 
 # @employee_login_required
 def employee():
@@ -268,7 +279,7 @@ def employee_doctor():
 
     medical_bills_list = services.get_medical_bills_list()
     patients_list = services.get_patients_list()
-    medicine_list = services.get_medicine_list()
+    medicine_list = services.get_medicines_list()
     packages_list = services.get_packages_list()
 
     return render_template(template_name_or_list='employee/doctor.html',
@@ -282,7 +293,32 @@ def employee_doctor():
 # @check_is_confirmed
 # @check_role(AccountRoleEnum.STAFF)
 def employee_cashier():
-    return render_template(template_name_or_list='employee/cashier.html')
+    if request.method == 'POST':
+        patient_id = request.form.get('patient_id')
+        examination_date = request.form.get('examination_date')
+        pre_examination = request.form.get('pre_examination')
+        medicine_money = request.form.get('medicine_money')
+        total_price = request.form.get('total_price')
+        medical_bill_id = request.form.get('medical_bill_id')
+
+        bill = services.create_bill(
+            patient_id=patient_id,
+            examination_date=examination_date,
+            pre_examination=pre_examination,
+            medicine_money=medicine_money,
+            total_price=total_price,
+            medical_bill_id=medical_bill_id,
+            cashier_id=current_user.user.employee.cashier.id
+        )
+        flash('Invoice issued successfully', 'success')
+        return redirect(url_for('employee_cashier'))
+
+    bill_list = services.get_bill_list()
+    medical_bills_list = services.get_medical_bills_list()
+
+    return render_template(template_name_or_list='employee/cashier.html',
+                           bill_list=bill_list,
+                           medical_bills_list=medical_bills_list)
 
 
 # --------------------ADMIN-------------------- #

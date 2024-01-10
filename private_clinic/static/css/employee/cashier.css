@@ -293,13 +293,20 @@ body {
 
 .table-manage,
 .table-bill-issued {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
 .bill-title,
-.table-bill-issued{
+.table-bill-issued {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-title,
+.table-manage {
     display: none;
 }
 
@@ -319,11 +326,14 @@ td, th {
 }
 
 th {
-    background-color: var(--sub-color);
-    font-weight: 200;
     text-transform: uppercase;
     color: var(--white);
     font-weight: 500;
+}
+
+.tr-title th,
+.tr-button {
+    background-color: var(--sub-color);
 }
 
 tr {
@@ -404,7 +414,7 @@ button.invoice:hover {
     display: none;
 }
 
-.modal-detail.open{
+.modal-detail.open {
     display: block;
 }
 
@@ -429,7 +439,7 @@ button.invoice:hover {
     display: none;
 }
 
-.modal-print.open{
+.modal-print.open {
     display: block;
 }
 
@@ -442,12 +452,12 @@ button.invoice:hover {
     transform: translate(-50%, -50%);
 }
 
-.print-btn{
+.print-btn {
     padding: 5px 10px;
     border: 1px solid var(--black);
 }
 
-.print-btn:hover{
+.print-btn:hover {
     color: var(--sub-color);
 }
 

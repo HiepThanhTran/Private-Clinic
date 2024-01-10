@@ -39,6 +39,30 @@ def count_examination_schedule_by_date(date):
     return dao.count_examination_schedule_by_date(date=date)
 
 
+def count_medicines_sold():
+    return dao.count_medicines_sold()
+
+
+def count_revenue():
+    return dao.count_revenue()
+
+
+def stats_medicine_per_month():
+    return dao.stats_medicine_per_month()
+
+
+def stats_medicine_usage_per_month(month=None, medicine_name=None):
+    return dao.stats_medicine_usage_per_month(month=month, medicine_name=medicine_name)
+
+
+def stats_revenue_per_month(month=None):
+    return dao.stats_revenue_per_month(month=month)
+
+
+def stats_examination_per_month():
+    return dao.stats_examination_per_month()
+
+
 def create_account(username, password, **kwargs):
     return dao.create_account(username=username, password=password, **kwargs)
 
@@ -96,6 +120,18 @@ def create_medical_bill(symptoms, diagnostic, examination_date, patient_id, doct
         medicine_id_list=medicine_id_list)
 
 
+def create_bill(patient_id, examination_date, pre_examination, medicine_money, total_price, medical_bill_id, cashier_id):
+    return dao.create_bill(
+        patient_id=patient_id,
+        examination_date=examination_date,
+        pre_examination=pre_examination,
+        medicine_money=medicine_money,
+        total_price=total_price,
+        medical_bill_id=medical_bill_id,
+        cashier_id=cashier_id
+    )
+
+
 def update_account_password(account_id, new_password):
     return dao.update_account_password(account_id=account_id, new_password=new_password)
 
@@ -124,20 +160,32 @@ def get_packages_list():
     return dao.get_packages_list()
 
 
+def get_bill_list():
+    return dao.get_bill_list()
+
+
 def get_examination_schedules_list():
     return dao.get_examination_schedules_list()
+
+
+def get_examination_schedules_list_sort_by_created_date():
+    return dao.get_examination_schedules_list_sort_by_created_date()
 
 
 def get_medical_bills_list():
     return dao.get_medical_bills_list()
 
 
-def get_medicine_list():
-    return dao.get_medicine_list()
+def get_medicines_list():
+    return dao.get_medicines_list()
 
 
 def get_patients_list():
     return dao.get_patients_list()
+
+
+def get_details_bill():
+    return dao.get_details_bill()
 
 
 def get_examination_schedules_list_by_date(date):

@@ -1,4 +1,4 @@
-let medicine_list = {}
+let medicines_list = {}
 let packages_list = {}
 window.onload = () => {
     fetch('/api/employee/doctor/load-medicine', {
@@ -9,7 +9,7 @@ window.onload = () => {
         body: JSON.stringify({})
     }).then(response => response.json())
         .then(data => {
-            medicine_list = data
+            medicines_list = data
         })
         .catch(error => {
             console.log(error)
@@ -138,16 +138,16 @@ const isAddMedicineInput = document.getElementById('is_add_medicine')
 
 for (let i = 0; i < medicines.length; i++) {
     medicines[i].addEventListener('click', (e) => {
-        for (let j = 0; medicine_list.length; j++) {
-            if (medicine_list[j].medicine_name === e.target.textContent) {
+        for (let j = 0; medicines_list.length; j++) {
+            if (medicines_list[j].medicine_name === e.target.textContent) {
                 const newRow = document.createElement('tr')
                 newRow.classList.add('medicine-row')
-                newRow.innerHTML = `<td>${medicine_list[j].id}</td>
-                                <input type="hidden" value="${medicine_list[j].id}" name="medicine_id" id="medicine_id" />
-                                <td>${medicine_list[j].medicine_name}</td>
-                                <td>${medicine_list[j].medicine_unit}</td>
+                newRow.innerHTML = `<td>${medicines_list[j].id}</td>
+                                <input type="hidden" value="${medicines_list[j].id}" name="medicine_id" id="medicine_id" />
+                                <td>${medicines_list[j].medicine_name}</td>
+                                <td>${medicines_list[j].medicine_unit}</td>
                                 <td><input type="number" name="amount" id="amount" required /></td>
-                                <td>${medicine_list[j].direction_for_use}</td>
+                                <td>${medicines_list[j].direction_for_use}</td>
                                 <td><a onclick="removeMedicineRow(this)" class="btn-remove-medicine"><i class="fa-solid fa-x"></i></a></td>`
                 addMedicineRow.parentNode.insertBefore(newRow, addMedicineRow.nextSibling);
                 isAddMedicineInput.value = 'true'
