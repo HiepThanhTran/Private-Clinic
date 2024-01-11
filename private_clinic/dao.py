@@ -63,7 +63,7 @@ def stats_medicine_usage_per_month(month=None, medicine_name=None):
         .join(MedicalBill, MedicalBill.id == Prescription.medical_bill_id, isouter=True) \
         .join(Bill, Bill.medical_bill_id == MedicalBill.id, isouter=True) \
         .join(MedicineUnit, MedicineUnit.id == Medicine.medicine_unit_id, isouter=True) \
-        .group_by(func.extract('month', Bill.examination_date).label('month'), Medicine.medicine_name, MedicineUnit.unit_name)
+        .group_by(func.extract('month', Bill.examination_date).label('month'), Medicine.medicine_name)
 
     if month:
         result = result.filter(func.extract('month', Bill.examination_date).label('month') == month)

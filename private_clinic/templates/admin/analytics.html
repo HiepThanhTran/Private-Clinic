@@ -63,11 +63,11 @@
                         <th>{{ examination.examination_date.strftime('%Y-%d') }}</th>
                         <th>{{ examination.total_examinations }}</th>
                         <th>{{ examination.revenue }}</th>
-                        <th>{{ avgs_list[loop.index0].avg }}</th>
+                        <th>%</th>
                     </tr>
                 {% endfor %}
                 <tr>
-                    <th colspan="5">Total revenue: {{ revenue_stats[0].total_revenue }}</th>
+                    <th colspan="5">Total revenue: {% if revenue_stats %}{{ revenue_stats[0].total_revenue }}{% endif %}</th>
                 </tr>
                 </tbody>
             </table>

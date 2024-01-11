@@ -85,7 +85,7 @@
                 <div class="status">
                     <div class="info">
                         <h3>Total Sales</h3>
-                        <h1>{{ '${:,.1}'.format(total_revenues[0].total_revenue) }}</h1>
+                        <h1>{% if  %}{{ '${:,.1}'.format(total_revenues[0].total_revenue) }}</h1>
                     </div>
                     <div class="progresss">
                         <canvas id="revenue_chart"></canvas>

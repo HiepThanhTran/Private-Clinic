@@ -14,18 +14,8 @@ from private_clinic.token import confirm_token, generate_token
 # --------------------RENDER FUNCTIONS-------------------- #
 @app.context_processor
 def common_response():
-    total_revenue = services.stats_revenue_per_month()[0].total_revenue
-    avgs_list = []
-
-    examination_stats = services.stats_examination_per_month()
-    for examination in examination_stats:
-        avgs_list.append({
-            'avg': examination.revenue/total_revenue * 100,
-        })
-
     return {
         'default_date': datetime.now().strftime('%Y-%m'),
-        'avgs_list': avgs_list,
     }
 
 
